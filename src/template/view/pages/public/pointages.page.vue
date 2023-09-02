@@ -27,12 +27,12 @@
                 <ul class="nav nav-line" id="myTab5" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="home-tab5" data-bs-toggle="tab" href="#home5" role="tab"
-                            aria-controls="home" aria-selected="true"> <i class="far fa-check-square"></i> Pointage en
+                            aria-controls="home" aria-selected="true"> Pointage en
                             cours</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="profile-tab5" data-bs-toggle="tab" href="#profile5" role="tab"
-                            aria-controls="profile" aria-selected="false"> <i class="far fa-calendar-check"></i> Pointage
+                            aria-controls="profile" aria-selected="false">Pointage
                             antérieur</a>
                     </li>
                 </ul>

@@ -16,6 +16,7 @@
                 <div class="sign-wrapper mg-lg-l-50 mg-xl-l-60">
                     <div class="wd-100p">
                         <h3 class="tx-color-01 mg-b-5">Authentification</h3>
+
                         <div class="form-group">
                             <label>Identifiant</label>
                             <input type="email" class="form-control" placeholder="exemple@domain.com">
