@@ -2,6 +2,7 @@ const lang = {
   emptyTable: "Aucune donnée disponible dans le tableau",
   loadingRecords: "Chargement...",
   processing: "Traitement...",
+  searchPlaceholder: "Recherche...",
   autoFill: {
     cancel: "Annuler",
     fill: "Remplir toutes les cellules avec <i>%d</i>",

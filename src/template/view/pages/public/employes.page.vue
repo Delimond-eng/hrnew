@@ -29,35 +29,33 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-body">
-                        <table id="employesTable" class="table">
-                            <thead>
-                                <tr>
-                                    <th class="wd-20p">Nom</th>
-                                    <th class="wd-25p">Post nom</th>
-                                    <th class="wd-20p">Prénom</th>
-                                    <th class="wd-15p">Matricule</th>
-                                    <th class="wd-20p">Fonction</th>
-                                    <th class="wd-20p">Genre</th>
-                                    <th class="wd-20p">Etat civile</th>
-                                    <th class="wd-20p">Date engagement</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="i in 30" :key="i">
-                                    <td>Donna Snider</td>
-                                    <td>Delimond</td>
-                                    <td>Gaston</td>
-                                    <td>1I2I000</td>
-                                    <td>Directeur technique</td>
-                                    <td>M</td>
-                                    <td>Marié</td>
-                                    <td>05/08/2023</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div data-label="Liste des employés" class="df-example">
+                    <table id="employesTable" class="table">
+                        <thead>
+                            <tr>
+                                <th class="wd-20p">Nom</th>
+                                <th class="wd-25p">Post nom</th>
+                                <th class="wd-20p">Prénom</th>
+                                <th class="wd-15p">Matricule</th>
+                                <th class="wd-20p">Fonction</th>
+                                <th class="wd-20p">Genre</th>
+                                <th class="wd-20p">Etat civile</th>
+                                <th class="wd-20p">Date engagement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="i in 30" :key="i">
+                                <td>Donna Snider</td>
+                                <td>Delimond</td>
+                                <td>Gaston</td>
+                                <td>1I2I000</td>
+                                <td>Directeur technique</td>
+                                <td>M</td>
+                                <td>Marié</td>
+                                <td>05/08/2023</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <!-- container -->
             </div>
@@ -77,14 +75,9 @@ export default {
         employesCreateModal,
     },
     mounted() {
-        /* this.$nextTick(() => {
-            $('#employesTable').DataTable({
-                language: {
-                    ...datatableFr,
-                    searchPlaceholder: 'Recherche employé...',
-                },
-            });
-        }); */
+        $('#employesTable').DataTable({
+            language: datatableFr,
+        });
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });

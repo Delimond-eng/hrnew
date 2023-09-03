@@ -1,6 +1,6 @@
 <template>
     <teleport to='body'>
-        <form class="modal fade scrollbar-lg" id="modalBareme" tabindex="-1" role="dialog"
+        <form @submit.prevent="submitBareme" class="modal fade scrollbar-lg" id="modalBareme" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel6" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content tx-14">
@@ -100,6 +100,17 @@ export default {
     data() {
         return {
             isSubmitLoading: false
+        }
+    },
+
+
+    methods: {
+        submitBareme(e) {
+            this.isSubmitLoading = true;
+            setTimeout(() => {
+                this.isSubmitLoading = false;
+                $('#modalBareme').modal('hide');
+            }, 3000)
         }
     },
 }

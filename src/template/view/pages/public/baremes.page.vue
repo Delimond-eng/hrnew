@@ -2,8 +2,8 @@
     <div class="content ht-100v pd-0">
         <div class="content-header">
             <div class="content-search">
-                <!-- <i data-feather="search"></i>
-                <input type="search" class="form-control" placeholder="Tapez le numéro de matricule..."> -->
+                <i data-feather="search"></i>
+                <input type="search" class="form-control" placeholder="Filtrer barème...">
             </div>
             <nav class="nav">
                 <a href="javascript:void(0)" class="nav-link"><i data-feather="align-left"></i></a>
@@ -29,29 +29,27 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-body">
-                        <table id="employesTable" class="table">
-                            <thead>
-                                <tr>
-                                    <th class="wd-25p">Catégorie salariale</th>
-                                    <th class="wd-20p">Libellé</th>
-                                    <th class="wd-20p">Salaire journalier</th>
-                                    <th class="wd-20p">Allocation familiale</th>
-                                    <th class="wd-25p">Transport journalier</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="i in 30" :key="i">
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>12000 CDF</td>
-                                    <td>CNSS</td>
-                                    <td>2500 CDF</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div data-label="Liste des barèmes" class="df-example">
+                    <table id="baremesTable" class="table">
+                        <thead>
+                            <tr>
+                                <th class="wd-25p">Catégorie salariale</th>
+                                <th class="wd-20p">Libellé</th>
+                                <th class="wd-20p">Salaire journalier</th>
+                                <th class="wd-20p">Allocation familiale</th>
+                                <th class="wd-25p">Transport journalier</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="i in 30" :key="i">
+                                <td>Tiger Nixon</td>
+                                <td>System Architect</td>
+                                <td>12000 CDF</td>
+                                <td>CNSS</td>
+                                <td>2500 CDF</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <!-- container -->
             </div>
@@ -63,6 +61,7 @@
 
 <script>
 import baremeCreateModal from './modals/baremes.modal'
+import datatableFr from '@/assets/js/datatable.fr';
 export default {
     name: "BaremesPage",
 
@@ -72,7 +71,9 @@ export default {
     },
 
     mounted() {
-
+        $('#baremesTable').DataTable({
+            language: datatableFr
+        })
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });

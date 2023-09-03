@@ -8,7 +8,6 @@
 
 export default {
   name: 'App',
-
   mounted() {
     setInterval(() => { feather.replace(); }, 50)
   }
