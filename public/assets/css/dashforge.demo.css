@@ -161,7 +161,7 @@
   position: absolute;
   top: -6px;
   left: 5px;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 600;
   font-family: -apple-system, BlinkMacSystemFont, "Inter UI", Roboto, sans-serif;
   letter-spacing: 1px;
@@ -371,7 +371,7 @@
 
 @media (min-width: 992px) {
   .content-popovers {
-    height: calc(100vh - $height-header);
+    height: calc(100vh);
     overflow-y: auto;
     margin-right: 0;
     position: relative;

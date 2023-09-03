@@ -6,7 +6,7 @@
                 <input type="search" class="form-control" placeholder="Recherche service..."> -->
             </div>
             <nav class="nav">
-                <a href="#" class="nav-link"><i data-feather="align-left"></i></a>
+                <a href="javascript:void(0)" class="nav-link"><i data-feather="align-left"></i></a>
             </nav>
         </div><!-- content-header -->
 
@@ -16,7 +16,7 @@
                     <div>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                                <li class="breadcrumb-item"><a href="#">Decompte</a></li>
+                                <li class="breadcrumb-item">Decompte</li>
                                 <li class="breadcrumb-item active" aria-current="page">{{
                                     $route.params.tab.includes('bulletin') ? 'Bulletin decompte' : 'Calcul decompte' }}</li>
                             </ol>
@@ -45,203 +45,11 @@
                 <div class="tab-content mg-t-20" id="myTabContent5">
                     <div class="tab-pane fade " :class="$route.params.tab.includes('calcul') ? 'show active' : ''"
                         id="home5" role="tabpanel" aria-labelledby="home-tab5">
-                        <div>
-
-                            <div data-label="Calcul decompte" class="df-example mt-3">
-                                <div class="row mt-2">
-                                    <div class="col-md-2">
-                                        <label class="form-label">Matricule<span class="tx-danger">*</span></label>
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label class="form-label"> Motif cessation <span class="tx-danger">*</span></label>
-                                        <select class="form-control">
-                                            <option value="Licenciement" selected>Licenciement</option>
-                                            <option value="Démission">Démission</option>
-                                            <option value="Retraite">Retraite</option>
-                                            <option value="Décès">Décès</option>
-                                            <option value="Cas de force majeure">Cas de force majeure</option>
-                                            <option value="Départ négocié">Départ négocié</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label class="form-label">Date du départ <span class="tx-danger">*</span></label>
-                                        <input type="date" class="form-control" placeholder="Enter your firstname">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label class="form-label">Vehiculé ? <span class="tx-danger">*</span></label>
-                                        <select class="form-control">
-                                            <option value="Non" selected>Non</option>
-                                            <option value="Oui">Oui</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label class="form-label">Logé ? <span class="tx-danger">*</span></label>
-                                        <select class="form-control">
-                                            <option value="Non" selected>Non</option>
-                                            <option value="Oui">Oui</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div data-label="Temps de travail" class="df-example mt-3">
-                                <div class="row mt-2">
-                                    <div class="col-md-3">
-                                        <label class="form-label">Préavis<span class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label class="form-label">Congé préavis<span class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label class="form-label">Jours à prester<span class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label class="form-label">Jours prestés<span class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-3 mt-2">
-                                        <label class="form-label">Jours fériés<span class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="col-md-3 mt-2">
-                                        <label class="form-label">Jours fériés prestés<span
-                                                class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="col-md-3 mt-2">
-                                        <label class="form-label">Jours de suspension<span
-                                                class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-3 mt-2">
-                                        <label class="form-label">Absences justifiées<span
-                                                class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-3 mt-2">
-                                        <label class="form-label">Jours de maladie<span class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-3 mt-2">
-                                        <label class="form-label">Jours de congé<span class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-3 mt-2">
-                                        <label class="form-label">Jours de congé payés<span
-                                                class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-3 mt-2">
-                                        <label class="form-label">Congés de circonstance<span
-                                                class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-3 mt-2">
-                                        <label class="form-label">Jours de congé médical<span
-                                                class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-3 mt-2">
-                                        <label class="form-label">Jours de congé maternité<span
-                                                class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div data-label="Heures supplementaires" class="df-example mt-3">
-                                <div class="row mt-2">
-                                    <div class="col-md-4">
-                                        <label class="form-label">Heure sup130 <small>(laissez vide si non
-                                                applicable)</small>
-                                            <span class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="form-label">Heure sup160 <small>(laissez vide si non
-                                                applicable)</small><span class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="form-label">Heure sup200 <small>(laissez vide si non
-                                                applicable)</small><span class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div data-label="Salaire" class="df-example mt-3">
-                                <div class="row mt-2">
-                                    <div class="col-md-2">
-                                        <label class="form-label"> Devise <span class="tx-danger">*</span></label>
-                                        <select class="form-control">
-                                            <option value="CDF" selected>CDF</option>
-                                            <option value="USD">USD</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label class="form-label">Taux <span class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label class="form-label">Avance sur salaire <span
-                                                class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label class="form-label">Quinzaine <span class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="col-md-2">
-                                        <label class="form-label">Prét <span class="tx-danger">*</span></label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr>
-                            <div class="mt-3 d-flex justify-content-end">
-                                <button class="btn btn-success btn-lg"> <i data-feather="check"></i> Soumettre &
-                                    valider</button>
-                            </div>
-                        </div>
+                        <decompte-calcul></decompte-calcul>
                     </div>
                     <div class="tab-pane fade" :class="$route.params.tab.includes('bulletin') ? 'show active' : ''"
                         id="profile5" role="tabpanel" aria-labelledby="profile-tab5">
-                        <div data-label="Bulletin decompte" class="df-example mt-3">
-                            <h6>Matricule</h6>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="input-group">
-                                        <input class="form-control form-control-lg" type="text"
-                                            placeholder="Entrez le numéro matricule de l'employé...">
-                                        <button class="btn btn-brand-02 btn-lg"> <i data-feather="clipboard"></i>
-                                            Afficher</button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                        <decompte-bulletin></decompte-bulletin>
                     </div>
                 </div>
             </div><!-- container -->
@@ -250,11 +58,15 @@
 </template>
 
 <script>
+import decompteCalcul from './components/decompte_calcul';
+import decompteBulletin from './components/decompte_bulletin';
 export default {
     name: 'DecomptesPage',
-
+    components: {
+        decompteBulletin,
+        decompteCalcul
+    },
     mounted() {
-
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });

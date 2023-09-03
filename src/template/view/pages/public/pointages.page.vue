@@ -6,7 +6,7 @@
                 <input type="search" class="form-control" placeholder="Recherche service..."> -->
             </div>
             <nav class="nav">
-                <a href="#" class="nav-link"><i data-feather="align-left"></i></a>
+                <a href="javascript:void(0)" class="nav-link"><i data-feather="align-left"></i></a>
             </nav>
         </div><!-- content-header -->
 
@@ -16,7 +16,7 @@
                     <div>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                                <li class="breadcrumb-item"><a href="#">Mises à jour</a></li>
+                                <li class="breadcrumb-item">Mises à jour</li>
                                 <li class="breadcrumb-item active" aria-current="page">Pointages</li>
                             </ol>
                         </nav>
@@ -39,75 +39,10 @@
 
                 <div class="tab-content mg-t-20" id="myTabContent5">
                     <div class="tab-pane fade show active" id="home5" role="tabpanel" aria-labelledby="home-tab5">
-                        <div data-label="Pointage en cours" class="df-example mt-3">
-                            <h6>Pointage en cours</h6>
-                            <div class="row mt-2">
-                                <div class="col-md-2">
-                                    <label class="form-label">Mois<span class="tx-danger">*</span></label>
-                                    <select class="form-control">
-                                        <option label="Mois"></option>
-                                        <option value="Janvier">Janvier</option>
-                                        <option value="Février">Février</option>
-                                        <option value="Mars">Mars</option>
-                                        <option value="Avril">Avril</option>
-                                        <option value="Mai">Mai</option>
-                                        <option value="Juin">Juin</option>
-                                        <option value="Juillet">Juillet</option>
-                                        <option value="Août">Août</option>
-                                        <option value="Septembre">Septembre</option>
-                                        <option value="Octobre">Octobre</option>
-                                        <option value="Décembre">Décembre</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2">
-                                    <label class="form-label">Année <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Année">
-                                </div>
-                                <div class="col-md-3">
-                                    <label class="form-label"> Date clôture <span class="tx-danger">*</span></label>
-                                    <input type="date" class="form-control" placeholder="date clôture">
-                                </div>
-                                <div class="col-md-2">
-                                    <label class="form-label">Devise <span class="tx-danger">*</span></label>
-                                    <select class="form-control">
-                                        <option value="Janvier" selected>CDF</option>
-                                        <option value="Février">USD</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <label class="form-label">Taux <span class="tx-danger">*</span></label>
-                                    <input type="number" class="form-control" value="1" placeholder="Enter your firstname">
-                                </div>
-
-                            </div>
-                            <hr>
-                            <div class="mt-3 d-flex justify-content-end">
-                                <button class="btn btn-success btn-lg"> <i data-feather="check"></i> Confirmer
-                                    pointage</button>
-                            </div>
-                        </div>
+                        <pointage-en-cours></pointage-en-cours>
                     </div>
                     <div class="tab-pane fade" id="profile5" role="tabpanel" aria-labelledby="profile-tab5">
-                        <div data-label="Pointage antérieur" class="df-example mt-3">
-                            <h6>Période</h6>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="input-group">
-                                        <select class="form-control form-control-lg">
-                                            <option label="Sélectionnez une période"></option>
-                                            <option value="Firefox">Firefox</option>
-                                            <option value="Chrome">Chrome</option>
-                                            <option value="Safari">Safari</option>
-                                            <option value="Opera">Opera</option>
-                                            <option value="Internet Explorer">Internet Explorer</option>
-                                        </select>
-                                        <button class="btn btn-success btn-lg"> <i data-feather="clipboard"></i>
-                                            Afficher</button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                        <pointage-anterieur></pointage-anterieur>
                     </div>
                 </div>
             </div><!-- container -->
@@ -116,8 +51,15 @@
 </template>
 
 <script>
+import pointageAnterieur from './components/pointage_anterieur';
+import pointageEnCours from './components/pointage_encours';
 export default {
     name: 'PointagesPage',
+
+    components: {
+        pointageAnterieur,
+        pointageEnCours
+    },
 
     mounted() {
 

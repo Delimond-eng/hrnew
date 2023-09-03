@@ -6,7 +6,7 @@
                 <input type="search" class="form-control" placeholder="Tapez le numéro de matricule...">
             </div>
             <nav class="nav">
-                <a href="#" class="nav-link"><i data-feather="align-left"></i></a>
+                <a href="javascript:void(0)" class="nav-link"><i data-feather="align-left"></i></a>
             </nav>
         </div>
         <!-- content-header -->
@@ -16,14 +16,14 @@
                     <div>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                                <li class="breadcrumb-item"><a href="#">Administration</a></li>
+                                <li class="breadcrumb-item">Administration</li>
                                 <li class="breadcrumb-item active" aria-current="page">Employés</li>
                             </ol>
                         </nav>
                         <h4 class="mg-b-0 tx-spacing--1">Employés</h4>
                     </div>
                     <div class="d-none d-md-block">
-                        <a href="#modal6" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                        <a href="#modalEmployes" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                             data-animation="effect-slide-in-right"><i data-feather="plus" class="wd-10 mg-r-5"></i> Nouveau
                             employé</a>
                     </div>
@@ -63,98 +63,19 @@
             </div>
         </div>
     </div>
-
-    <teleport to='body'>
-        <div class="modal fade scrollbar-lg" id="modal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel6"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content tx-14">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLabel6">Nouveau employé</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="mg-b-10 tx-danger">Veuillez renseigner tous les champs obligatoires !</p>
-                        <div data-label="Informations personnelles" class="df-example demo-forms">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label class="form-label"> Nom <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="form-label"> Post nom <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="form-label"> Prénom <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4 mt-md-2">
-                                    <label class="form-label">Nationalité <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4 mt-md-2">
-                                    <label class="form-label">Date de naissance <span class="tx-danger">*</span></label>
-                                    <input type="date" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4 mt-md-2">
-                                    <label class="form-label">Adresse <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-
-                                <div class="col-md-4 mt-md-2">
-                                    <label class="form-label">Sexe <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4 mt-md-2">
-                                    <label class="form-label">Etat civil <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-
-                                <div class="col-md-4 mt-md-2">
-                                    <label class="form-label">Date engagement<span class="tx-danger">*</span></label>
-                                    <input type="date" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div data-label="Responsabilités" class="df-example mt-md-3 demo-forms">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label class="form-label">Type <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="form-label"> Durée<span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="form-label">Barème <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary tx-13" data-bs-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-success tx-13"> <i data-feather="plus"></i>
-                            Enregistrer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </teleport>
+    <employes-create-modal />
 </template>
 
 
 <script>
-import datatableFr from '@/assets/js/datatable.fr'
+import datatableFr from '@/assets/js/datatable.fr';
+import employesCreateModal from './modals/employes.modal'
 export default {
     name: "EmployesPage",
+
+    components: {
+        employesCreateModal,
+    },
     mounted() {
         /* this.$nextTick(() => {
             $('#employesTable').DataTable({
@@ -167,7 +88,7 @@ export default {
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
-        $('#modal6').on('show.bs.modal', function (event) {
+        $('#modalEmployes').on('show.bs.modal', function (event) {
             var animation = $(event.relatedTarget).data('animation');
             $(this).addClass(animation);
             new PerfectScrollbar(".modal", {
@@ -176,7 +97,7 @@ export default {
         })
 
         // hide modal with effect
-        $('#modal6').on('hidden.bs.modal', function (e) {
+        $('#modalEmployes').on('hidden.bs.modal', function (e) {
             $(this).removeClass(function (index, className) {
                 return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
             });

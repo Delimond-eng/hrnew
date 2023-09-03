@@ -6,7 +6,7 @@
                 <input type="search" class="form-control" placeholder="Tapez le numéro de matricule..."> -->
             </div>
             <nav class="nav">
-                <a href="#" class="nav-link"><i data-feather="align-left"></i></a>
+                <a href="javascript:void(0)" class="nav-link"><i data-feather="align-left"></i></a>
             </nav>
         </div>
         <!-- content-header -->
@@ -16,7 +16,7 @@
                     <div>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                                <li class="breadcrumb-item"><a href="#">Administration</a></li>
+                                <li class="breadcrumb-item">Administration</li>
                                 <li class="breadcrumb-item active" aria-current="page">Barèmes</li>
                             </ol>
                         </nav>
@@ -58,71 +58,18 @@
         </div>
     </div>
 
-    <teleport to='body'>
-        <div class="modal fade scrollbar-lg" id="modalBareme" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel6" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content tx-14">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLabel6">Nouveau barème</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="mg-b-10 tx-danger">Veuillez renseigner tous les champs obligatoires !</p>
-                        <div data-label="Barème" class="df-example demo-forms">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label class="form-label"> Catégorie <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="form-label"> Echelon <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="form-label"> Classe <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4 mt-md-2">
-                                    <label class="form-label">Libellé <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4 mt-md-2">
-                                    <label class="form-label">Salaire mensuel <span class="tx-danger">*</span></label>
-                                    <input type="date" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4 mt-md-2">
-                                    <label class="form-label">1<sup>ième</sup> mois <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-
-                                <div class="col-md-4 mt-md-2">
-                                    <label class="form-label">Allocation familiale <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                                <div class="col-md-4 mt-md-2">
-                                    <label class="form-label">Transport journalier <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter your firstname">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary tx-13" data-bs-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-success tx-13"> <i data-feather="plus"></i>
-                            Enregistrer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </teleport>
+    <bareme-create-modal />
 </template>
 
 <script>
+import baremeCreateModal from './modals/baremes.modal'
 export default {
     name: "BaremesPage",
+
+
+    components: {
+        baremeCreateModal,
+    },
 
     mounted() {
 

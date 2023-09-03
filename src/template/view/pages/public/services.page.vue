@@ -6,7 +6,7 @@
                 <input type="search" class="form-control" placeholder="Recherche service...">
             </div>
             <nav class="nav">
-                <a href="#" class="nav-link"><i data-feather="align-left"></i></a>
+                <a href="javascript:void(0)" class="nav-link"><i data-feather="align-left"></i></a>
             </nav>
         </div><!-- content-header -->
 
@@ -16,16 +16,13 @@
                     <div>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                                <li class="breadcrumb-item"><a href="#">Administration</a></li>
+                                <li class="breadcrumb-item">Administration</li>
                                 <li class="breadcrumb-item active" aria-current="page">Services</li>
                             </ol>
                         </nav>
                         <h4 class="mg-b-0 tx-spacing--1">Services</h4>
                     </div>
                     <div class="d-none d-md-block">
-
-                        <!-- <button class="btn btn-sm pd-x-15 btn-primary btn-uppercase mg-l-5"><i data-feather="plus"
-                                class="wd-10 mg-r-5"></i> Nouveau service</button> -->
                     </div>
                 </div>
                 <div class="row">
@@ -45,7 +42,7 @@
                                     </div>
 
                                     <div class="card-body tx-13">
-                                        <h5><a href="#">Informatique</a></h5>
+                                        <h5>Informatique</h5>
                                     </div><!-- card-body -->
                                     <div class="card-footer tx-13">
                                         <span class="tx-color-03">Agents</span>
