@@ -57,6 +57,12 @@ const routes = [
         component: () => require("@/template/view/pages/public/decomptes.page"),
         name: "tab.decomptes",
       },
+      /*Edition page*/
+      {
+        path: "/editions",
+        component: () => require("@/template/view/pages/public/editions.page"),
+        name: "editions",
+      },
     ],
   },
 ];

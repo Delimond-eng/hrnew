@@ -1,3 +1,6 @@
+import BBtn from "./src/bs__button";
 export default {
-  install: (app, options) => {},
+  install: (app, opt) => {
+    app.component("bs-button", BBtn);
+  },
 };

@@ -21,6 +21,9 @@ import sidebarLayout from '../layouts/sidebar.layout';
 export default {
     name: "HomeSecure",
 
+    unmounted() {
+        this.$router.go();
+    },
     components: {
         sidebarLayout
     }

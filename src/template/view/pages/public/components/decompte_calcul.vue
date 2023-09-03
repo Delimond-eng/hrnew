@@ -1,14 +1,14 @@
 <template>
-    <div>
+    <form @submit.prevent="submitRequest">
         <div data-label="Calcul decompte" class="df-example mt-3">
             <div class="row mt-2">
                 <div class="col-md-2">
                     <label class="form-label">Matricule<span class="tx-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="matricule...">
+                    <input type="text" class="form-control" placeholder="matricule..." required>
                 </div>
                 <div class="col-md-3">
                     <label class="form-label"> Motif cessation <span class="tx-danger">*</span></label>
-                    <select class="form-select">
+                    <select class="form-select" required>
                         <option value="Licenciement" selected>Licenciement</option>
                         <option value="Démission">Démission</option>
                         <option value="Retraite">Retraite</option>
@@ -19,18 +19,18 @@
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Date du départ <span class="tx-danger">*</span></label>
-                    <input type="date" class="form-control" placeholder="date du depart">
+                    <input type="date" class="form-control" placeholder="date du depart" required>
                 </div>
                 <div class="col-md-2">
                     <label class="form-label">Vehiculé ? <span class="tx-danger">*</span></label>
-                    <select class="form-select">
+                    <select class="form-select" required>
                         <option value="Non" selected>Non</option>
                         <option value="Oui">Oui</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label class="form-label">Logé ? <span class="tx-danger">*</span></label>
-                    <select class="form-select">
+                    <select class="form-select" required>
                         <option value="Non" selected>Non</option>
                         <option value="Oui">Oui</option>
                     </select>
@@ -42,70 +42,70 @@
             <div class="row mt-2">
                 <div class="col-md-3">
                     <label class="form-label">Préavis<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="préavis...">
+                    <input type="number" class="form-control" placeholder="préavis..." required>
                 </div>
 
                 <div class="col-md-3">
                     <label class="form-label">Congé préavis<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Congé préavis...">
+                    <input type="number" class="form-control" placeholder="Congé préavis..." required>
                 </div>
 
                 <div class="col-md-3">
                     <label class="form-label">Jours à prester<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Jours à prester...">
+                    <input type="number" class="form-control" placeholder="Jours à prester..." required>
                 </div>
 
                 <div class="col-md-3">
                     <label class="form-label">Jours prestés<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder=">Jours prestés...">
+                    <input type="number" class="form-control" placeholder=">Jours prestés..." required>
                 </div>
 
                 <div class="col-md-3 mt-2">
                     <label class="form-label">Jours fériés<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Jours fériés...">
+                    <input type="number" class="form-control" placeholder="Jours fériés..." required>
                 </div>
                 <div class="col-md-3 mt-2">
                     <label class="form-label">Jours fériés prestés<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Jours fériés prestés...">
+                    <input type="number" class="form-control" placeholder="Jours fériés prestés..." required>
                 </div>
                 <div class="col-md-3 mt-2">
                     <label class="form-label">Jours de suspension<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Jours de suspension...">
+                    <input type="number" class="form-control" placeholder="Jours de suspension..." required>
                 </div>
 
                 <div class="col-md-3 mt-2">
                     <label class="form-label">Absences justifiées<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Absences justifiées...">
+                    <input type="number" class="form-control" placeholder="Absences justifiées..." required>
                 </div>
 
                 <div class="col-md-3 mt-2">
                     <label class="form-label">Jours de maladie<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Jours de maladie...">
+                    <input type="number" class="form-control" placeholder="Jours de maladie..." required>
                 </div>
 
                 <div class="col-md-3 mt-2">
                     <label class="form-label">Jours de congé<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Jours de congé...">
+                    <input type="number" class="form-control" placeholder="Jours de congé..." required>
                 </div>
 
                 <div class="col-md-3 mt-2">
                     <label class="form-label">Jours de congé payés<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Jours de congé payés...">
+                    <input type="number" class="form-control" placeholder="Jours de congé payés..." required>
                 </div>
 
                 <div class="col-md-3 mt-2">
                     <label class="form-label">Congés de circonstance<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Congés de circonstance...">
+                    <input type="number" class="form-control" placeholder="Congés de circonstance..." required>
                 </div>
 
                 <div class="col-md-3 mt-2">
                     <label class="form-label">Jours de congé médical<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Jours de congé médical...">
+                    <input type="number" class="form-control" placeholder="Jours de congé médical..." required>
                 </div>
 
                 <div class="col-md-3 mt-2">
                     <label class="form-label">Jours de congé maternité<span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Jours de congé maternité...">
+                    <input type="number" class="form-control" placeholder="Jours de congé maternité..." required>
                 </div>
             </div>
         </div>
@@ -116,19 +116,19 @@
                     <label class="form-label">Heure sup130 <small>(laissez vide si non
                             applicable)</small>
                         <span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="heure sup130...">
+                    <input type="number" class="form-control" placeholder="heure sup130..." required>
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label">Heure sup160 <small>(laissez vide si non
                             applicable)</small><span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="heure sup160...">
+                    <input type="number" class="form-control" placeholder="heure sup160..." required>
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label">Heure sup200 <small>(laissez vide si non
                             applicable)</small><span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="heure sup200...">
+                    <input type="number" class="form-control" placeholder="heure sup200..." required>
                 </div>
             </div>
         </div>
@@ -137,29 +137,29 @@
             <div class="row mt-2">
                 <div class="col-md-2">
                     <label class="form-label"> Devise <span class="tx-danger">*</span></label>
-                    <select class="form-select">
+                    <select class="form-select" required>
                         <option value="CDF" selected>CDF</option>
                         <option value="USD">USD</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label class="form-label">Taux <span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="taux...">
+                    <input type="number" class="form-control" placeholder="taux..." required>
                 </div>
 
                 <div class="col-md-3">
                     <label class="form-label">Avance sur salaire <span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Avance sur salaire...">
+                    <input type="number" class="form-control" placeholder="Avance sur salaire..." required>
                 </div>
 
                 <div class="col-md-3">
                     <label class="form-label">Quinzaine <span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Quinzaine...">
+                    <input type="number" class="form-control" placeholder="Quinzaine..." required>
                 </div>
 
                 <div class="col-md-2">
                     <label class="form-label">Prét <span class="tx-danger">*</span></label>
-                    <input type="number" class="form-control" placeholder="Prét...">
+                    <input type="number" class="form-control" placeholder="Prét..." required>
                 </div>
             </div>
         </div>
@@ -215,10 +215,11 @@
         </div>
         <hr>
         <div class="mt-3 d-flex justify-content-end">
-            <button class="btn btn-success btn-lg"> <i data-feather="check"></i> Soumettre &
-                valider</button>
+            <bs-button class-name="btn-success btn-lg" btn-type="submit" :loading="isSubmitLoading"> <i
+                    data-feather="check"></i> Soumettre &
+                valider</bs-button>
         </div>
-    </div>
+    </form>
 </template>
 
 
@@ -244,6 +245,17 @@ export default {
                 }
             ],
 
+            isSubmitLoading: false
+
+        }
+    },
+
+    methods: {
+        submitRequest(e) {
+            this.isSubmitLoading = true;
+            setTimeout(() => {
+                this.isSubmitLoading = false;
+            }, 3000)
         }
     },
 }

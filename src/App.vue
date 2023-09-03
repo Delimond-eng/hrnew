@@ -10,7 +10,7 @@ export default {
   name: 'App',
 
   mounted() {
-    setInterval(() => { feather.replace(); }, 1000)
+    setInterval(() => { feather.replace(); }, 50)
   }
 }
 </script>

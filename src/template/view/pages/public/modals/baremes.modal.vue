@@ -1,6 +1,6 @@
 <template>
     <teleport to='body'>
-        <div class="modal fade scrollbar-lg" id="modalBareme" tabindex="-1" role="dialog"
+        <form class="modal fade scrollbar-lg" id="modalBareme" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel6" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content tx-14">
@@ -16,35 +16,36 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <label class="form-label"> Catégorie <span class="tx-danger">*</span></label>
-                                    <select class="form-select">
+                                    <select class="form-select" required>
                                         <option label="--Sélectionnez une catégorie--"></option>
                                         <option value="Cat">Catégorie_1</option>
                                         <option value="Cat">Catégorie_2</option>
                                         <option value="Cat">Catégorie_3</option>
                                     </select>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <label class="form-label"> Echelon <span class="tx-danger">*</span></label>
-                                    <select class="form-select">
+                                    <select class="form-select" required>
                                         <option value="ORD" selected>ORD</option>
                                         <option value="LOURD">LOURD</option>
                                     </select>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <label class="form-label"> Classe <span class="tx-danger">*</span></label>
-                                    <select class="form-select">
+                                    <select class="form-select" required>
                                         <option value="1" selected>1</option>
                                         <option value="2">2</option>
                                     </select>
                                 </div>
-                                <div class="col-md-4 mt-md-2">
+                                <div class="col-md-4 md-2">
                                     <label class="form-label">Libellé <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Saisir le libellé...">
+                                    <input type="text" class="form-control" placeholder="Saisir le libellé..." required>
                                 </div>
-                                <div class="col-md-4 mt-md-2">
+                                <div class="col-md-3 mt-md-2">
                                     <label class="form-label">Salaire mensuel <span class="tx-danger">*</span></label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Saisir le salaire mensuel...">
+                                        <input type="text" class="form-control" placeholder="Saisir le salaire mensuel..."
+                                            required>
                                         <div class="input-group-text m-0 p-0 bg-transparent">
                                             <select class="form-select border-0">
                                                 <option value="CDF" selected>CDF</option>
@@ -53,20 +54,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 mt-md-2">
+                                <div class="col-md-3 mt-md-2">
                                     <label class="form-label">13<sup>ième</sup> mois <span
                                             class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" required>
                                 </div>
 
-                                <div class="col-md-4 mt-md-2">
+                                <div class="col-md-3 mt-md-2">
                                     <label class="form-label">Allocation familiale <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Saisir l'allocation familiale...">
+                                    <input type="text" class="form-control" placeholder="Saisir l'allocation familiale..."
+                                        required>
                                 </div>
-                                <div class="col-md-4 mt-md-2">
+                                <div class="col-md-3 mt-md-2">
                                     <label class="form-label">Transport journalier <span class="tx-danger">*</span></label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Saisir le transport journ...">
+                                        <input type="text" class="form-control" placeholder="Saisir le transport journ..."
+                                            required>
                                         <div class="input-group-text m-0 p-0 bg-transparent">
                                             <select class="form-select border-0">
                                                 <option value="CDF" selected>CDF</option>
@@ -79,12 +82,25 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary tx-13" data-bs-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-success tx-13"> <i data-feather="plus"></i>
-                            Enregistrer</button>
+                        <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Fermer</button>
+                        <bs-button btn-type="submit" :loading="isSubmitLoading" class-name="btn-success"> <i
+                                data-feather="plus"></i>
+                            Enregister</bs-button>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </teleport>
 </template>
+
+<script>
+export default {
+    name: 'BaremeCreateModal',
+
+    data() {
+        return {
+            isSubmitLoading: false
+        }
+    },
+}
+</script>

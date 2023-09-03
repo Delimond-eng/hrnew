@@ -55,7 +55,6 @@ import pointageAnterieur from './components/pointage_anterieur';
 import pointageEnCours from './components/pointage_encours';
 export default {
     name: 'PointagesPage',
-
     components: {
         pointageAnterieur,
         pointageEnCours

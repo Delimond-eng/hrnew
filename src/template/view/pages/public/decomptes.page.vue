@@ -16,12 +16,12 @@
                     <div>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                                <li class="breadcrumb-item">Decompte</li>
+                                <li class="breadcrumb-item">Décompte</li>
                                 <li class="breadcrumb-item active" aria-current="page">{{
                                     $route.params.tab.includes('bulletin') ? 'Bulletin decompte' : 'Calcul decompte' }}</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Decompte</h4>
+                        <h4 class="mg-b-0 tx-spacing--1">Décompte</h4>
                     </div>
                 </div>
 
@@ -31,14 +31,14 @@
                             @click.prevent="$router.replace({ name: 'tab.decomptes', params: { tab: 'calcul' } })"
                             :class="$route.params.tab.includes('calcul') ? 'active' : ''" id="home-tab5"
                             data-bs-toggle="tab" href="#home5" role="tab" aria-controls="home" aria-selected="true"> Calcul
-                            decompte</a>
+                            décompte</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
                             @click.prevent="$router.replace({ name: 'tab.decomptes', params: { tab: 'bulletin' } })"
                             id="profile-tab5" data-bs-toggle="tab" href="#profile5"
                             :class="$route.params.tab.includes('bulletin') ? 'active' : ''" role="tab"
-                            aria-controls="profile" aria-selected="false"> Bulletin decompte</a>
+                            aria-controls="profile" aria-selected="false"> Bulletin décompte</a>
                     </li>
                 </ul>
 

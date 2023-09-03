@@ -3,12 +3,15 @@
         <h6>Matricule</h6>
         <div class="row">
             <div class="col-md-8">
-                <div class="input-group">
-                    <input class="form-control form-control-lg" type="text"
-                        placeholder="Entrez le numéro matricule de l'employé...">
-                    <button class="btn btn-brand-02 btn-lg"> <i data-feather="clipboard"></i>
-                        Afficher</button>
-                </div>
+                <form @submit.prevent="submitRequest">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Entrez le numéro matricule de l'employé..."
+                            required>
+                        <bs-button class-name="btn-success btn-lg" :loading="isSubmitLoading" btn-type="submit"> <i
+                                data-feather="clipboard"></i>
+                            Afficher</bs-button>
+                    </div>
+                </form>
             </div>
 
         </div>
@@ -17,6 +20,22 @@
 
 <script>
 export default {
-    name: 'DecompteBulletin'
+    name: 'DecompteBulletin',
+
+    data() {
+        return {
+            isSubmitLoading: false
+        }
+    },
+
+    methods: {
+        submitRequest(e) {
+            this.isSubmitLoading = true;
+
+            setTimeout(() => {
+                this.isSubmitLoading = false
+            }, 3000)
+        }
+    },
 }
 </script>

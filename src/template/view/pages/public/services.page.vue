@@ -65,34 +65,32 @@
                         </div> -->
                     </div><!-- col -->
                     <div class="col-sm-7 col-md-5 col-lg-4 col-xl-4">
-                        <div class="card ">
-                            <h5 class="card-header"> Nouveau service</h5>
-                            <div class="card-body">
-                                <section>
-                                    <p class="mg-b-20 tx-12">Veuillez renseigner tous les champs pour créer un nouveau
-                                        service
-                                        !
-                                    </p>
-                                    <form @submit.prevent="services.push('')">
-                                        <div class="form-group">
-                                            <label class="form-label">Nom du service: <span
-                                                    class="tx-danger">*</span></label>
-                                            <input id="service-name" class="form-control" name="firstname"
-                                                placeholder="Entrer le nom du service..." type="text" required>
-                                        </div><!-- col -->
-                                        <div class="form-group">
-                                            <label class="form-label">Libellé: <span class="tx-danger">*</span></label>
-                                            <input id="service-label" class="form-control" name="lastname"
-                                                placeholder="Entrer le libellé du service..." type="text" required>
-                                        </div><!-- col -->
-                                        <div class="d-grid gap-2">
-                                            <button type="submit" class="btn btn-success btn-block"> <i
-                                                    data-feather="plus"></i> Ajouter</button>
-                                        </div>
-                                    </form>
-                                </section>
-                            </div>
+                        <div data-label="Nouveau service" class="df-example wd-100p">
+                            <section>
+                                <p class="mg-b-20 tx-12">Veuillez renseigner tous les champs pour créer un nouveau
+                                    service
+                                    !
+                                </p>
+                                <form @submit.prevent="submitService">
+                                    <div class="form-group">
+                                        <label class="form-label">Nom du service: <span class="tx-danger">*</span></label>
+                                        <input id="service-name" class="form-control" name="firstname"
+                                            placeholder="Entrer le nom du service..." type="text" required>
+                                    </div><!-- col -->
+                                    <div class="form-group">
+                                        <label class="form-label">Libellé: <span class="tx-danger">*</span></label>
+                                        <input id="service-label" class="form-control" name="lastname"
+                                            placeholder="Entrer le libellé du service..." type="text" required>
+                                    </div><!-- col -->
+                                    <div class="d-grid gap-2">
+                                        <bs-button btn-type="submit" :loading="submitLoading"
+                                            class-name="btn-success btn-block"> <i data-feather="plus"></i>
+                                            Ajouter</bs-button>
+                                    </div>
+                                </form>
+                            </section>
                         </div>
+
                     </div><!-- col -->
                 </div><!-- row -->
 
@@ -104,10 +102,10 @@
 <script>
 export default {
     name: 'ServicesPage',
-
     data() {
         return {
-            services: []
+            services: [],
+            submitLoading: false,
         }
     },
 
@@ -118,6 +116,17 @@ export default {
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
+    },
+
+    methods: {
+        submitService(e) {
+            this.submitLoading = true;
+
+            setTimeout(() => {
+                this.services.push('');
+                this.submitLoading = false;
+            }, 3000);
+        }
     },
 }
 </script>

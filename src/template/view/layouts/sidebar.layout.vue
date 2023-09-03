@@ -64,20 +64,26 @@
                     </ul>
                 </li>
 
-                <li class="nav-item with-sub">
+                <li class="nav-item with-sub" :class="currentRoute.includes('editions') ? 'active' : ''">
                     <a href="#" class="nav-link"><i data-feather="printer"></i>
                         <span>Editions</span>
                     </a>
                     <ul>
-                        <li><a href="#">Feuille de paie</a></li>
-                        <li><a href="#">Bulletin de paie</a></li>
-                        <li><a href="#">CNSS</a></li>
-                        <li><a href="#">IPR</a></li>
-                        <li><a href="#">INPP & ONEM</a></li>
-                        <li><a href="#">Intercalaire</a></li>
-                        <li><a href="#">Net à payer</a></li>
-                        <li><a href="#">Quinzaine</a></li>
-                        <li><a href="#">Avance sur salaire</a></li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Feuille de paie' } }">Feuille de
+                                paie</router-link></li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Bulletin de paie' } }">Bulletin de
+                                paie</router-link></li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'CNSS' } }">CNSS</router-link></li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'IPR' } }">IPR</router-link></li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'INPP & ONEM' } }">INPP & ONEM</router-link>
+                        </li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Intercalaire' } }">Intercalaire</router-link>
+                        </li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Net à payer' } }">Net à payer</router-link>
+                        </li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Quinzaine' } }">Quinzaine</router-link></li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Avance sur salaire' } }">Avance sur
+                                salaire</router-link></li>
                     </ul>
                 </li>
 
@@ -86,10 +92,11 @@
                         <span>Décompte</span>
                     </a>
                     <ul>
-                        <li><router-link :to="{ name: 'tab.decomptes', params: { tab: 'calcul' } }">Calcul decompte</router-link>
+                        <li><router-link :to="{ name: 'tab.decomptes', params: { tab: 'calcul' } }">Calcul
+                                décompte</router-link>
                         </li>
                         <li><router-link :to="{ name: 'tab.decomptes', params: { tab: 'bulletin' } }">Bulletin
-                                decompte</router-link></li>
+                                décompte</router-link></li>
                     </ul>
                 </li>
 
