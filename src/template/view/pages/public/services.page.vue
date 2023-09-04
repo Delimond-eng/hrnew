@@ -27,42 +27,43 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 col-xl-8">
-
-                        <!-- services loop -->
-                        <div class="row row-sm">
-
-                            <div class="col-md-4 mg-md-b-15" v-for="i in services" :key="i">
-                                <div class="card card-event animate__pulse">
-                                    <div class="card-img-top bg-primary w-100 d-flex align-content-center align-items-center"
-                                        style="height: 80px;">
-                                        <h3 class="m-2 tx-white">Info</h3>
-                                        <!-- <button
+                        <data-loading :processing="dataProcessing">
+                            <div class="row row-sm">
+                                <div class="col-md-4 mg-md-b-15" v-for="i in services" :key="i">
+                                    <div class="card card-event animate__pulse">
+                                        <div class="card-img-top bg-primary w-100 d-flex align-content-center align-items-center"
+                                            style="height: 80px;">
+                                            <h3 class="m-2 tx-white">Info</h3>
+                                            <!-- <button
                                             class="btn btn-light tx-danger rounded-circle btn-icon pos-absolute t-10 r-10"><i
                                                 data-feather="trash"></i> </button> -->
-                                    </div>
+                                        </div>
 
-                                    <div class="card-body tx-13">
-                                        <h5>Informatique</h5>
-                                    </div><!-- card-body -->
-                                    <div class="card-footer tx-13">
-                                        <span class="tx-color-03">Agents</span>
-                                        <span class="tx-color-01">02</span>
+                                        <div class="card-body tx-13">
+                                            <h5>Informatique</h5>
+                                        </div><!-- card-body -->
+                                        <div class="card-footer tx-13">
+                                            <span class="tx-color-03">Agents</span>
+                                            <span class="tx-color-01">02</span>
 
-                                    </div><!-- card-footer -->
-                                </div><!-- card -->
-                            </div><!-- col -->
+                                        </div><!-- card-footer -->
+                                    </div><!-- card -->
+                                </div><!-- col -->
 
-                        </div><!-- row -->
-                        <!-- end loop -->
+                            </div><!-- row -->
+                            <!-- end loop -->
 
-                        <!-- Empty state message -->
-                        <!-- <div class="row d-flex justify-content-center align-items-center h-100 w-100">
+                            <!-- Empty state message -->
+                            <!-- <div class="row d-flex justify-content-center align-items-center h-100 w-100">
                             <div class="col-md-5">
                                 <div class="wd-150 wd-sm-250 mg-b-30"><img src="assets/img/img17.png" class="img-fluid"
                                         alt=""></div>
                                 <h5 class="tx-center">Veuillez créer des services !</h5>
                             </div>
                         </div> -->
+                        </data-loading>
+                        <!-- services loop -->
+
                     </div><!-- col -->
                     <div class="col-sm-7 col-md-5 col-lg-4 col-xl-4">
                         <div data-label="Nouveau service" class="df-example wd-100p">
@@ -84,7 +85,7 @@
                                     </div><!-- col -->
                                     <div class="d-grid gap-2">
                                         <bs-button btn-type="submit" :loading="submitLoading"
-                                            class-name="btn-success btn-block"> <i data-feather="plus"></i>
+                                            class-name="btn-success btn-block btn-lg"> <i data-feather="plus"></i>
                                             Ajouter</bs-button>
                                     </div>
                                 </form>
@@ -104,15 +105,25 @@ export default {
     name: 'ServicesPage',
     data() {
         return {
-            services: [],
             submitLoading: false,
+            dataProcessing: false,
+            services: [],
         }
     },
 
     mounted() {
-        for (let i = 0; i < 4; i++) {
-            this.services.push('' + i);
-        }
+        /*Test loading data*/
+        this.dataProcessing = true;
+        /* this.$store.dispatch('viewServices')
+            .then((d) => this.dataProcessing = false)
+            .catch((e) => this.dataProcessing = false); */
+        setTimeout(() => {
+            for (let i = 0; i < 4; i++) {
+                this.services.push('' + i);
+            }
+            this.dataProcessing = false;
+        }, 4000);
+        /*End loading test data*/
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
@@ -128,5 +139,11 @@ export default {
             }, 3000);
         }
     },
+
+    /* computed: {
+        services() {
+            return this.$store.getters.GET_SERVICES
+        }
+    }, */
 }
 </script>

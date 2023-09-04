@@ -13,12 +13,20 @@ const routes = [
     name: "register",
   },
 
+  /*Reset password route*/
+
+  {
+    path: "/reset",
+    component: () => require("@/template/view/pages/auth/reset.page"),
+    name: "reset",
+  },
+
   /*Route securisé d'accueil après connexion ou crétion */
 
   {
     path: "/secure/home",
     component: () => require("@/template/view/main"),
-    name: "secure-home",
+    name: "secure",
     redirect: { name: "admin.services" },
 
     /*Les pages(routes) securisés*/
@@ -40,6 +48,18 @@ const routes = [
         path: "/baremes",
         component: () => require("@/template/view/pages/public/baremes.page"),
         name: "admin.baremes",
+      },
+      {
+        path: "/access",
+        component: () =>
+          require("@/template/view/pages/public/access.page.vue"),
+        name: "admin.access",
+      },
+
+      {
+        path: "/users",
+        component: () => require("@/template/view/pages/public/users.page.vue"),
+        name: "admin.users",
       },
       /*End admin routes*/
 

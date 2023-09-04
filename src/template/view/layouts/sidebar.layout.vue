@@ -13,7 +13,7 @@
                 <div class="d-flex align-items-center justify-content-start">
                     <a href="#" class="avatar"><img src="assets/img/placehold.jpg" class="rounded-circle" alt=""></a>
                     <div class="aside-alert-link">
-                        <a href="#" data-bs-toggle="tooltip" title="Sign out"><i data-feather="log-out"></i></a>
+                        <a href="#" data-bs-toggle="tooltip" title="Déconnexion"><i data-feather="log-out"></i></a>
                     </div>
                 </div>
                 <div class="aside-loggedin-user">
@@ -49,12 +49,16 @@
                         <span>Administration</span>
                     </a>
                     <ul>
-                        <li><router-link :to="{ name: 'admin.services' }">Services</router-link></li>
-                        <li><router-link :to="{ name: 'admin.employes' }">Employés</router-link></li>
+                        <li><a href="#/access">Accès utilisateurs</a></li>
+                        <li><a href="#/users">Comptes utilisateurs</a></li>
                         <li><router-link :to="{ name: 'admin.baremes' }">Barèmes</router-link></li>
+                        <li><router-link :to="{ name: 'admin.services' }">Services</router-link></li>
+                        <li><a href="#">Configuration primes</a></li>
+                        <li><a href="#">Planning des congés</a></li>
+                        <li><router-link :to="{ name: 'admin.employes' }">Employés</router-link></li>
+                        <li><a href="#">Visiteurs</a></li>
                     </ul>
                 </li>
-
                 <li class="nav-item with-sub" :class="currentRoute.includes('maj.') ? 'active' : ''">
                     <a href="#" class="nav-link"><i data-feather="clipboard"></i>
                         <span>Mises à jour</span>
@@ -63,7 +67,6 @@
                         <li><router-link :to="{ name: 'maj.pointages' }">Pointage</router-link></li>
                     </ul>
                 </li>
-
                 <li class="nav-item with-sub" :class="currentRoute.includes('editions') ? 'active' : ''">
                     <a href="#" class="nav-link"><i data-feather="printer"></i>
                         <span>Editions</span>
@@ -86,7 +89,6 @@
                                 salaire</router-link></li>
                     </ul>
                 </li>
-
                 <li class="nav-item with-sub" :class="currentRoute.includes('tab.') ? 'active' : ''">
                     <a href="#" class="nav-link"><i data-feather="layout"></i>
                         <span>Décompte</span>
@@ -99,17 +101,38 @@
                                 décompte</router-link></li>
                     </ul>
                 </li>
-
-
+                <li class="nav-item with-sub">
+                    <a href="#" class="nav-link"><i data-feather="user"></i>
+                        <span>Contrôle d'accès</span>
+                    </a>
+                    <ul>
+                        <li><a href="#">Enrollement empreinte</a>
+                        </li>
+                        <li><a href="#modalScannig" data-bs-toggle="modal" data-animation="effect-scale">Scannage
+                                empreinte</a>
+                        </li>
+                        <li><a href="#">Accès visiteur</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </aside>
     <!-- sidebar -->
+
+    <!-- scanning modal -->
+    <scanning-modal></scanning-modal>
+    <!-- scanning modal -->
 </template>
 
 <script>
+import ScanningModal from '../../view/pages/public/modals/scannig.modal'
 export default {
     name: "SidebarLayout",
+
+    components: {
+        ScanningModal,
+    },
 
     data() {
         return {
@@ -118,6 +141,17 @@ export default {
     },
 
     mounted() {
+        $('#modalScannig').on('show.bs.modal', function (event) {
+            var animation = $(event.relatedTarget).data('animation');
+            $(this).addClass(animation);
+        })
+
+        // hide modal with effect
+        $('#modalScannig').on('hidden.bs.modal', function (e) {
+            $(this).removeClass(function (index, className) {
+                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
+            });
+        });
         setInterval(() => {
             this.currentRoute = this.$route.name;
         }, 50);

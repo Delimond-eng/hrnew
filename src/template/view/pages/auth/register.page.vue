@@ -9,58 +9,59 @@
                                 une nouvelle
                                 société ! </p>
                             <div class="form-group">
-                                <label>Dénomination sociale</label>
+                                <label class="form-label">Dénomination sociale <span class="tx-danger">*</span></label>
                                 <input type="text" class="form-control"
                                     placeholder="Saisir la dénomination sociale de la société..." required>
                             </div>
 
                             <div class="form-group">
-                                <label>Identification nationale</label>
+                                <label class="form-label">Identification nationale <span class="tx-danger">*</span></label>
                                 <input type="text" class="form-control" placeholder="Saisir l'idnat de la société..."
                                     required>
                             </div>
 
                             <div class="form-group">
-                                <label>Affiliation CNSS</label>
+                                <label class="form-label">Affiliation CNSS <span class="tx-danger">*</span></label>
                                 <input type="text" class="form-control" placeholder="Saisir l'affiliation CNSS..." required>
                             </div>
 
                             <div class="form-group">
-                                <label>Libellé</label>
+                                <label class="form-label">Libellé <span class="tx-danger">*</span></label>
                                 <input type="text" class="form-control" placeholder="Saisir le libellé de la société..."
                                     required>
                             </div>
 
                             <div class="form-group">
-                                <label>Adresse</label>
+                                <label class="form-label">Adresse <span class="tx-danger">*</span></label>
                                 <input type="text" class="form-control" placeholder="Saisir l'adresse de la société..."
                                     required>
                             </div>
 
                             <div class="form-group">
-                                <label>Gérant, Nom complet </label>
+                                <label class="form-label">Gérant, Nom complet <span class="tx-danger">*</span></label>
                                 <input type="text" class="form-control"
                                     placeholder="Saisir le nom complet du gérant de la société..." required>
                             </div>
 
                             <div class="form-group">
-                                <label>Téléphone </label>
+                                <label class="form-label">Téléphone <span class="tx-danger">*</span></label>
                                 <input type="text" class="form-control" placeholder="Saisir le n° de téléphone..." required>
                             </div>
 
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" class="form-control" placeholder="Saisir l'adresse email..." required>
+                                <label class="form-label">Email <span class="tx-danger">*</span></label>
+                                <input type="email" class="form-control"
+                                    placeholder="Saisir l'adresse email... ex: exemple@domain" required>
                             </div>
 
                             <div class="form-group">
-                                <label>Mot de passe</label>
+                                <label class="form-label">Mot de passe <span class="tx-danger">*</span></label>
                                 <input type="password" class="form-control" placeholder="Entrer le mot de passe..."
                                     required>
                             </div>
 
                             <div class="form-group">
-                                <label>Confirmation mot de passe</label>
+                                <label class="form-label">Confirmation mot de passe <span class="tx-danger">*</span></label>
                                 <input type="password" class="form-control" placeholder="Retaper le mot de passe ..."
                                     required>
                             </div>
@@ -78,9 +79,9 @@
 
                 </div><!-- sign-wrapper -->
                 <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 align-items-center d-none d-lg-flex pos-relative">
-                    <div class="mx-lg-wd-500 mx-xl-wd-550 pos-absolute t-40">
+                    <div class="mx-lg-wd-500 mx-xl-wd-550 pos-absolute t-10">
 
-                        <h1 class="aside-logo tx-100" style="color: #000000;">Millenium<span>
+                        <h1 class="aside-logo tx-80" style="color: #000000;">Millenium<span>
                                 payroll</span></h1>
                     </div>
                     <div class="pos-absolute b-0 r-0 tx-12">

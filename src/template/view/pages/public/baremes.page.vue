@@ -23,7 +23,7 @@
                         <h4 class="mg-b-0 tx-spacing--1">Barèmes</h4>
                     </div>
                     <div class="d-none d-md-block">
-                        <a href="#modalBareme" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                        <a href="#modalBareme" class="btn btn-lg btn-primary" data-bs-toggle="modal"
                             data-animation="effect-slide-in-right"><i data-feather="plus" class="wd-10 mg-r-5"></i>Ajout
                             barème</a>
                     </div>
@@ -38,6 +38,7 @@
                                 <th class="wd-20p">Salaire journalier</th>
                                 <th class="wd-20p">Allocation familiale</th>
                                 <th class="wd-25p">Transport journalier</th>
+                                <th class="wd-10p"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,6 +48,16 @@
                                 <td>12000 CDF</td>
                                 <td>CNSS</td>
                                 <td>2500 CDF</td>
+                                <td class="dropdown-file">
+                                    <a href="#" class="btn btn-light btn-icon" data-bs-toggle="dropdown"><i
+                                            data-feather="more-vertical"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a href="#" class="dropdown-item rename"><i data-feather="edit"
+                                                class="mg-r-10 tx-12"></i>Editer</a>
+                                        <a href="#" class="dropdown-item delete"><i data-feather="trash"
+                                                class="mg-r-10 tx-12"></i>Supprimer</a>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -65,14 +76,20 @@ import datatableFr from '@/assets/js/datatable.fr';
 export default {
     name: "BaremesPage",
 
-
     components: {
         baremeCreateModal,
     },
 
     mounted() {
         $('#baremesTable').DataTable({
-            language: datatableFr
+            language: datatableFr,
+            /* columns: [
+                {
+                    title: '',
+                    data: null,
+                    defaultContent: ``
+                }
+            ] */
         })
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,

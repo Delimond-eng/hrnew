@@ -6,9 +6,10 @@
                 <div class="modal-content tx-14">
                     <div class="modal-header">
                         <h4 class="modal-title" id="exampleModalLabel6">Nouveau employé</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"></span>
-                        </button>
+                        <a href="#" role="button" class="close pos-absolute t-15 r-15" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
                     </div>
                     <div class="modal-body">
                         <p class="mg-b-10 tx-danger">Veuillez renseigner tous les champs obligatoires !</p>
@@ -104,8 +105,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        <bs-button btn-type="submit" :loading="isSubmitLoading" class-name="btn-success"> <i
+                        <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Fermer</button>
+                        <bs-button btn-type="submit" :loading="isSubmitLoading" class-name="btn-success btn-lg"> <i
                                 data-feather="plus"></i>
                             Enregister</bs-button>
                     </div>
