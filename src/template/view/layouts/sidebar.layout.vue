@@ -72,32 +72,32 @@
                         <span>Editions</span>
                     </a>
                     <ul>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'Feuille de paie' } }"
-                                :active-class="$route.query.q === 'Feuille de paie' ? 'active' : ''">Feuille de
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Feuille de paie' } }" active-class=""
+                                :class="q.includes('Feuille de paie') ? 'active' : ''">Feuille de
                                 paie</router-link></li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'Bulletin de paie' } }"
-                                exact-active-class="active">Bulletin de
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Bulletin de paie' } }" active-class=""
+                                :class="q.includes('Bulletin de paie') ? 'active' : ''">Bulletin de
                                 paie</router-link></li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'CNSS' } }"
-                                exact-active-class="active">CNSS</router-link></li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'IPR' } }"
-                                exact-active-class="active">IPR</router-link></li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'INPP & ONEM' } }"
-                                exact-active-class="active">INPP &
+                        <li><router-link :to="{ name: 'editions', query: { q: 'CNSS' } }" active-class=""
+                                :class="q.includes('CNSS') ? 'active' : ''">CNSS</router-link></li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'IPR' } }" active-class=""
+                                :class="q.includes('IPR') ? 'active' : ''">IPR</router-link></li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'INPP & ONEM' } }" active-class=""
+                                :class="q.includes('INPP & ONEM') ? 'active' : ''">INPP &
                                 ONEM</router-link>
                         </li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'Intercalaire' } }"
-                                exact-active-class="active">Intercalaire</router-link>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Intercalaire' } }" active-class=""
+                                :class="q.includes('Intercalaire') ? 'active' : ''">Intercalaire</router-link>
                         </li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'Net à payer' } }"
-                                exact-active-class="active">Net à
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Net à payer' } }" active-class=""
+                                :class="q.includes('Net à payer') ? 'active' : ''">Net à
                                 payer</router-link>
                         </li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'Quinzaine' } }"
-                                exact-active-class="active">Quinzaine</router-link>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Quinzaine' } }" active-class=""
+                                :class="q.includes('Quinzaine') ? 'active' : ''">Quinzaine</router-link>
                         </li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'Avance sur salaire' } }"
-                                exact-active-class="active">Avance sur
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Avance sur salaire' } }" active-class=""
+                                :class="q.includes('Avance sur salaire') ? 'active' : ''">Avance sur
                                 salaire</router-link></li>
                     </ul>
                 </li>
@@ -149,6 +149,7 @@ export default {
     data() {
         return {
             currentRoute: '',
+            q: ''
         }
     },
 
@@ -166,6 +167,9 @@ export default {
         });
         setInterval(() => {
             this.currentRoute = this.$route.name;
+            if (this.$route.query.q !== undefined) {
+                this.q = this.$route.query.q;
+            }
         }, 50);
     }
 }

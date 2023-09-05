@@ -1,7 +1,7 @@
 <template>
     <teleport to='body'>
         <div class="modal fade scrollbar-lg" id="modalUser" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header pd-y-20 pd-x-20 pd-sm-x-30">
                         <a href="#" role="button" class="close pos-absolute t-15 r-15" data-bs-dismiss="modal"
@@ -20,7 +20,7 @@
                     <div class="modal-body pd-sm-t-30 pd-sm-b-40 pd-sm-x-30">
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="tx-12 tx-medium tx-spacing-1 mg-b-5 form-label">Nom d'utilisateur: <span
                                             class="tx-danger">*</span></label>
@@ -28,11 +28,23 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="tx-12 tx-medium tx-spacing-1 mg-b-5 form-label">Adresse email: <span
                                             class="tx-danger">*</span></label>
                                     <input type="email" class="form-control" placeholder="entrez l'adresse email...">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="tx-12 tx-medium tx-spacing-1 mg-b-5 form-label">Agent concerné: <span
+                                            class="tx-danger">*</span>
+                                    </label>
+                                    <select class="form-select">
+                                        <option label="--Sélectionnez un agent--"></option>
+                                        <option v-for="i in 10" :key="i" :value="'agent__' + i">{{ 'agent__' + i }}</option>
+                                    </select>
                                 </div>
                             </div>
 

@@ -5,7 +5,7 @@ const router = createRouter({
   /* base: process.env.BASE_URL, */
   history: createWebHashHistory(),
   routes,
-  linkActiveClass: "active",
+  linkActiveClass: "",
   linkExactActiveClass: "active",
 });
 

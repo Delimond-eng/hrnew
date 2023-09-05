@@ -36,8 +36,10 @@
                                 <th class="wd-20p">Date visite</th>
                                 <th class="wd-20p">Nom Complet</th>
                                 <th class="wd-25p">Téléphone</th>
+                                <th class="wd-25p">Code carte</th>
                                 <th class="wd-20p">Heure d'entrée</th>
                                 <th class="wd-15p">Heure de sortie</th>
+                                <th class="wd-15p">Status</th>
                                 <th class="wd-20p"></th>
                             </tr>
                         </thead>
@@ -46,9 +48,15 @@
                                 <td>11/02/2023</td>
                                 <td>Delimond Gaston</td>
                                 <td>+243849384900</td>
+                                <td>1832JSQ</td>
                                 <td>12:30</td>
                                 <td><input type="time" class="form-control" value="00:00"></td>
-                                <td><button class="btn btn-white btn-sm"> <i data-feather="trash"></i></button></td>
+                                <td><span class="badge" :class="i % 2 ? 'bg-warning' : 'bg-primary'"> {{ i % 2 ? 'entrée' :
+                                    'sortie' }}</span></td>
+                                <td class="d-flex">
+                                    <button class="btn btn-white btn-sm mg-r-4"> <i data-feather="trash"></i></button>
+                                    <button class="btn btn-white btn-sm"> <i data-feather="check"></i></button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

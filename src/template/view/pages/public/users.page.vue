@@ -83,9 +83,15 @@ export default {
         $('#modalUser').on('show.bs.modal', function (event) {
             var animation = $(event.relatedTarget).data('animation');
             $(this).addClass(animation);
+            $('.select2').select2({
+                placeholder: '--Sélectionnez un agent--',
+                searchInputPlaceholder: 'Recherche agent...'
+            });
             new PerfectScrollbar(".modal", {
                 suppressScrollX: true,
             });
+
+
         })
 
         // hide modal with effect
