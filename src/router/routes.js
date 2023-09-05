@@ -58,8 +58,18 @@ const routes = [
 
       {
         path: "/users",
-        component: () => require("@/template/view/pages/public/users.page.vue"),
+        component: () => require("@/template/view/pages/public/users.page"),
         name: "admin.users",
+      },
+      {
+        path: "/visiteurs",
+        component: () => require("@/template/view/pages/public/visiteurs.page"),
+        name: "admin.visiteurs",
+      },
+      {
+        path: "/primes",
+        component: () => require("@/template/view/pages/public/primes.page"),
+        name: "admin.primes",
       },
       /*End admin routes*/
 

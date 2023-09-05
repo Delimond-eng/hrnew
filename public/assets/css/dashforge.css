@@ -20952,6 +20952,19 @@ textarea.parsley-success:focus {
     transition: all 0.25s;
 }
 
+.nav-aside .nav-item ul li a.active {
+    color: #ffffff;
+    font-weight: 400;
+}
+
+.nav-aside .nav-item ul li a.active::after {
+    content: '\ea53';
+    position: absolute;
+    font-family: 'remixicon';
+    color: #ffffff;
+    left: 14px;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .nav-aside .nav-label {
         transition: none;

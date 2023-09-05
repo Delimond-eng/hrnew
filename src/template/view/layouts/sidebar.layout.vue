@@ -49,14 +49,14 @@
                         <span>Administration</span>
                     </a>
                     <ul>
-                        <li><a href="#/access">Accès utilisateurs</a></li>
-                        <li><a href="#/users">Comptes utilisateurs</a></li>
-                        <li><router-link :to="{ name: 'admin.baremes' }">Barèmes</router-link></li>
                         <li><router-link :to="{ name: 'admin.services' }">Services</router-link></li>
-                        <li><a href="#">Configuration primes</a></li>
-                        <li><a href="#">Planning des congés</a></li>
+                        <li><router-link :to="{ name: 'admin.access' }">Accès utilisateurs</router-link></li>
+                        <li><router-link :to="{ name: 'admin.users' }">Comptes utilisateurs</router-link></li>
+                        <li><router-link :to="{ name: 'admin.baremes' }">Barèmes</router-link></li>
+                        <li><router-link :to="{ name: 'admin.primes' }">Configuration primes</router-link></li>
+                        <li><a href="javascript:void(0)">Planning des congés</a></li>
                         <li><router-link :to="{ name: 'admin.employes' }">Employés</router-link></li>
-                        <li><a href="#">Visiteurs</a></li>
+                        <li><router-link :to="{ name: 'admin.visiteurs' }">Visiteurs</router-link></li>
                     </ul>
                 </li>
                 <li class="nav-item with-sub" :class="currentRoute.includes('maj.') ? 'active' : ''">
@@ -72,20 +72,32 @@
                         <span>Editions</span>
                     </a>
                     <ul>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'Feuille de paie' } }">Feuille de
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Feuille de paie' } }"
+                                :active-class="$route.query.q === 'Feuille de paie' ? 'active' : ''">Feuille de
                                 paie</router-link></li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'Bulletin de paie' } }">Bulletin de
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Bulletin de paie' } }"
+                                exact-active-class="active">Bulletin de
                                 paie</router-link></li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'CNSS' } }">CNSS</router-link></li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'IPR' } }">IPR</router-link></li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'INPP & ONEM' } }">INPP & ONEM</router-link>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'CNSS' } }"
+                                exact-active-class="active">CNSS</router-link></li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'IPR' } }"
+                                exact-active-class="active">IPR</router-link></li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'INPP & ONEM' } }"
+                                exact-active-class="active">INPP &
+                                ONEM</router-link>
                         </li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'Intercalaire' } }">Intercalaire</router-link>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Intercalaire' } }"
+                                exact-active-class="active">Intercalaire</router-link>
                         </li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'Net à payer' } }">Net à payer</router-link>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Net à payer' } }"
+                                exact-active-class="active">Net à
+                                payer</router-link>
                         </li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'Quinzaine' } }">Quinzaine</router-link></li>
-                        <li><router-link :to="{ name: 'editions', query: { q: 'Avance sur salaire' } }">Avance sur
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Quinzaine' } }"
+                                exact-active-class="active">Quinzaine</router-link>
+                        </li>
+                        <li><router-link :to="{ name: 'editions', query: { q: 'Avance sur salaire' } }"
+                                exact-active-class="active">Avance sur
                                 salaire</router-link></li>
                     </ul>
                 </li>
@@ -94,14 +106,14 @@
                         <span>Décompte</span>
                     </a>
                     <ul>
-                        <li><router-link :to="{ name: 'tab.decomptes', params: { tab: 'calcul' } }">Calcul
+                        <li><router-link :to="{ name: 'tab.decomptes', params: { tab: 'calcul' } }" exact>Calcul
                                 décompte</router-link>
                         </li>
-                        <li><router-link :to="{ name: 'tab.decomptes', params: { tab: 'bulletin' } }">Bulletin
+                        <li><router-link :to="{ name: 'tab.decomptes', params: { tab: 'bulletin' } }" exact>Bulletin
                                 décompte</router-link></li>
                     </ul>
                 </li>
-                <li class="nav-item with-sub">
+                <!-- <li class="nav-item with-sub">
                     <a href="#" class="nav-link"><i data-feather="user"></i>
                         <span>Contrôle d'accès</span>
                     </a>
@@ -114,7 +126,7 @@
                         <li><a href="#">Accès visiteur</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </div>
     </aside>

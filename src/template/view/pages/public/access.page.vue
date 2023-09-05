@@ -22,36 +22,60 @@
                         </nav>
                         <h4 class="mg-b-0 tx-spacing--1">Accès utilisateurs</h4>
                     </div>
-                    <div class="d-none d-md-block">
-                        <a href="#modalAccess" class="btn btn-lg btn-primary" data-animation="effect-scale"
-                            data-bs-toggle="modal"><i data-feather="plus" class="wd-10 mg-r-5"></i>Ajout
-                            accès</a>
-                    </div>
+
                 </div>
 
                 <div class="row">
-                    <div class="df-example">
-                        <!-- card-body -->
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <thead class="bg-light">
-                                    <tr>
-                                        <th>Libellé</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="i in 10" :key="i">
-                                        <td class="d-flex justify-content-between">
-                                            <a href="javascript:void(0)">Administrateur</a>
-                                            <button class="btn btn-icon btn-secondary">
-                                                <i data-feather="trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="col-md-6">
+                        <div class="df-example">
+                            <div class="list-group">
+                                <li class="list-group-item d-flex align-items-center " v-for="(ac, index) in access"
+                                    :key="index">
+                                    <div class="wd-30 border-2 border-light rounded-circle ">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" checked="true" class="custom-control-input"
+                                                id="customCheck1">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between w-100 align-items-center">
+                                        <h6 class="tx-13 tx-inverse tx-semibold mg-b-0">{{ ac.label }}</h6>
+                                        <button class="btn btn-sm btn-white" @click.prevent="access.splice(index, 1)">
+                                            <i data-feather="trash"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                            </div>
+
                         </div>
-                        <!-- table-responsive -->
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <div class="df-example">
+                            <p class="mg-b-20 tx-12">Veuillez créer les diffirentes accès utilisateur !
+                            </p>
+                            <form @submit.prevent="submitData">
+                                <div class="form-group m-0">
+                                    <label class="mg-b-10 form-label">Libelle accès : <span
+                                            class="tx-danger">*</span></label>
+                                    <div class="input-group mb-2" v-for="(form, index) in forms" :key="index">
+                                        <input type="text" class="form-control" v-model="form.data"
+                                            placeholder="entrez le libellé accès..." required>
+                                        <button v-if="index === forms.length - 1" class="btn btn-white tx-primary btn-lg"
+                                            @click.prevent="forms.push({ data: '' })"><i data-feather="plus"></i></button>
+                                        <button v-else class="btn btn-white tx-danger"
+                                            @click.prevent="forms.splice(index, 1)">
+                                            <i data-feather="trash"></i></button>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-flex ">
+                                    <button type="button" class="btn btn-white  btn-block btn-lg mg-r-4 flex-fill">
+                                        Annuler</button>
+                                    <bs-button btn-type="submit" :loading="submitLoading"
+                                        class-name="btn-primary btn-block btn-lg flex-fill"> <i data-feather="plus"></i>
+                                        Ajouter</bs-button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <!-- container -->
@@ -62,33 +86,44 @@
 </template>
 
 <script>
-import accessModal from './modals/access.modal.vue';
+
 export default {
     name: 'AccessPage',
 
-    components: {
-        accessModal,
+    data() {
+        return {
+            submitLoading: false,
+            forms: [
+                {
+                    data: ""
+                }
+            ],
+
+            access: [
+                {
+                    label: 'administrateur'
+                }
+            ]
+        }
     },
 
     mounted() {
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
+    },
 
-        $('#modalAccess').on('show.bs.modal', function (event) {
-            var animation = $(event.relatedTarget).data('animation');
-            $(this).addClass(animation);
-            new PerfectScrollbar(".modal", {
-                suppressScrollX: true,
-            });
-        })
-
-        // hide modal with effect
-        $('#modalAccess').on('hidden.bs.modal', function (e) {
-            $(this).removeClass(function (index, className) {
-                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
-            });
-        });
+    methods: {
+        submitData(e) {
+            this.submitLoading = true;
+            setTimeout(() => {
+                this.submitLoading = false;
+                for (var f of this.forms) {
+                    this.access.push({ label: f.data });
+                }
+                this.forms = [{ data: '' }];
+            }, 2000)
+        }
     },
 }
 </script>

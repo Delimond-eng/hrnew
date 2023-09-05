@@ -31,8 +31,8 @@
 
                 <div class="df-example">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead class="bg-light">
+                        <table class="table" id="usersTable">
+                            <thead>
                                 <tr>
                                     <th>Nom d'utilisateur</th>
                                     <th>Niveau d'accès</th>
@@ -48,7 +48,7 @@
                                     <td><strong>Admin</strong></td>
                                     <td>gastondelimond@gmail.com</td>
                                     <td>12833882</td>
-                                    <td><strong class="tx-success">actif</strong></td>
+                                    <td><strong class="tx-success">connecté</strong></td>
                                 </tr>
 
                             </tbody>
@@ -64,6 +64,7 @@
 
 <script>
 import userModal from './modals/user.modal';
+import datatableFr from '@/assets/js/datatable.fr';
 export default {
     name: 'UserPage',
 
@@ -75,7 +76,10 @@ export default {
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
+        $('#usersTable').DataTable({
+            language: datatableFr,
 
+        })
         $('#modalUser').on('show.bs.modal', function (event) {
             var animation = $(event.relatedTarget).data('animation');
             $(this).addClass(animation);

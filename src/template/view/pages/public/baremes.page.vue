@@ -49,7 +49,7 @@
                                 <td>CNSS</td>
                                 <td>2500 CDF</td>
                                 <td class="dropdown-file">
-                                    <a href="#" class="btn btn-light btn-icon" data-bs-toggle="dropdown"><i
+                                    <a href="#" class="btn btn-white btn-sm btn-icon" data-bs-toggle="dropdown"><i
                                             data-feather="more-vertical"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a href="#" class="dropdown-item rename"><i data-feather="edit"

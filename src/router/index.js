@@ -5,6 +5,8 @@ const router = createRouter({
   /* base: process.env.BASE_URL, */
   history: createWebHashHistory(),
   routes,
+  linkActiveClass: "active",
+  linkExactActiveClass: "active",
 });
 
 router.beforeResolve((to, from, next) => {

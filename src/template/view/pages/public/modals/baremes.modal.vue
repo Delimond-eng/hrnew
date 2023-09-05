@@ -6,10 +6,10 @@
                 <div class="modal-content tx-14">
                     <div class="modal-header">
                         <h4 class="modal-title" id="exampleModalLabel6">Nouveau barème</h4>
-                        <a href="#" role="button" class="close pos-absolute t-15 r-15" data-bs-dismiss="modal" aria-label="Close"
-                               >
-                                <span aria-hidden="true">&times;</span>
-                            </a>
+                        <a href="#" role="button" class="close pos-absolute t-15 r-15" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
                     </div>
                     <div class="modal-body">
                         <p class="mg-b-10 tx-danger">Veuillez renseigner tous les champs obligatoires !</p>
