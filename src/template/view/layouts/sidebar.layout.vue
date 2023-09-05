@@ -49,7 +49,9 @@
                         <span>Administration</span>
                     </a>
                     <ul>
+                        <li><router-link :to="{ name: 'admin.agences' }">Agences</router-link></li>
                         <li><router-link :to="{ name: 'admin.services' }">Services</router-link></li>
+                        <li><router-link :to="{ name: 'admin.postes' }">Configuration postes</router-link></li>
                         <li><router-link :to="{ name: 'admin.access' }">Accès utilisateurs</router-link></li>
                         <li><router-link :to="{ name: 'admin.users' }">Comptes utilisateurs</router-link></li>
                         <li><router-link :to="{ name: 'admin.baremes' }">Barèmes</router-link></li>
@@ -111,6 +113,23 @@
                         </li>
                         <li><router-link :to="{ name: 'tab.decomptes', params: { tab: 'bulletin' } }" exact>Bulletin
                                 décompte</router-link></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item with-sub">
+                    <a href="#" class="nav-link"><i data-feather="link"></i>
+                        <span>Affectations</span>
+                    </a>
+                    <ul>
+                        <li><router-link :to="{ name: 'affectations', params: { affect: 'agents' } }" exact>
+                                Agents</router-link>
+                        </li>
+                        <li><router-link :to="{ name: 'affectations', params: { affect: 'conges' } }" exact>
+                                Congés</router-link></li>
+                        <li><router-link :to="{ name: 'affectations', params: { affect: 'primes' } }" exact>
+                                Primes</router-link></li>
+                        <li><router-link :to="{ name: 'affectations', params: { affect: 'avances' } }" exact>Avances sur
+                                salaire</router-link></li>
                     </ul>
                 </li>
                 <!-- <li class="nav-item with-sub">

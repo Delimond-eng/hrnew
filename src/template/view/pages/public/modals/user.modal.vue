@@ -20,7 +20,7 @@
                     <div class="modal-body pd-sm-t-30 pd-sm-b-40 pd-sm-x-30">
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="tx-12 tx-medium tx-spacing-1 mg-b-5 form-label">Nom d'utilisateur: <span
                                             class="tx-danger">*</span></label>
@@ -28,7 +28,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="tx-12 tx-medium tx-spacing-1 mg-b-5 form-label">Adresse email: <span
                                             class="tx-danger">*</span></label>
@@ -36,7 +36,15 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="tx-12 tx-medium tx-spacing-1 mg-b-5 form-label">Téléphone: <span
+                                            class="tx-danger">*</span></label>
+                                    <input type="email" class="form-control" placeholder="entrez le n° de tél ...">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="tx-12 tx-medium tx-spacing-1 mg-b-5 form-label">Agent concerné: <span
                                             class="tx-danger">*</span>
@@ -48,21 +56,21 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="tx-12 tx-medium tx-spacing-1 mg-b-5 form-label">Mot de passe: <span
                                             class="tx-danger">*</span></label>
                                     <input type="email" class="form-control" placeholder="entrez le mot de passe...">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="tx-12 tx-medium tx-spacing-1 mg-b-5 form-label">Confirmation Mot de
                                         passe: <span class="tx-danger">*</span></label>
                                     <input type="email" class="form-control" placeholder="retapez le mot de passe...">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="tx-12 tx-medium tx-spacing-1 mg-b-5 form-label">Accès utilisateur:
                                         <span class="tx-danger">*</span></label>
@@ -70,6 +78,17 @@
                                         <option label="--Sélectionnez un accès utilisateur--" selected></option>
                                         <option value="administrateur">Administrateur</option>
                                         <option value="administrateur">Utilisateur</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="tx-12 tx-medium tx-spacing-1 mg-b-5 form-label">Agence:
+                                        <span class="tx-danger">*</span></label>
+                                    <select class="form-select">
+                                        <option label="--Sélectionnez agence--" selected></option>
+                                        <option value="administrateur">agence_1</option>
                                     </select>
                                 </div>
                             </div>

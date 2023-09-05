@@ -3,7 +3,7 @@
         <div class="content-header">
             <div class="content-search">
                 <i data-feather="search"></i>
-                <input type="search" class="form-control" placeholder="Filtrer accès...">
+                <input type="search" class="form-control" placeholder="Filtrer poste...">
             </div>
             <nav class="nav">
                 <a href="javascript:void(0)" class="nav-link"><i data-feather="align-left"></i></a>
@@ -17,10 +17,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                                 <li class="breadcrumb-item">Administration</li>
-                                <li class="breadcrumb-item active" aria-current="page">Accès utilisateurs</li>
+                                <li class="breadcrumb-item active" aria-current="page">Postes de travail</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Accès utilisateurs</h4>
+                        <h4 class="mg-b-0 tx-spacing--1">Postes de travail</h4>
                     </div>
 
                 </div>
@@ -29,7 +29,7 @@
                     <div class="col-md-6">
                         <div class="df-example">
                             <div class="list-group">
-                                <li class="list-group-item d-flex align-items-center " v-for="(ac, index) in access"
+                                <li class="list-group-item d-flex align-items-center " v-for="(ac, index) in posts"
                                     :key="index">
                                     <div class="wd-30 border-2 border-light rounded-circle ">
                                         <div class="custom-control custom-checkbox">
@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="d-flex justify-content-between w-100 align-items-center">
                                         <h6 class="tx-13 tx-inverse tx-semibold mg-b-0">{{ ac.label }}</h6>
-                                        <button class="btn btn-sm btn-white" @click.prevent="access.splice(index, 1)">
+                                        <button class="btn btn-sm btn-white" @click.prevent="posts.splice(index, 1)">
                                             <i data-feather="trash"></i>
                                         </button>
                                     </div>
@@ -54,11 +54,11 @@
                             </p>
                             <form @submit.prevent="submitData">
                                 <div class="form-group m-0">
-                                    <label class="mg-b-10 form-label">Libelle accès : <span
+                                    <label class="mg-b-10 form-label">Libellé poste : <span
                                             class="tx-danger">*</span></label>
                                     <div class="input-group mb-2" v-for="(form, index) in forms" :key="index">
                                         <input type="text" class="form-control" v-model="form.data"
-                                            placeholder="entrez le libellé accès..." required>
+                                            placeholder="entrez le libellé poste..." required>
                                         <button v-if="index === forms.length - 1" class="btn btn-white tx-primary btn-lg"
                                             @click.prevent="forms.push({ data: '' })"><i data-feather="plus"></i></button>
                                         <button v-else class="btn btn-white tx-danger"
@@ -87,7 +87,7 @@
 <script>
 
 export default {
-    name: 'AccessPage',
+    name: 'PostePage',
 
     data() {
         return {
@@ -98,9 +98,9 @@ export default {
                 }
             ],
 
-            access: [
+            posts: [
                 {
-                    label: 'administrateur'
+                    label: 'agent cat1'
                 }
             ]
         }
@@ -118,7 +118,7 @@ export default {
             setTimeout(() => {
                 this.submitLoading = false;
                 for (var f of this.forms) {
-                    this.access.push({ label: f.data });
+                    this.posts.push({ label: f.data });
                 }
                 this.forms = [{ data: '' }];
             }, 2000)

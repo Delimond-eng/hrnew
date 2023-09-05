@@ -24,10 +24,10 @@ const routes = [
   /*Route securisé d'accueil après connexion ou crétion */
 
   {
-    path: "/secure/home",
+    path: "/secure",
     component: () => require("@/template/view/main"),
     name: "secure",
-    redirect: { name: "admin.services" },
+    redirect: { name: "admin.agences" },
 
     /*Les pages(routes) securisés*/
 
@@ -35,47 +35,58 @@ const routes = [
       /*Admin routes*/
 
       {
-        path: "",
+        path: "/secure/agences",
+        component: () => require("@/template/view/pages/public/agences.page"),
+        name: "admin.agences",
+      },
+
+      {
+        path: "/secure/services",
         component: () => require("@/template/view/pages/public/services.page"),
         name: "admin.services",
       },
       {
-        path: "/employes",
+        path: "/secure/employes",
         component: () => require("@/template/view/pages/public/employes.page"),
         name: "admin.employes",
       },
       {
-        path: "/baremes",
+        path: "/secure/baremes",
         component: () => require("@/template/view/pages/public/baremes.page"),
         name: "admin.baremes",
       },
       {
-        path: "/access",
+        path: "/secure/access",
         component: () =>
           require("@/template/view/pages/public/access.page.vue"),
         name: "admin.access",
       },
 
       {
-        path: "/users",
+        path: "/secure/users",
         component: () => require("@/template/view/pages/public/users.page"),
         name: "admin.users",
       },
       {
-        path: "/visiteurs",
+        path: "/secure/visiteurs",
         component: () => require("@/template/view/pages/public/visiteurs.page"),
         name: "admin.visiteurs",
       },
       {
-        path: "/primes",
+        path: "/secure/primes",
         component: () => require("@/template/view/pages/public/primes.page"),
         name: "admin.primes",
+      },
+      {
+        path: "/secure/postes",
+        component: () => require("@/template/view/pages/public/postes.page"),
+        name: "admin.postes",
       },
       /*End admin routes*/
 
       /*MAJ Routes*/
       {
-        path: "/pointages",
+        path: "/secure/pointages",
         component: () => require("@/template/view/pages/public/pointages.page"),
         name: "maj.pointages",
       },
@@ -83,15 +94,21 @@ const routes = [
 
       /*Decomptes routes*/
       {
-        path: "/decomptes/:tab",
+        path: "/secure/decomptes/:tab",
         component: () => require("@/template/view/pages/public/decomptes.page"),
         name: "tab.decomptes",
       },
       /*Edition page*/
       {
-        path: "/editions",
+        path: "/secure/editions",
         component: () => require("@/template/view/pages/public/editions.page"),
         name: "editions",
+      },
+      {
+        path: "/secure/affectations/:affect",
+        component: () =>
+          require("@/template/view/pages/public/affectations.page"),
+        name: "affectations",
       },
     ],
   },
