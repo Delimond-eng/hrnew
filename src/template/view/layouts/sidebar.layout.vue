@@ -75,31 +75,33 @@
                     </a>
                     <ul>
                         <li><router-link :to="{ name: 'editions', query: { q: 'Feuille de paie' } }" active-class=""
-                                :class="q.includes('Feuille de paie') ? 'active' : ''">Feuille de
+                                exact-active-class="" :class="q.includes('Feuille de paie') ? 'active' : ''">Feuille de
                                 paie</router-link></li>
                         <li><router-link :to="{ name: 'editions', query: { q: 'Bulletin de paie' } }" active-class=""
-                                :class="q.includes('Bulletin de paie') ? 'active' : ''">Bulletin de
+                                exact-active-class="" :class="q.includes('Bulletin de paie') ? 'active' : ''">Bulletin de
                                 paie</router-link></li>
                         <li><router-link :to="{ name: 'editions', query: { q: 'CNSS' } }" active-class=""
-                                :class="q.includes('CNSS') ? 'active' : ''">CNSS</router-link></li>
+                                exact-active-class="" :class="q.includes('CNSS') ? 'active' : ''">CNSS</router-link></li>
                         <li><router-link :to="{ name: 'editions', query: { q: 'IPR' } }" active-class=""
-                                :class="q.includes('IPR') ? 'active' : ''">IPR</router-link></li>
+                                exact-active-class="" :class="q.includes('IPR') ? 'active' : ''">IPR</router-link></li>
                         <li><router-link :to="{ name: 'editions', query: { q: 'INPP & ONEM' } }" active-class=""
-                                :class="q.includes('INPP & ONEM') ? 'active' : ''">INPP &
+                                exact-active-class="" :class="q.includes('INPP & ONEM') ? 'active' : ''">INPP &
                                 ONEM</router-link>
                         </li>
                         <li><router-link :to="{ name: 'editions', query: { q: 'Intercalaire' } }" active-class=""
+                                exact-active-class=""
                                 :class="q.includes('Intercalaire') ? 'active' : ''">Intercalaire</router-link>
                         </li>
                         <li><router-link :to="{ name: 'editions', query: { q: 'Net à payer' } }" active-class=""
-                                :class="q.includes('Net à payer') ? 'active' : ''">Net à
+                                exact-active-class="" :class="q.includes('Net à payer') ? 'active' : ''">Net à
                                 payer</router-link>
                         </li>
                         <li><router-link :to="{ name: 'editions', query: { q: 'Quinzaine' } }" active-class=""
+                                exact-active-class=""
                                 :class="q.includes('Quinzaine') ? 'active' : ''">Quinzaine</router-link>
                         </li>
                         <li><router-link :to="{ name: 'editions', query: { q: 'Avance sur salaire' } }" active-class=""
-                                :class="q.includes('Avance sur salaire') ? 'active' : ''">Avance sur
+                                exact-active-class="" :class="q.includes('Avance sur salaire') ? 'active' : ''">Avance sur
                                 salaire</router-link></li>
                     </ul>
                 </li>
@@ -116,7 +118,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item with-sub">
+                <li class="nav-item with-sub" :class="currentRoute.includes('affectations') ? 'active' : ''">
                     <a href="#" class="nav-link"><i data-feather="link"></i>
                         <span>Affectations</span>
                     </a>

@@ -31,12 +31,7 @@
                             <div class="list-group">
                                 <li class="list-group-item d-flex align-items-center " v-for="(ac, index) in posts"
                                     :key="index">
-                                    <div class="wd-30 border-2 border-light rounded-circle ">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" checked="true" class="custom-control-input"
-                                                id="customCheck1">
-                                        </div>
-                                    </div>
+                                    <div class="wd-15 ht-15 rounded-circle bd bd-3 bd-primary mg-r-10"></div>
                                     <div class="d-flex justify-content-between w-100 align-items-center">
                                         <h6 class="tx-13 tx-inverse tx-semibold mg-b-0">{{ ac.label }}</h6>
                                         <button class="btn btn-sm btn-white" @click.prevent="posts.splice(index, 1)">

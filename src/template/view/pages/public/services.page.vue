@@ -32,20 +32,16 @@
                                 <div class="col-md-4 mg-md-b-15" v-for="i in services" :key="i">
                                     <div class="card card-event animate__pulse">
                                         <div class="card-img-top bg-primary w-100 d-flex align-content-center align-items-center"
-                                            style="height: 80px;">
-                                            <h3 class="m-2 tx-white">Info</h3>
-                                            <!-- <button
-                                            class="btn btn-light tx-danger rounded-circle btn-icon pos-absolute t-10 r-10"><i
-                                                data-feather="trash"></i> </button> -->
+                                            style="height: 55px;">
+                                            <h4 class="m-2 tx-white tx-bold">Info</h4>
                                         </div>
 
-                                        <div class="card-body tx-13">
-                                            <h5>Informatique</h5>
+                                        <div class="card-body">
+                                            <h6 class="tx-12">Informatique</h6>
                                         </div><!-- card-body -->
                                         <div class="card-footer tx-13">
                                             <span class="tx-color-03">Agents</span>
                                             <span class="tx-color-01">02</span>
-
                                         </div><!-- card-footer -->
                                     </div><!-- card -->
                                 </div><!-- col -->
@@ -117,12 +113,14 @@ export default {
         /* this.$store.dispatch('viewServices')
             .then((d) => this.dataProcessing = false)
             .catch((e) => this.dataProcessing = false); */
+
+        
         setTimeout(() => {
             for (let i = 0; i < 4; i++) {
                 this.services.push('' + i);
             }
             this.dataProcessing = false;
-        }, 4000);
+        }, 500);
         /*End loading test data*/
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,

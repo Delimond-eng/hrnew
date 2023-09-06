@@ -14,7 +14,7 @@
                     </div>
                 </div><!-- media-body -->
                 <div class="sign-wrapper mg-lg-l-50 mg-xl-l-60">
-                    <div data-label="Authentification" class="df-example wd-100p">
+                    <div class="df-example wd-100p">
                         <form @submit.prevent="submitLogin">
                             <div class="form-group">
                                 <label>Identifiant</label>

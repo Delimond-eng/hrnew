@@ -27,7 +27,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 col-xl-8">
-                        <div data-label="Liste des barèmes" class="df-example">
+                        <div class="df-example">
                             <table id="primesTable" class="table">
                                 <thead>
                                     <tr>
@@ -54,7 +54,7 @@
                         </div>
                     </div><!-- col -->
                     <div class="col-sm-7 col-md-5 col-lg-4 col-xl-4">
-                        <div data-label="Nouvelle prime" class="df-example wd-100p">
+                        <div class="df-example wd-100p">
                             <section>
                                 <p class="mg-b-20 tx-12">Veuillez configurer les diffirentes primes !
                                 </p>

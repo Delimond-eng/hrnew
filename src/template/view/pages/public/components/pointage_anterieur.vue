@@ -1,5 +1,5 @@
 <template>
-    <div data-label="Pointage antérieur" class="df-example mt-3">
+    <div class="df-example mt-3">
         <h6>Période</h6>
         <div class="row">
             <div class="col-md-8">

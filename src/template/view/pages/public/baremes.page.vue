@@ -29,7 +29,7 @@
                     </div>
                 </div>
 
-                <div data-label="Liste des barèmes" class="df-example">
+                <div class="df-example">
                     <table id="baremesTable" class="table">
                         <thead>
                             <tr>

@@ -63,22 +63,21 @@
                 <div class="tab-content mg-t-20" id="myTabContent5">
                     <div class="tab-pane fade " :class="$route.params.affect.includes('agents') ? 'show active' : ''"
                         id="agents" role="tabpanel" aria-labelledby="avances-tab">
-
+                        <affectation-agent v-if="$route.params.affect.includes('agents')"></affectation-agent>
                     </div>
                     <div class="tab-pane fade" :class="$route.params.affect.includes('conges') ? 'show active' : ''"
                         id="conges" role="tabpanel" aria-labelledby="conges-tab">
-
+                        <affectation-conge v-if="$route.params.affect.includes('conges')"></affectation-conge>
                     </div>
-
 
                     <div class="tab-pane fade" :class="$route.params.affect.includes('primes') ? 'show active' : ''"
                         id="primes" role="tabpanel" aria-labelledby="primes-tab">
-
+                        <affectation-prime v-if="$route.params.affect.includes('primes')"></affectation-prime>
                     </div>
 
                     <div class="tab-pane fade" :class="$route.params.affect.includes('avances') ? 'show active' : ''"
                         id="avances" role="tabpanel" aria-labelledby="avances-tab">
-
+                        <affectation-avance v-if="$route.params.affect.includes('avances')"></affectation-avance>
                     </div>
                 </div>
             </div><!-- container -->
@@ -87,13 +86,20 @@
 </template>
 
 <script>
-
+import AffectationAgent from './components/affectation_agent'
+import AffectationConge from './components/affectation_conge'
+import AffectationPrime from './components/affectation_prime'
+import AffectationAvance from './components/affectation_avance'
 export default {
     name: 'AffectationsPage',
     components: {
-
+        AffectationAgent,
+        AffectationConge,
+        AffectationPrime,
+        AffectationAvance
     },
     mounted() {
+
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });

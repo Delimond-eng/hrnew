@@ -3,7 +3,7 @@
         <div class="container">
             <div class="media align-items-stretch justify-content-center ht-100p">
                 <div class="sign-wrapper mg-lg-r-50 mg-xl-r-60">
-                    <div data-label="Création société" class="df-example wd-100p">
+                    <div  class="df-example wd-100p">
                         <form @submit.prevent="requestSubmit">
                             <p class="tx-12 tx-danger">Veuillez renseigner tous les champs pour créer
                                 une nouvelle

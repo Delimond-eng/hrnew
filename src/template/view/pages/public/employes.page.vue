@@ -29,7 +29,7 @@
                     </div>
                 </div>
 
-                <div data-label="Liste des employés" class="df-example">
+                <div class="df-example">
                     <table id="employesTable" class="table">
                         <thead>
                             <tr>

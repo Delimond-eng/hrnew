@@ -23,13 +23,23 @@
                         <h4 class="mg-b-0 tx-spacing--1">Agences</h4>
                     </div>
                     <div class="d-none d-md-block">
-                        <a href="#modalAgence" class="btn btn-lg btn-primary" data-bs-toggle="modal"
-                            data-animation="effect-slide-in-right"><i data-feather="plus" class="wd-10 mg-r-5"></i>Ajout
+                        <select class="select2 form-control-lg">
+                            <option label="--Filtre agence par province--"></option>
+                            <option value="Kinshasa">Kinshasa</option>
+                            <option value="Bandundu">Bandundu</option>
+                            <option value="Kasaï Central">Kasaï Central</option>
+                            <option value="Kasaï Oriental">Kasaï Oriental</option>
+                            <option value="Kasaï Central">Kasaï</option>
+                            <option value="Haut Uele">Haut Uele</option>
+                            <option value="Bas Uele">Bas Uele</option>
+                        </select>
+                        <a href="#modalAgence" class="btn btn-primary m-lg-2" data-bs-toggle="modal"
+                            data-animation="effect-slide-in-right"><i data-feather="plus" class="wd-10"></i>Ajout
                             agence</a>
                     </div>
                 </div>
 
-                <div class="df-example">
+                <!-- <div class="df-example">
                     <table id="agencesTable" class="table">
                         <thead>
                             <tr>
@@ -53,15 +63,36 @@
                             </tr>
                         </tbody>
                     </table>
+                </div> -->
+                <div class="row row-sm">
+                    <div class="col-md-3 mg-md-b-15" v-for="i in 26" :key="i">
+                        <a class="card card-event agenceCard shadow-none" href="javascript:void(0)">
+                            <div class="card-img-top bg-primary-light w-100 d-flex align-content-center align-items-center"
+                                style="height: 55px;">
+                                <h4 class="m-2 tx-primary tx-bold">Kitambo</h4>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="tx-12"> <i data-feather="map-pin" width="12" height="12"></i> Kinshasa</h6>
+                            </div>
+                            <!-- card-body -->
+                            <div class="card-footer tx-13">
+                                <span class="tx-color-03">Agents</span>
+                                <span class="tx-color-01">02</span>
+                            </div>
+                            <!-- card-footer -->
+                        </a>
+                        <!-- card -->
+                    </div>
+                    <!-- col -->
                 </div>
-            </div><!-- container -->
+            </div>
+            <!-- container -->
         </div>
     </div>
     <agence-modal></agence-modal>
 </template>
 
 <script>
-import datatableFr from '@/assets/js/datatable.fr';
 import AgenceModal from './modals/agences.modal'
 export default {
     name: 'ServicesPage',
@@ -78,8 +109,14 @@ export default {
     },
 
     mounted() {
-        $('#agencesTable').DataTable({
-            language: datatableFr,
+        $('.select2').select2({
+            placeholder: '--Filtre agence par province--',
+            searchInputPlaceholder: 'Recherche province...',
+            allowClear: true
+        });
+
+        $('.select2').change((event) => {
+            console.log(event.target.value);
         })
         /*End loading test data*/
         new PerfectScrollbar(".content-body", {
@@ -88,6 +125,7 @@ export default {
     },
 
     methods: {
+
         submitService(e) {
             this.submitLoading = true;
 
@@ -105,3 +143,9 @@ export default {
     }, */
 }
 </script>
+
+<style>
+.agenceCard:hover {
+    border: .5px solid #3c68eb85;
+}
+</style>

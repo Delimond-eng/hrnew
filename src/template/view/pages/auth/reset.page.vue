@@ -7,7 +7,7 @@
                 <p class="tx-color-03 mg-b-20">Veuillez entrer votre adresse e-mail pour recevoir un code de
                     réinitialisation du mot de passe !</p>
                 <div class="mg-b-30 d-flex justify-content-center align-content-center align-items-center w-50">
-                    <div data-label="Réinitialisation" class="df-example w-100">
+                    <div class="df-example w-100">
                         <form>
                             <div class="form-group">
                                 <input type="email" class="form-control"
