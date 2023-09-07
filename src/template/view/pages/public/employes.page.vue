@@ -58,6 +58,12 @@ export default {
         employesCreateModal,
     },
     mounted() {
+        $('#modalEmployes').on('show.bs.modal', function (event) {
+            $(this).addClass("scale-effect");
+            new PerfectScrollbar(".modal", {
+                suppressScrollX: true,
+            });
+        })
         $('#employesTable').DataTable({
             language: datatableFr,
             columns: [
@@ -79,13 +85,7 @@ export default {
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
-        $('#modalEmployes').on('show.bs.modal', function (event) {
-            var animation = $(event.relatedTarget).data('animation');
-            $(this).addClass(animation);
-            new PerfectScrollbar(".modal", {
-                suppressScrollX: true,
-            });
-        })
+
 
         // hide modal with effect
         $('#modalEmployes').on('hidden.bs.modal', function (e) {
@@ -95,4 +95,4 @@ export default {
         });
     }
 }
-</script>
+</script>@/js/datatable.fr

@@ -56,6 +56,9 @@
                         <li><router-link :to="{ name: 'admin.users' }">Comptes utilisateurs</router-link></li>
                         <li><router-link :to="{ name: 'admin.baremes' }">Barèmes</router-link></li>
                         <li><router-link :to="{ name: 'admin.primes' }">Configuration primes</router-link></li>
+                        <li><router-link :to="{ name: 'admin.heuresups' }">Configuration heures sup.</router-link></li>
+                        <li><router-link :to="{ name: 'admin.heurepoints' }">Configuration heures point.</router-link>
+                        </li>
                         <li><a href="javascript:void(0)">Planning des congés</a></li>
                         <li><router-link :to="{ name: 'admin.employes' }">Employés</router-link></li>
                         <li><router-link :to="{ name: 'admin.visiteurs' }">Visiteurs</router-link></li>

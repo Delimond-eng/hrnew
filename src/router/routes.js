@@ -92,6 +92,17 @@ const routes = [
         component: () => require("@/template/view/pages/public/presences.page"),
         name: "admin.presences",
       },
+      {
+        path: "/secure/heuresups",
+        component: () => require("@/template/view/pages/public/heuresups.page"),
+        name: "admin.heuresups",
+      },
+      {
+        path: "/secure/heurespoints",
+        component: () =>
+          require("@/template/view/pages/public/heurepoints.page"),
+        name: "admin.heurepoints",
+      },
       /*End admin routes*/
 
       /*MAJ Routes*/

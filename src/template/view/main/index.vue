@@ -28,4 +28,4 @@ export default {
         sidebarLayout
     }
 }
-</script>
+</script>@/js/dashforge.aside@/js/dashforge@/assets/js/dashforge.aside@/assets/js/dashforge

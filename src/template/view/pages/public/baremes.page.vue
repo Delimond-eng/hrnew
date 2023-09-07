@@ -108,3 +108,4 @@ export default {
     }
 }
 </script>
+@/js/datatable.fr

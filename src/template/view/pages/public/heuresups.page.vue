@@ -17,10 +17,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                                 <li class="breadcrumb-item">Administration</li>
-                                <li class="breadcrumb-item active" aria-current="page">Configuration primes</li>
+                                <li class="breadcrumb-item active" aria-current="page">Configuration heures sup</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Configuration primes</h4>
+                        <h4 class="mg-b-0 tx-spacing--1">Configuration heures suplémentaires</h4>
                     </div>
                     <div class="d-none d-md-block">
                     </div>
@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-xl-8">
                         <div class="df-example">
-                            <table id="primesTable" class="table">
+                            <table id="heuresSupTable" class="table">
 
                             </table>
                         </div>
@@ -36,35 +36,27 @@
                     <div class="col-sm-7 col-md-5 col-lg-4 col-xl-4">
                         <div class="df-example wd-100p">
                             <section>
-                                <p class="mg-b-20 tx-12">Veuillez configurer les diffirentes primes !
+                                <p class="mg-b-20 tx-12 tx-danger">Veuillez configurer les heures supplémentaires !
                                 </p>
                                 <form @submit.prevent="submitPrime">
                                     <div class="mb-2">
-                                        <label class="form-label">Libellé prime: <span class="tx-danger">*</span></label>
+                                        <label class="form-label">Nom Formule: <span class="tx-danger">*</span></label>
                                         <input id="service-name" class="form-control" name="firstname"
                                             placeholder="Entrer le nom du service..." type="text" required>
                                     </div><!-- col -->
                                     <div class="mb-2">
-                                        <label class="form-label">Valeur: <span class="tx-danger">*</span></label>
+                                        <label class="form-label">% sur le salaire journalier: <span
+                                                class="tx-danger">*</span></label>
                                         <input class="form-control" name="firstname" placeholder="Entrer la valeur..."
                                             type="number" required>
-                                    </div>
+                                    </div><!-- col -->
                                     <div class="mb-2">
-                                        <label class="form-label">Devise : <span class="tx-danger">*</span></label>
-                                        <select class="form-select" required>
-                                            <option value="CDF" selected>CDF</option>
-                                            <option value="USD">USD</option>
-                                        </select>
+                                        <label class="form-label">Nb d'heures après travail <span
+                                                class="tx-danger">*</span></label>
+                                        <input class="form-control" name="firstname" placeholder="Entrer la valeur..."
+                                            type="number" required>
                                     </div><!-- col -->
-                                    <div class="mb-4">
-                                        <label class="form-label">Validité : <span class="tx-danger">*</span></label>
-                                        <select class="form-select" required>
-                                            <option value="CDF" selected>Mensuelle</option>
-                                            <option value="USD">Trimestrielle</option>
-                                            <option value="USD">Annuelle</option>
-                                        </select>
-                                    </div><!-- col -->
-                                    <div class="d-grid gap-2">
+                                    <div class="d-grid gap-2 mt-4">
                                         <bs-button btn-type="submit" :loading="submitLoading"
                                             class-name="btn-success btn-block btn-lg"> <i data-feather="plus"></i>
                                             Ajouter</bs-button>
@@ -90,29 +82,28 @@ export default {
             submitLoading: false,
             dataProcessing: false,
             primes: [
-                ['Prime de merite', '30000', 'CDF', 'Mensuelle'],
-                ['Prime de motivation', '25000', 'CDF', 'Mensuelle'],
-                ['Prime de caisse', '85000', 'CDF', 'Mensuelle'],
+                ['Heure supp100', '100', '2'],
+                ['Heure supp160', '160', '4'],
+                ['Heure supp160', '300', '6'],
             ],
         }
     },
 
     mounted() {
         /*Test loading data*/
-        $('#primesTable').DataTable({
+        $('#heuresSupTable').DataTable({
             language: datatableFr,
             columns: [
-                { title: 'Libellé' },
-                { title: 'Montant' },
-                { title: 'Devise' },
-                { title: 'Validité' },
+                { title: 'Nom formule' },
+                { title: '% sur salaire journ.' },
+                { title: 'Nb heures après travail' },
                 {
                     title: '',
                     defaultContent: `<div class="d-flex">
                                             <button class="btn btn-white btn-sm mg-r-2"> <i
-                                                    data-feather="edit"></i></button>
-                                            <button class="btn btn-white tx-danger btn-sm mg-r-2"> <i
                                                     data-feather="trash"></i></button>
+                                            <button class="btn btn-white tx-primary btn-sm mg-r-2"> <i
+                                                    data-feather="edit"></i></button>
                                         </div>`
                 },
             ],

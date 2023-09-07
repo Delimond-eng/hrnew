@@ -96,4 +96,4 @@ export default {
         });
     }
 }
-</script>
+</script>@/js/datatable.fr

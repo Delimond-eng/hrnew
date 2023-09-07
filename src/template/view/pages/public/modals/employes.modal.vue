@@ -68,6 +68,17 @@
                                     <label class="form-label">Date engagement<span class="tx-danger">*</span></label>
                                     <input type="date" class="form-control" placeholder="dateeng" required>
                                 </div>
+
+                                <div class="col-md-4 mt-md-2">
+                                    <label class="form-label">Agence <small>(Optionnel)</small></label>
+                                    <select class="form-select" required>
+                                        <option label="--Sélectionnez une agence--"></option>
+                                        <option value="Marié(e)">Kitambo</option>
+                                        <option value="Celibataire">Masina</option>
+                                        <option value="Veuf(ve)">Bandal</option>
+                                        <option value="Divorcé(e)">Maluku</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 

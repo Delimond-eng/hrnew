@@ -51,14 +51,33 @@
                                 <div class="form-group m-0">
                                     <label class="mg-b-10 form-label">Libelle accès : <span
                                             class="tx-danger">*</span></label>
-                                    <div class="input-group mb-2" v-for="(form, index) in forms" :key="index">
-                                        <input type="text" class="form-control" v-model="form.data"
-                                            placeholder="entrez le libellé accès..." required>
-                                        <button v-if="index === forms.length - 1" class="btn btn-white tx-primary btn-lg"
-                                            @click.prevent="forms.push({ data: '' })"><i data-feather="plus"></i></button>
-                                        <button v-else class="btn btn-white tx-danger"
-                                            @click.prevent="forms.splice(index, 1)">
-                                            <i data-feather="trash"></i></button>
+                                    <input type="text" class="form-control" placeholder="entrez le libellé accès..."
+                                        required>
+                                </div>
+                                <div class="mt-2">
+                                    <label>Choisir les menus accessibles : <span class="tx-danger">*</span></label> <br>
+                                    <div class="form-check-inline">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label p-lg-1" for="customCheck1">
+                                                Agences </label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label p-lg-1" for="customCheck1">Service
+                                                Services</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label p-lg-1" for="customCheck1">
+                                                Configuration fonctions</label>
+                                        </div>
+
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label p-lg-1" for="customCheck1">
+                                                ...</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <hr>
