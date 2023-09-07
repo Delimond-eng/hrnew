@@ -22,6 +22,9 @@ git commit -m 'deploy'
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git main:gh-pages
 
-# git push -f git@github.com:Delimond-eng/v_depl.git master:gh-pages
+git push -f git@github.com:Delimond-eng/hrnew.git master:gh-pages
 
-cd -
+cd
+
+# ssh key generating command
+# ssh-keygen -t ed25519 -C "myGitEmail@gmail.com"

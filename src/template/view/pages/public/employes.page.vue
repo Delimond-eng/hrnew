@@ -23,9 +23,15 @@
                         <h4 class="mg-b-0 tx-spacing--1">Employés</h4>
                     </div>
                     <div class="d-none d-md-block">
-                        <a href="#modalEmployes" class="btn btn-lg btn-primary" data-bs-toggle="modal"
-                            data-animation="effect-slide-in-right"><i data-feather="plus" class="wd-10 mg-r-5"></i> Nouveau
-                            employé</a>
+                        <div class="d-flex">
+                            <a href="#modalEmployes" class="btn btn-lg btn-primary mg-r-3" data-bs-toggle="modal"
+                                data-animation="effect-slide-in-right"><i data-feather="plus" class="wd-10 mg-r-5"></i>
+                                Nouveau
+                                employé</a>
+                            <a href="#modalEmployes" class="btn btn-lg btn-outline-primary" data-bs-toggle="modal"
+                                data-animation="effect-slide-in-right"><i data-feather="download" class="wd-10 mg-r-5"></i>
+                                Importer liste agents</a>
+                        </div>
                     </div>
                 </div>
 
