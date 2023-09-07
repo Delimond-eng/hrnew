@@ -31,35 +31,7 @@
 
                 <div class="df-example">
                     <table id="baremesTable" class="table">
-                        <thead>
-                            <tr>
-                                <th class="wd-25p">Catégorie salariale</th>
-                                <th class="wd-20p">Libellé</th>
-                                <th class="wd-20p">Salaire journalier</th>
-                                <th class="wd-20p">Allocation familiale</th>
-                                <th class="wd-25p">Transport journalier</th>
-                                <th class="wd-10p"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="i in 30" :key="i">
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>12000 CDF</td>
-                                <td>CNSS</td>
-                                <td>2500 CDF</td>
-                                <td class="dropdown-file">
-                                    <a href="#" class="btn btn-white btn-sm btn-icon" data-bs-toggle="dropdown"><i
-                                            data-feather="more-vertical"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="#" class="dropdown-item rename"><i data-feather="edit"
-                                                class="mg-r-10 tx-12"></i>Editer</a>
-                                        <a href="#" class="dropdown-item delete"><i data-feather="trash"
-                                                class="mg-r-10 tx-12"></i>Supprimer</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
+
                     </table>
                 </div>
                 <!-- container -->
@@ -83,6 +55,31 @@ export default {
     mounted() {
         $('#baremesTable').DataTable({
             language: datatableFr,
+            columns: [
+                { title: "Catégorie salarial" },
+                { title: "Libellé" },
+                { title: "Salaire mensuel" },
+                { title: "Allocation familiale" },
+                { title: "Transport Journalier" },
+                {
+                    title: '',
+                    defaultContent: `<td class="dropdown-file">
+                                    <a href="#" class="btn btn-white btn-sm btn-icon" data-bs-toggle="dropdown"><i
+                                            data-feather="more-vertical"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a href="#" class="dropdown-item rename"><i data-feather="edit"
+                                                class="mg-r-10 tx-12"></i>Editer</a>
+                                        <a href="#" class="dropdown-item delete"><i data-feather="trash"
+                                                class="mg-r-10 tx-12"></i>Supprimer</a>
+                                    </div>
+                                </td>` },
+            ],
+
+            data: [
+                ["Qualifié", "Qualifié / Ressources humaines", "600 000 CDF", "250 CDF", "4000 CDF"],
+                ["Semi-qualifié", "Qualifié / Informatique", "450 000 CDF", "250 CDF", "3500 CDF"],
+                ["Manoeuvre Cadre...", "MC / Informatique", "450 000 CDF", "250 CDF", "3500 CDF"],
+            ]
             /* columns: [
                 {
                     title: '',

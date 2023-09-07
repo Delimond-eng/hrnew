@@ -51,7 +51,7 @@
                     <ul>
                         <li><router-link :to="{ name: 'admin.agences' }">Agences</router-link></li>
                         <li><router-link :to="{ name: 'admin.services' }">Services</router-link></li>
-                        <li><router-link :to="{ name: 'admin.postes' }">Configuration postes</router-link></li>
+                        <li><router-link :to="{ name: 'admin.postes' }">Configuration fonctions</router-link></li>
                         <li><router-link :to="{ name: 'admin.access' }">Accès utilisateurs</router-link></li>
                         <li><router-link :to="{ name: 'admin.users' }">Comptes utilisateurs</router-link></li>
                         <li><router-link :to="{ name: 'admin.baremes' }">Barèmes</router-link></li>
@@ -59,6 +59,8 @@
                         <li><a href="javascript:void(0)">Planning des congés</a></li>
                         <li><router-link :to="{ name: 'admin.employes' }">Employés</router-link></li>
                         <li><router-link :to="{ name: 'admin.visiteurs' }">Visiteurs</router-link></li>
+                        <li><router-link :to="{ name: 'admin.enroll' }">Enrollement agents</router-link></li>
+                        <li><router-link :to="{ name: 'admin.presences' }">Presences</router-link></li>
                     </ul>
                 </li>
                 <li class="nav-item with-sub" :class="currentRoute.includes('maj.') ? 'active' : ''">

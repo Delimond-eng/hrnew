@@ -31,30 +31,7 @@
 
                 <div class="df-example">
                     <table id="employesTable" class="table">
-                        <thead>
-                            <tr>
-                                <th class="wd-20p">Nom</th>
-                                <th class="wd-25p">Post nom</th>
-                                <th class="wd-20p">Prénom</th>
-                                <th class="wd-15p">Matricule</th>
-                                <th class="wd-20p">Fonction</th>
-                                <th class="wd-20p">Genre</th>
-                                <th class="wd-20p">Etat civile</th>
-                                <th class="wd-20p">Date engagement</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="i in 30" :key="i">
-                                <td>Donna Snider</td>
-                                <td>Delimond</td>
-                                <td>Gaston</td>
-                                <td>1I2I000</td>
-                                <td>Directeur technique</td>
-                                <td>M</td>
-                                <td>Marié</td>
-                                <td>05/08/2023</td>
-                            </tr>
-                        </tbody>
+
                     </table>
                 </div>
                 <!-- container -->
@@ -77,6 +54,21 @@ export default {
     mounted() {
         $('#employesTable').DataTable({
             language: datatableFr,
+            columns: [
+                { title: 'Nom' },
+                { title: 'Postnom' },
+                { title: 'Prénom' },
+                { title: 'Matricule' },
+                { title: 'Fonction' },
+                { title: 'Genre' },
+                { title: 'Etat civil' },
+                { title: 'Date engagement' },
+            ],
+            data: [
+                ['Kayembe', 'Rukundo', 'Jean marc', '773AUE', 'Chef d`\agence', 'Marié', 'M', '03/12/2006'],
+                ['Paty', 'Mutete', 'Viny', '77363E', 'Directeur Technique', 'Marié', 'M', '03/12/2008'],
+                ['Ngongo', 'Kasongo', 'Giresse', '77362E', 'Directeur des opération', 'Marié', 'M', '03/12/2005'],
+            ]
         });
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,

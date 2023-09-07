@@ -5,7 +5,7 @@
                 <div class="media-body align-items-center d-none d-lg-flex">
                     <div class="mx-wd-600">
                         <h1 class="aside-logo tx-80" style="color: #000000;">Millenium<span>
-                                payroll</span></h1>
+                                payroll 2023</span></h1>
                     </div>
                     <div class="pos-absolute b-0 l-0 tx-12 tx-center">
                         Bienvenue sur la plateforme <a href="#" class="aside-logo tx-12"
@@ -15,7 +15,7 @@
                 </div><!-- media-body -->
                 <div class="sign-wrapper mg-lg-l-50 mg-xl-l-60">
                     <div class="df-example wd-100p">
-                        <form @submit.prevent="submitLogin">
+                        <form @submit.prevent="$router.replace({ name: 'secure' })">
                             <div class="form-group">
                                 <label>Identifiant</label>
                                 <input type="email" v-model="form.email" class="form-control"

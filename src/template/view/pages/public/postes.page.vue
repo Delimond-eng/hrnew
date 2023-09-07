@@ -17,10 +17,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                                 <li class="breadcrumb-item">Administration</li>
-                                <li class="breadcrumb-item active" aria-current="page">Postes de travail</li>
+                                <li class="breadcrumb-item active" aria-current="page">Configuration Fonctions agent</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Postes de travail</h4>
+                        <h4 class="mg-b-0 tx-spacing--1">Fonctions agents</h4>
                     </div>
 
                 </div>
@@ -95,8 +95,17 @@ export default {
 
             posts: [
                 {
-                    label: 'agent cat1'
-                }
+                    label: 'Directeur informatique',
+                },
+                {
+                    label: 'Chef d\'agence',
+                },
+                {
+                    label: 'Caissier',
+                },
+                {
+                    label: 'Chef comptable',
+                },
             ]
         }
     },

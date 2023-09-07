@@ -28,6 +28,12 @@
             </div>
         </div>
 
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck1">
+            <label class="custom-control-label" for="customCheck1"><span class="mg-r-4"></span>Envoyez une notification à
+                l'agent</label>
+        </div>
+
         <div class="d-flex justify-content-end">
             <button class="btn btn-white btn-lg mg-r-10">Annuler</button>
             <bs-button btn-type="submit" class-name="btn-primary btn-lg"> <i data-feather="link"></i>

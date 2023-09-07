@@ -65,19 +65,20 @@
                     </table>
                 </div> -->
                 <div class="row row-sm">
-                    <div class="col-md-3 mg-md-b-15" v-for="i in 26" :key="i">
+                    <div class="col-md-3 mg-md-b-15" v-for="(agence, index) in agences" :key="index">
                         <a class="card card-event agenceCard shadow-none" href="javascript:void(0)">
                             <div class="card-img-top bg-primary-light w-100 d-flex align-content-center align-items-center"
                                 style="height: 55px;">
-                                <h4 class="m-2 tx-primary tx-bold">Kitambo</h4>
+                                <h6 class="m-2 tx-primary tx-bold">{{ agence.label }}</h6>
                             </div>
                             <div class="card-body">
-                                <h6 class="tx-12"> <i data-feather="map-pin" width="12" height="12"></i> Kinshasa</h6>
+                                <h6 class="tx-12"> <i data-feather="map-pin" width="12" height="12"></i> {{ agence.province
+                                }}</h6>
                             </div>
                             <!-- card-body -->
                             <div class="card-footer tx-13">
                                 <span class="tx-color-03">Agents</span>
-                                <span class="tx-color-01">02</span>
+                                <span class="tx-color-01">{{ agence.nb_agent }}</span>
                             </div>
                             <!-- card-footer -->
                         </a>
@@ -100,7 +101,29 @@ export default {
         return {
             submitLoading: false,
             dataProcessing: false,
-            services: [],
+            agences: [
+                {
+                    label: "Kitambo",
+                    nb_agent: "20",
+                    province: "Kinshasa"
+                },
+                {
+                    label: "Gombe",
+                    nb_agent: "43",
+                    province: "Kinshasa"
+                },
+
+                {
+                    label: "Masina",
+                    nb_agent: "10",
+                    province: "Kinshasa"
+                },
+                {
+                    label: "Bandal",
+                    nb_agent: "10",
+                    province: "Kinshasa"
+                }
+            ],
         }
     },
 
@@ -127,12 +150,7 @@ export default {
     methods: {
 
         submitService(e) {
-            this.submitLoading = true;
 
-            setTimeout(() => {
-                this.services.push('');
-                this.submitLoading = false;
-            }, 3000);
         }
     },
 

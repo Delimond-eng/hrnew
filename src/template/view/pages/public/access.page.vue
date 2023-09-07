@@ -95,7 +95,10 @@ export default {
 
             access: [
                 {
-                    label: 'administrateur'
+                    label: 'Super administrateur'
+                },
+                {
+                    label: 'Administrateur'
                 }
             ]
         }

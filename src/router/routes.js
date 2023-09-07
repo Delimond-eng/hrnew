@@ -82,6 +82,16 @@ const routes = [
         component: () => require("@/template/view/pages/public/postes.page"),
         name: "admin.postes",
       },
+      {
+        path: "/secure/enroll",
+        component: () => require("@/template/view/pages/public/enroll.page"),
+        name: "admin.enroll",
+      },
+      {
+        path: "/secure/presences",
+        component: () => require("@/template/view/pages/public/presences.page"),
+        name: "admin.presences",
+      },
       /*End admin routes*/
 
       /*MAJ Routes*/

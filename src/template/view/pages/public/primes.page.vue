@@ -29,27 +29,7 @@
                     <div class="col-lg-8 col-xl-8">
                         <div class="df-example">
                             <table id="primesTable" class="table">
-                                <thead>
-                                    <tr>
-                                        <th class="wd-20p">Libellé</th>
-                                        <th class="wd-20p">Valeur</th>
-                                        <th class="wd-20p">Devise</th>
-                                        <th class="wd-10p"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="i in 5" :key="i">
-                                        <td>Prime d'encouragement</td>
-                                        <td>40</td>
-                                        <td>USD</td>
-                                        <td class="d-flex">
-                                            <button class="btn btn-white btn-sm mg-r-2"> <i
-                                                    data-feather="edit"></i></button>
-                                            <button class="btn btn-white tx-danger btn-sm mg-r-2"> <i
-                                                    data-feather="trash"></i></button>
-                                        </td>
-                                    </tr>
-                                </tbody>
+
                             </table>
                         </div>
                     </div><!-- col -->
@@ -101,17 +81,34 @@ export default {
         return {
             submitLoading: false,
             dataProcessing: false,
-            primes: [],
+            primes: [
+                ['Prime de merite', '30000', 'CDF'],
+                ['Prime de motivation', '25000', 'CDF'],
+                ['Prime de caisse', '85000', 'CDF'],
+            ],
         }
     },
 
     mounted() {
         /*Test loading data*/
-        for (let i = 0; i < 4; i++) {
-            this.primes.push('' + i);
-        }
         $('#primesTable').DataTable({
             language: datatableFr,
+            columns: [
+                { title: 'Libellé' },
+                { title: 'Montant' },
+                { title: 'Devise' },
+                {
+                    title: '',
+                    defaultContent: `<div class="d-flex">
+                                            <button class="btn btn-white btn-sm mg-r-2"> <i
+                                                    data-feather="edit"></i></button>
+                                            <button class="btn btn-white tx-danger btn-sm mg-r-2"> <i
+                                                    data-feather="trash"></i></button>
+                                        </div>`
+                },
+            ],
+
+            data: this.primes
 
         })
         /*End loading test data*/
@@ -123,11 +120,6 @@ export default {
     methods: {
         submitPrime(e) {
             this.submitLoading = true;
-
-            setTimeout(() => {
-                this.primes.push('');
-                this.submitLoading = false;
-            }, 3000);
         }
     },
 

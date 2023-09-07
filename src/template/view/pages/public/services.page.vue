@@ -29,16 +29,14 @@
                     <div class="col-lg-8 col-xl-8">
                         <data-loading :processing="dataProcessing">
                             <div class="row row-sm">
-                                <div class="col-md-4 mg-md-b-15" v-for="i in services" :key="i">
+                                <div class="col-md-4 mg-md-b-15" v-for="(service, index) in services" :key="index">
                                     <div class="card card-event animate__pulse">
                                         <div class="card-img-top bg-primary w-100 d-flex align-content-center align-items-center"
                                             style="height: 55px;">
-                                            <h4 class="m-2 tx-white tx-bold">Info</h4>
+                                            <h4 class="m-2 tx-white tx-bold">{{ service.label }}</h4>
                                         </div>
 
-                                        <div class="card-body">
-                                            <h6 class="tx-12">Informatique</h6>
-                                        </div><!-- card-body -->
+
                                         <div class="card-footer tx-13">
                                             <span class="tx-color-03">Agents</span>
                                             <span class="tx-color-01">02</span>
@@ -103,7 +101,20 @@ export default {
         return {
             submitLoading: false,
             dataProcessing: false,
-            services: [],
+            services: [
+                {
+                    label: "Informatique",
+                },
+                {
+                    label: "Commercial",
+                },
+                {
+                    label: "Ressources humaines",
+                },
+                {
+                    label: "Sécretariat",
+                }
+            ],
         }
     },
 
@@ -114,11 +125,7 @@ export default {
             .then((d) => this.dataProcessing = false)
             .catch((e) => this.dataProcessing = false); */
 
-        
         setTimeout(() => {
-            for (let i = 0; i < 4; i++) {
-                this.services.push('' + i);
-            }
             this.dataProcessing = false;
         }, 500);
         /*End loading test data*/
@@ -132,7 +139,7 @@ export default {
             this.submitLoading = true;
 
             setTimeout(() => {
-                this.services.push('');
+                this.services.push({ label: 'Comptabilite' });
                 this.submitLoading = false;
             }, 3000);
         }

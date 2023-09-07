@@ -31,34 +31,7 @@
 
                 <div class="df-example">
                     <table id="visiteursTable" class="table">
-                        <thead>
-                            <tr>
-                                <th class="wd-20p">Date visite</th>
-                                <th class="wd-20p">Nom Complet</th>
-                                <th class="wd-25p">Téléphone</th>
-                                <th class="wd-25p">Code carte</th>
-                                <th class="wd-20p">Heure d'entrée</th>
-                                <th class="wd-15p">Heure de sortie</th>
-                                <th class="wd-15p">Status</th>
-                                <th class="wd-20p"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="i in 20" :key="i">
-                                <td>11/02/2023</td>
-                                <td>Delimond Gaston</td>
-                                <td>+243849384900</td>
-                                <td>1832JSQ</td>
-                                <td>12:30</td>
-                                <td><input type="time" class="form-control" value="00:00"></td>
-                                <td><span class="badge" :class="i % 2 ? 'bg-warning' : 'bg-primary'"> {{ i % 2 ? 'entrée' :
-                                    'sortie' }}</span></td>
-                                <td class="d-flex">
-                                    <button class="btn btn-white btn-sm mg-r-4"> <i data-feather="trash"></i></button>
-                                    <button class="btn btn-white btn-sm"> <i data-feather="check"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
+
                     </table>
                 </div>
                 <!-- container -->
@@ -81,6 +54,28 @@ export default {
     mounted() {
         $('#visiteursTable').DataTable({
             language: datatableFr,
+            columns: [
+                { title: 'Date Visite' },
+                { title: 'Nom complet' },
+                { title: 'Téléphone' },
+                { title: 'Code carte' },
+                { title: 'Heure d\entrée' },
+                { title: 'Heure de sortie' },
+                { title: 'Status' },
+                {
+                    title: '',
+                    defaultContent: `<div class="d-flex">
+                                    <button class="btn btn-white btn-sm mg-r-4"> <i data-feather="trash"></i></button>
+                                    <button class="btn btn-white btn-sm"> <i data-feather="check"></i></button>
+                                </div>`
+                }
+            ],
+
+            data: [
+                ["07/08/2023", "Mukantu Perkins", "099763747388", "0039382883", "12:35", '<input type="time" class="form-control" value="14:00">', `<span class="badge bg-primary"> sortie </span>`],
+                ["07/08/2023", "Mabuki Isaac", "099763747388", "0039332923", "08:25", '<input type="time" class="form-control" value="10:00">', `<span class="badge bg-primary"> sortie </span>`],
+                ["07/08/2023", "Lionnel Nawej", "099763747388", "0030099883", "11:35", '<input type="time" class="form-control" value="12:00">', `<span class="badge bg-primary"> sortie </span>`],
+            ]
         });
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,

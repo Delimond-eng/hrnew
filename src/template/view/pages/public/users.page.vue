@@ -32,26 +32,7 @@
                 <div class="df-example">
                     <div class="table-responsive">
                         <table class="table" id="usersTable">
-                            <thead>
-                                <tr>
-                                    <th>Nom d'utilisateur</th>
-                                    <th>Niveau d'accès</th>
-                                    <th>Email</th>
-                                    <th>Mot de passe</th>
-                                    <th>status</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="i in 10" :key="i">
-                                    <td><a href="#">Gaston delimond</a></td>
-                                    <td><strong>Admin</strong></td>
-                                    <td>gastondelimond@gmail.com</td>
-                                    <td>12833882</td>
-                                    <td><strong class="tx-success">connecté</strong></td>
-                                </tr>
-
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -68,6 +49,17 @@ import datatableFr from '@/assets/js/datatable.fr';
 export default {
     name: 'UserPage',
 
+    data() {
+        return {
+            users: [
+                ['Gaston delimond', 'Super administrateur', 'gastondelimond@gmail.com', '5421', 'actif'],
+                ['Lionnel Nawej', 'Super administrateur', 'lionnelnawaej@gmail.com', '12345', 'actif'],
+                ['Isaac Mabuki', 'Super administrateur', 'isaac@gmail.com', '123453', 'actif'],
+                ['Chris Tenday', 'Administrateur', 'chris@gmail.com', '12345', 'actif'],
+            ]
+        }
+    },
+
     components: {
         userModal,
     },
@@ -78,8 +70,15 @@ export default {
         });
         $('#usersTable').DataTable({
             language: datatableFr,
-
-        })
+            columns: [
+                { title: "Nom utilisateur" },
+                { title: "Niveau d'accès" },
+                { title: "Adresse email" },
+                { title: "Mot de passe" },
+                { title: "Status" },
+            ],
+            data: this.users
+        });
         $('#modalUser').on('show.bs.modal', function (event) {
             var animation = $(event.relatedTarget).data('animation');
             $(this).addClass(animation);
