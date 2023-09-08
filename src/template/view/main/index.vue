@@ -24,8 +24,14 @@ export default {
     unmounted() {
         this.$router.go();
     },
+
+    mounted() {
+        new PerfectScrollbar(".content-body", {
+            suppressScrollX: true,
+        });
+    },
     components: {
         sidebarLayout
     }
 }
-</script>@/js/dashforge.aside@/js/dashforge@/assets/js/dashforge.aside@/assets/js/dashforge
+</script>

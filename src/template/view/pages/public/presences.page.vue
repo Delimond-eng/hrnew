@@ -74,12 +74,15 @@ export default {
                 { title: 'Jours à prester' },
                 { title: 'Jours prestés' },
                 { title: 'Absences' },
+                { title: 'Congés pris' },
+                { title: 'Retards' },
+                { title: 'Cumul heures sup/hebdo' },
                 { title: '', defaultContent: '<button class="btn btn-primary btn-sm"><i data-feather="eye"></i> </button>' },
             ],
             data: [
-                ['Kayembe', 'Rukundo', 'Jean marc', '773AUE', '26', '20', '05'],
-                ['Gaston ', 'Delimond', 'Bobby', '77337E', '26', '15', '11'],
-                ['Mabuki', 'Mabuki', 'Isaac', '77387E', '26', '18', '07'],
+                ['Kayembe', 'Rukundo', 'Jean marc', '773AUE', '26', '20', '05', '10', '02', '0'],
+                ['Gaston ', 'Delimond', 'Bobby', '77337E', '26', '15', '11', '10', '02', '0'],
+                ['Mabuki', 'Mabuki', 'Isaac', '77387E', '26', '18', '07', '10', '02', '0'],
             ]
         });
         new PerfectScrollbar(".content-body", {
@@ -87,4 +90,4 @@ export default {
         });
     }
 }
-</script>@/js/datatable.fr
+</script>

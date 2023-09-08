@@ -1,15 +1,41 @@
+import LoginPage from "@/template/view/pages/auth/login.page";
+import RegisterPage from "@/template/view/pages/auth/register.page";
+import ResetPage from "@/template/view/pages/auth/reset.page";
+
+/*main routes*/
+import Main from "@/template/view/main";
+
+/*public pages*/
+import AgencesPage from "@/template/view/pages/public/agences.page";
+import ServicesPage from "@/template/view/pages/public/services.page";
+import EmployeesPage from "@/template/view/pages/public/employes.page";
+import BaremesPage from "@/template/view/pages/public/baremes.page";
+import AccessPage from "@/template/view/pages/public/access.page.vue";
+import UsersPage from "@/template/view/pages/public/users.page";
+import VisitersPage from "@/template/view/pages/public/visiteurs.page";
+import PrimesPage from "@/template/view/pages/public/primes.page";
+import EnrollPage from "@/template/view/pages/public/enroll.page";
+import PresencesPage from "@/template/view/pages/public/presences.page";
+import PostesPage from "@/template/view/pages/public/postes.page";
+import HeuresSupPage from "@/template/view/pages/public/heuresups.page";
+import PointagesPage from "@/template/view/pages/public/pointages.page";
+import DecomptesPage from "@/template/view/pages/public/decomptes.page";
+import EditionsPage from "@/template/view/pages/public/editions.page";
+import AffectationsPage from "@/template/view/pages/public/affectations.page";
+import heurepointsPageVue from "@/template/view/pages/public/heurepoints.page.vue";
+
 const routes = [
   /* Route pour la boite de connexion ou login */
   {
     path: "/",
-    component: () => require("@/template/view/pages/auth/login.page"),
+    component: LoginPage,
     name: "login",
   },
 
   /*Route pour la création de la société ou register*/
   {
     path: "/register",
-    component: () => require("@/template/view/pages/auth/register.page"),
+    component: RegisterPage,
     name: "register",
   },
 
@@ -17,7 +43,7 @@ const routes = [
 
   {
     path: "/reset",
-    component: () => require("@/template/view/pages/auth/reset.page"),
+    component: ResetPage,
     name: "reset",
   },
 
@@ -25,7 +51,7 @@ const routes = [
 
   {
     path: "/secure",
-    component: () => require("@/template/view/main"),
+    component: Main,
     name: "secure",
     redirect: { name: "admin.agences" },
 
@@ -36,71 +62,69 @@ const routes = [
 
       {
         path: "/secure/agences",
-        component: () => require("@/template/view/pages/public/agences.page"),
+        component: AgencesPage,
         name: "admin.agences",
       },
 
       {
         path: "/secure/services",
-        component: () => require("@/template/view/pages/public/services.page"),
+        component: ServicesPage,
         name: "admin.services",
       },
       {
         path: "/secure/employes",
-        component: () => require("@/template/view/pages/public/employes.page"),
+        component: EmployeesPage,
         name: "admin.employes",
       },
       {
         path: "/secure/baremes",
-        component: () => require("@/template/view/pages/public/baremes.page"),
+        component: BaremesPage,
         name: "admin.baremes",
       },
       {
         path: "/secure/access",
-        component: () =>
-          require("@/template/view/pages/public/access.page.vue"),
+        component: AccessPage,
         name: "admin.access",
       },
 
       {
         path: "/secure/users",
-        component: () => require("@/template/view/pages/public/users.page"),
+        component: UsersPage,
         name: "admin.users",
       },
       {
         path: "/secure/visiteurs",
-        component: () => require("@/template/view/pages/public/visiteurs.page"),
+        component: VisitersPage,
         name: "admin.visiteurs",
       },
       {
         path: "/secure/primes",
-        component: () => require("@/template/view/pages/public/primes.page"),
+        component: PrimesPage,
         name: "admin.primes",
       },
       {
         path: "/secure/postes",
-        component: () => require("@/template/view/pages/public/postes.page"),
+        component: PostesPage,
         name: "admin.postes",
       },
       {
         path: "/secure/enroll",
-        component: () => require("@/template/view/pages/public/enroll.page"),
+        component: EnrollPage,
         name: "admin.enroll",
       },
       {
         path: "/secure/presences",
-        component: () => require("@/template/view/pages/public/presences.page"),
+        component: PresencesPage,
         name: "admin.presences",
       },
       {
         path: "/secure/heuresups",
-        component: () => require("@/template/view/pages/public/heuresups.page"),
+        component: HeuresSupPage,
         name: "admin.heuresups",
       },
       {
         path: "/secure/heurespoints",
-        component: () =>
-          require("@/template/view/pages/public/heurepoints.page"),
+        component: heurepointsPageVue,
         name: "admin.heurepoints",
       },
       /*End admin routes*/
@@ -108,7 +132,7 @@ const routes = [
       /*MAJ Routes*/
       {
         path: "/secure/pointages",
-        component: () => require("@/template/view/pages/public/pointages.page"),
+        component: PointagesPage,
         name: "maj.pointages",
       },
       /*End maj routes*/
@@ -116,19 +140,18 @@ const routes = [
       /*Decomptes routes*/
       {
         path: "/secure/decomptes/:tab",
-        component: () => require("@/template/view/pages/public/decomptes.page"),
+        component: DecomptesPage,
         name: "tab.decomptes",
       },
       /*Edition page*/
       {
         path: "/secure/editions",
-        component: () => require("@/template/view/pages/public/editions.page"),
+        component: EditionsPage,
         name: "editions",
       },
       {
         path: "/secure/affectations/:affect",
-        component: () =>
-          require("@/template/view/pages/public/affectations.page"),
+        component: AffectationsPage,
         name: "affectations",
       },
     ],

@@ -3,7 +3,7 @@
     <aside class="aside aside-fixed">
         <div class="aside-header">
             <a href="index-2.html" class="aside-logo">Millenium<span>payroll</span></a>
-            <a href="#" class="aside-menu-link">
+            <a href="javascript:void(0)" class="aside-menu-link">
                 <i data-feather="menu"></i>
                 <i data-feather="x"></i>
             </a>
@@ -11,9 +11,11 @@
         <div class="aside-body">
             <div class="aside-loggedin">
                 <div class="d-flex align-items-center justify-content-start">
-                    <a href="#" class="avatar"><img src="assets/img/placehold.jpg" class="rounded-circle" alt=""></a>
+                    <a href="javascript:void(0)" class="avatar"><img src="assets/img/placehold.jpg" class="rounded-circle"
+                            alt=""></a>
                     <div class="aside-alert-link">
-                        <a href="#" data-bs-toggle="tooltip" title="Déconnexion"><i data-feather="log-out"></i></a>
+                        <a href="javascript:void(0)" data-bs-toggle="tooltip" title="Déconnexion"><i
+                                data-feather="log-out"></i></a>
                     </div>
                 </div>
                 <div class="aside-loggedin-user">
@@ -26,17 +28,21 @@
                 </div>
                 <div class="collapse" id="loggedinMenu">
                     <ul class="nav nav-aside mg-b-0">
-                        <li class="nav-item"><a href="#" class="nav-link"><i data-feather="edit"></i> <span>Modifier
+                        <li class="nav-item"><a href="javascript:void(0)" class="nav-link"><i data-feather="edit"></i>
+                                <span>Modifier
                                     Profil</span></a>
                         </li>
-                        <li class="nav-item"><a href="#" class="nav-link"><i data-feather="user"></i> <span>Voir
+                        <li class="nav-item"><a href="javascript:void(0)" class="nav-link"><i data-feather="user"></i>
+                                <span>Voir
                                     Profil</span></a>
                         </li>
-                        <li class="nav-item"><a href="#" class="nav-link"><i data-feather="settings"></i> <span>Paramètres
+                        <li class="nav-item"><a href="javascript:void(0)" class="nav-link"><i data-feather="settings"></i>
+                                <span>Paramètres
                                     du compte</span></a></li>
-                        <li class="nav-item"><a href="#" class="nav-link"><i data-feather="help-circle"></i>
+                        <li class="nav-item"><a href="javascript:void(0)" class="nav-link"><i
+                                    data-feather="help-circle"></i>
                                 <span>Assistance technique</span></a></li>
-                        <li class="nav-item"><a href="#" class="nav-link"><i data-feather="log-out"></i>
+                        <li class="nav-item"><a href="javascript:void(0)" class="nav-link"><i data-feather="log-out"></i>
                                 <span>Déconnexion</span></a>
                         </li>
                     </ul>
@@ -45,7 +51,7 @@
             <ul class="nav nav-aside">
                 <li class="nav-label">Menu</li>
                 <li class="nav-item with-sub" :class="currentRoute.includes('admin.') ? 'active' : ''">
-                    <a href="#" class="nav-link"><i data-feather="briefcase"></i>
+                    <a href="javascript:void(0)" class="nav-link"><i data-feather="briefcase"></i>
                         <span>Administration</span>
                     </a>
                     <ul>
@@ -67,7 +73,7 @@
                     </ul>
                 </li>
                 <li class="nav-item with-sub" :class="currentRoute.includes('maj.') ? 'active' : ''">
-                    <a href="#" class="nav-link"><i data-feather="clipboard"></i>
+                    <a href="javascript:void(0)" class="nav-link"><i data-feather="clipboard"></i>
                         <span>Mises à jour</span>
                     </a>
                     <ul>
@@ -75,7 +81,7 @@
                     </ul>
                 </li>
                 <li class="nav-item with-sub" :class="currentRoute.includes('editions') ? 'active' : ''">
-                    <a href="#" class="nav-link"><i data-feather="printer"></i>
+                    <a href="javascript:void(0)" class="nav-link"><i data-feather="printer"></i>
                         <span>Editions</span>
                     </a>
                     <ul>
@@ -111,7 +117,7 @@
                     </ul>
                 </li>
                 <li class="nav-item with-sub" :class="currentRoute.includes('tab.') ? 'active' : ''">
-                    <a href="#" class="nav-link"><i data-feather="layout"></i>
+                    <a href="javascript:void(0)" class="nav-link"><i data-feather="layout"></i>
                         <span>Décompte</span>
                     </a>
                     <ul>
@@ -124,7 +130,7 @@
                 </li>
 
                 <li class="nav-item with-sub" :class="currentRoute.includes('affectations') ? 'active' : ''">
-                    <a href="#" class="nav-link"><i data-feather="link"></i>
+                    <a href="javascript:void(0)" class="nav-link"><i data-feather="link"></i>
                         <span>Affectations</span>
                     </a>
                     <ul>
@@ -140,16 +146,16 @@
                     </ul>
                 </li>
                 <!-- <li class="nav-item with-sub">
-                    <a href="#" class="nav-link"><i data-feather="user"></i>
+                    <a href="javascript:void(0)" class="nav-link"><i data-feather="user"></i>
                         <span>Contrôle d'accès</span>
                     </a>
                     <ul>
-                        <li><a href="#">Enrollement empreinte</a>
+                        <li><a href="javascript:void(0)">Enrollement empreinte</a>
                         </li>
                         <li><a href="#modalScannig" data-bs-toggle="modal" data-animation="effect-scale">Scannage
                                 empreinte</a>
                         </li>
-                        <li><a href="#">Accès visiteur</a>
+                        <li><a href="javascript:void(0)">Accès visiteur</a>
                         </li>
                     </ul>
                 </li> -->
@@ -180,6 +186,9 @@ export default {
     },
 
     mounted() {
+        new PerfectScrollbar(".aside-body", {
+            suppressScrollX: true,
+        });
         $('#modalScannig').on('show.bs.modal', function (event) {
             var animation = $(event.relatedTarget).data('animation');
             $(this).addClass(animation);

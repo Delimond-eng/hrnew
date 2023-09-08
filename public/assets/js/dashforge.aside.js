@@ -8,9 +8,11 @@ $(function () {
     (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
   );
 
-  const asideBody = new PerfectScrollbar(".aside-body", {
-    suppressScrollX: true,
-  });
+  if ($(".aside-body").length) {
+    var asideBody = new PerfectScrollbar(".aside-body", {
+      suppressScrollX: true,
+    });
+  }
 
   if ($(".aside-backdrop").length === 0) {
     $("body").append('<div class="aside-backdrop"></div>');

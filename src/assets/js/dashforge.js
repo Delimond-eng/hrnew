@@ -17,8 +17,8 @@ $(function () {
   });
 
   /* const modalScroll = new PerfectScrollbar(".modal", {
-      suppressScrollX: true,
-    }); */
+          suppressScrollX: true,
+        }); */
 
   // Showing sub-menu of active menu on navbar when mobile
   function showNavbarActiveSub() {
