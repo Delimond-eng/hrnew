@@ -97,6 +97,13 @@ export default {
         }
     },
 
+
+    unmounted() {
+        let table = $('#primesTable').DataTable();
+        table.destroy();
+        
+    },
+
     mounted() {
         /*Test loading data*/
         $('#primesTable').DataTable({

@@ -52,6 +52,11 @@ export default {
         baremeCreateModal,
     },
 
+
+    unmounted() {
+        $('#baremesTable').DataTable().clear().destroy();
+    },
+
     mounted() {
         $('#baremesTable').DataTable({
             language: datatableFr,

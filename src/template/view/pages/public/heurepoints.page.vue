@@ -116,27 +116,11 @@ export default {
         }
     },
 
+
+
     mounted() {
         /*Test loading data*/
-        $('#heuresSupTable').DataTable({
-            language: datatableFr,
-            columns: [
-                { title: 'Nom formule' },
-                { title: '% sur salaire journ.' },
-                {
-                    title: '',
-                    defaultContent: `<div class="d-flex">
-                                            <button class="btn btn-white btn-sm mg-r-2"> <i
-                                                    data-feather="trash"></i></button>
-                                            <button class="btn btn-white tx-primary btn-sm mg-r-2"> <i
-                                                    data-feather="edit"></i></button>
-                                        </div>`
-                },
-            ],
 
-            data: this.primes
-
-        })
         /*End loading test data*/
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,

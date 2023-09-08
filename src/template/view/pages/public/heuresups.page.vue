@@ -82,9 +82,9 @@ export default {
             submitLoading: false,
             dataProcessing: false,
             primes: [
-                ['Heure supp100', '100', '2'],
+                ['Heure supp600', '130', '2'],
                 ['Heure supp160', '160', '4'],
-                ['Heure supp160', '300', '6'],
+                ['Heure supp200', '200', '6'],
             ],
         }
     },
@@ -116,6 +116,11 @@ export default {
             suppressScrollX: true,
         });
     },
+
+    unmounted() {
+        $('#heuresSupTable').DataTable().clear().destroy();
+    },
+
 
     methods: {
         submitPrime(e) {

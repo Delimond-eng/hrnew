@@ -94,6 +94,10 @@ export default {
                 return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
             });
         });
+    },
+
+    unmounted() {
+        $('#visiteursTable').DataTable().clear().destroy();
     }
 }
 </script>@/js/datatable.fr

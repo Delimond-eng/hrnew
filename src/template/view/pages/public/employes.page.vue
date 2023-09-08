@@ -57,6 +57,10 @@ export default {
     components: {
         employesCreateModal,
     },
+
+    unmounted() {
+        $('#modalEmployes').DataTable().clear().destroy();
+    },
     mounted() {
         $('#modalEmployes').on('show.bs.modal', function (event) {
             $(this).addClass("scale-effect");

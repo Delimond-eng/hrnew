@@ -88,6 +88,9 @@ export default {
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
+    },
+    unmounted() {
+        $('#presencesTable').DataTable().clear().destroy();
     }
 }
 </script>

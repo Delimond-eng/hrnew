@@ -35,7 +35,8 @@
 
                             <div class="col-md-12">
                                 <div class="mt-2">
-                                    <label>Choisir les menus accessibles : <span class="tx-danger">*</span></label> <br>
+                                    <label>Sélectionnez les dispositifs pour cette agence : <span
+                                            class="tx-danger">*</span></label> <br>
                                     <div class="row">
                                         <div class="col-md-3" v-for="i in 8" :key="i">
                                             <div class="custom-control custom-checkbox">

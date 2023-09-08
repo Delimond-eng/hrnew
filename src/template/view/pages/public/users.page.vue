@@ -64,6 +64,11 @@ export default {
         userModal,
     },
 
+
+    unmounted() {
+        $('#usersTable').DataTable().clear().destroy();
+    },
+
     mounted() {
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
