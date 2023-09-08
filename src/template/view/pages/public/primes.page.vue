@@ -44,18 +44,7 @@
                                         <input id="service-name" class="form-control" name="firstname"
                                             placeholder="Entrer le nom du service..." type="text" required>
                                     </div><!-- col -->
-                                    <div class="mb-2">
-                                        <label class="form-label">Valeur: <span class="tx-danger">*</span></label>
-                                        <input class="form-control" name="firstname" placeholder="Entrer la valeur..."
-                                            type="number" required>
-                                    </div>
-                                    <div class="mb-2">
-                                        <label class="form-label">Devise : <span class="tx-danger">*</span></label>
-                                        <select class="form-select" required>
-                                            <option value="CDF" selected>CDF</option>
-                                            <option value="USD">USD</option>
-                                        </select>
-                                    </div><!-- col -->
+
                                     <div class="mb-4">
                                         <label class="form-label">Validité : <span class="tx-danger">*</span></label>
                                         <select class="form-select" required>
@@ -101,7 +90,7 @@ export default {
     unmounted() {
         let table = $('#primesTable').DataTable();
         table.destroy();
-        
+
     },
 
     mounted() {

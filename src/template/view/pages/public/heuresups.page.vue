@@ -84,7 +84,6 @@ export default {
             primes: [
                 ['Heure supp600', '130', '2'],
                 ['Heure supp160', '160', '4'],
-                ['Heure supp200', '200', '6'],
             ],
         }
     },

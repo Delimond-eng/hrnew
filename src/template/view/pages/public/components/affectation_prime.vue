@@ -22,10 +22,19 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="form-label">Date début<span class="tx-danger">*</span></label>
-                    <input type="date" class="form-control">
+                    <label class="form-label">Montant<span class="tx-danger">*</span></label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" placeholder="entrez le montant">
+                        <div class="input-group-text m-0 p-0 bg-transparent">
+                            <select class="form-select border-0">
+                                <option value="CDF" selected>CDF</option>
+                                <option value="USD">USD</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
 
         <div class="custom-control custom-checkbox">
