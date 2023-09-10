@@ -1,6 +1,7 @@
 <template>
-    <div v-if="processing" class="w-100 h-100 d-flex justify-content-center align-content-center align-items-center">
-        <div class="df-example" style="font-size: 8px !important;">
+    <div v-if="processing" style="height: 50vh !important;"
+        class="w-100 d-flex justify-content-center align-content-center align-items-center">
+        <div class="df-example">
             <svg fill="#103BBE" width="60" height="60" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <g class="spinner_OSmW">
                     <rect x="11" y="1" width="2" height="5" opacity=".14" />

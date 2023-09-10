@@ -25,9 +25,14 @@
                     <div class="d-none d-md-block">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-8 col-xl-8">
-                        <data-loading :processing="dataProcessing">
+                <!-- loading proccess -->
+                <data-loading :processing="dataProcessing">
+                    <!-- row -->
+                    <div class="row">
+
+                        <!-- col -->
+                        <div class="col-lg-8 col-xl-8">
+                            <!-- row -->
                             <div class="row row-sm">
                                 <div class="col-md-4 mg-md-b-15" v-for="(service, index) in services" :key="index">
                                     <div class="card card-event animate__pulse">
@@ -44,8 +49,8 @@
                                     </div><!-- card -->
                                 </div><!-- col -->
 
-                            </div><!-- row -->
-                            <!-- end loop -->
+                            </div>
+                            <!-- row -->
 
                             <!-- Empty state message -->
                             <!-- <div class="row d-flex justify-content-center align-items-center h-100 w-100">
@@ -55,41 +60,46 @@
                                 <h5 class="tx-center">Veuillez créer des services !</h5>
                             </div>
                         </div> -->
-                        </data-loading>
-                        <!-- services loop -->
+                            <!-- services loop -->
 
-                    </div><!-- col -->
-                    <div class="col-sm-7 col-md-5 col-lg-4 col-xl-4">
-                        <div data-label="Nouveau service" class="df-example wd-100p">
-                            <section>
-                                <p class="mg-b-20 tx-12">Veuillez renseigner tous les champs pour créer un nouveau
-                                    service
-                                    !
-                                </p>
-                                <form @submit.prevent="submitService">
-                                    <div class="form-group">
-                                        <label class="form-label">Nom du service: <span class="tx-danger">*</span></label>
-                                        <input id="service-name" class="form-control" name="firstname"
-                                            placeholder="Entrer le nom du service..." type="text" required>
-                                    </div><!-- col -->
-                                    <div class="form-group">
-                                        <label class="form-label">Libellé: <span class="tx-danger">*</span></label>
-                                        <input id="service-label" class="form-control" name="lastname"
-                                            placeholder="Entrer le libellé du service..." type="text" required>
-                                    </div><!-- col -->
-                                    <div class="d-grid gap-2">
-                                        <bs-button btn-type="submit" :loading="submitLoading"
-                                            class-name="btn-success btn-block btn-lg"> <i data-feather="plus"></i>
-                                            Ajouter</bs-button>
-                                    </div>
-                                </form>
-                            </section>
+                        </div><!-- col -->
+                        <div class="col-sm-7 col-md-5 col-lg-4 col-xl-4">
+                            <div class="df-example wd-100p">
+                                <section>
+                                    <p class="mg-b-20 tx-12 tx-danger">Veuillez renseigner tous les champs pour créer un
+                                        nouveau
+                                        service
+                                        !
+                                    </p>
+                                    <form @submit.prevent="submitService">
+                                        <div class="form-group">
+                                            <label class="form-label">Nom du service: <span
+                                                    class="tx-danger">*</span></label>
+                                            <input id="service-name" class="form-control" name="firstname"
+                                                placeholder="Entrer le nom du service..." type="text" required>
+                                        </div><!-- col -->
+                                        <div class="form-group">
+                                            <label class="form-label">Libellé: <span class="tx-danger">*</span></label>
+                                            <input id="service-label" class="form-control" name="lastname"
+                                                placeholder="Entrer le libellé du service..." type="text" required>
+                                        </div><!-- col -->
+                                        <div class="d-grid gap-2">
+                                            <bs-button btn-type="submit" :loading="submitLoading"
+                                                class-name="btn-success btn-block btn-lg"> <i data-feather="plus"></i>
+                                                Ajouter</bs-button>
+                                        </div>
+                                    </form>
+                                </section>
+                            </div>
+
                         </div>
-
-                    </div><!-- col -->
-                </div><!-- row -->
-
-            </div><!-- container -->
+                        <!-- col -->
+                    </div>
+                    <!-- row -->
+                </data-loading>
+                <!-- loading process -->
+            </div>
+            <!-- container -->
         </div>
     </div>
 </template>

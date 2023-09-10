@@ -59,12 +59,17 @@
 import datatableFr from '@/assets/js/datatable.fr';
 export default {
     name: "PresencesPage",
+    data() {
+        return {
+            table: null
+        }
+    },
     mounted() {
         $('.select2').select2({
             placeholder: '--Sélectionnez une agence--',
             searchInputPlaceholder: 'Recherche agence...'
         });
-        $('#presencesTable').DataTable({
+        this.table = $('#presencesTable').DataTable({
             language: datatableFr,
             columns: [
                 { title: 'Nom' },
@@ -90,7 +95,8 @@ export default {
         });
     },
     unmounted() {
-        $('#presencesTable').DataTable().clear().destroy();
+        this.table.distroy();
+        this.table = null;
     }
 }
 </script>

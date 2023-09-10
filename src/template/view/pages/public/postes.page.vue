@@ -49,24 +49,23 @@
                             </p>
                             <form @submit.prevent="submitData">
                                 <div class="form-group m-0">
-                                    <label class="mg-b-10 form-label">Libellé poste : <span
+                                    <label class="mg-b-10 form-label">Libellé fonction : <span
                                             class="tx-danger">*</span></label>
                                     <div class="input-group mb-2" v-for="(form, index) in forms" :key="index">
                                         <input type="text" class="form-control" v-model="form.data"
-                                            placeholder="entrez le libellé poste..." required>
-                                        <button v-if="index === forms.length - 1" class="btn btn-white tx-primary btn-lg"
+                                            placeholder="entrez le libellé fonction..." required>
+                                        <button v-if="index === forms.length - 1" class="btn btn-brand-01 btn-lg"
                                             @click.prevent="forms.push({ data: '' })"><i data-feather="plus"></i></button>
                                         <button v-else class="btn btn-white tx-danger"
                                             @click.prevent="forms.splice(index, 1)">
                                             <i data-feather="trash"></i></button>
                                     </div>
                                 </div>
-                                <hr>
                                 <div class="d-flex ">
                                     <button type="button" class="btn btn-white  btn-block btn-lg mg-r-4 flex-fill">
                                         Annuler</button>
                                     <bs-button btn-type="submit" :loading="submitLoading"
-                                        class-name="btn-primary btn-block btn-lg flex-fill"> <i data-feather="plus"></i>
+                                        class-name="btn-success btn-block btn-lg flex-fill"> <i data-feather="check"></i>
                                         Ajouter</bs-button>
                                 </div>
                             </form>

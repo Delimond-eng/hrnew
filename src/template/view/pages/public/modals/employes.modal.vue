@@ -105,12 +105,12 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label">Barème <span class="tx-danger">*</span></label>
-                                    <select class="form-select" required>
-                                        <option label="--Sélectionnez barème--">Mois</option>
-                                        <option value="Années">Années</option>
-                                        <option value="Jours">Jours</option>
-                                    </select>
+                                    <label class="form-label">Barème <span class="tx-danger">*</span></label><br>
+                                    <div class="w-100">
+                                        <select class="baremeSelect" required>
+
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -128,6 +128,18 @@
 </template>
 
 <script>
+$(document).ready(() => {
+    $('.baremeSelect').select2({
+        dropdownParent: $('#modalEmployes'),
+        placeholder: '--Sélectionnez barème--',
+        data: [
+            { id: 1, text: "Bareme O1" },
+            { id: 2, text: "Bareme O2" },
+            { id: 3, text: "Bareme O3" },
+            { id: 4, text: "Bareme O4" },
+        ]
+    })
+})
 export default {
     name: 'EmployesCreateModal',
 

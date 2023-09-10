@@ -51,6 +51,7 @@ export default {
 
     data() {
         return {
+            table: null,
             users: [
                 ['Gaston delimond', 'Super administrateur', 'gastondelimond@gmail.com', '5421', 'actif'],
                 ['Lionnel Nawej', 'Super administrateur', 'lionnelnawaej@gmail.com', '12345', 'actif'],
@@ -66,14 +67,12 @@ export default {
 
 
     unmounted() {
-        $('#usersTable').DataTable().clear().destroy();
+        this.table.destroy();
+        this.table = null;
     },
 
     mounted() {
-        new PerfectScrollbar(".content-body", {
-            suppressScrollX: true,
-        });
-        $('#usersTable').DataTable({
+        this.table = $('#usersTable').DataTable({
             language: datatableFr,
             columns: [
                 { title: "Nom utilisateur" },
@@ -83,6 +82,9 @@ export default {
                 { title: "Status" },
             ],
             data: this.users
+        });
+        new PerfectScrollbar(".content-body", {
+            suppressScrollX: true,
         });
         $('#modalUser').on('show.bs.modal', function (event) {
             var animation = $(event.relatedTarget).data('animation');

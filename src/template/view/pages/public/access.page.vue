@@ -85,7 +85,7 @@
                                     <button type="button" class="btn btn-white  btn-block btn-lg mg-r-4 flex-fill">
                                         Annuler</button>
                                     <bs-button btn-type="submit" :loading="submitLoading"
-                                        class-name="btn-primary btn-block btn-lg flex-fill"> <i data-feather="plus"></i>
+                                        class-name="btn-success btn-block btn-lg flex-fill"> <i data-feather="check"></i>
                                         Ajouter</bs-button>
                                 </div>
                             </form>

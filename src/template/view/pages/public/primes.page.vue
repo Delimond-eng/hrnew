@@ -78,6 +78,7 @@ export default {
         return {
             submitLoading: false,
             dataProcessing: false,
+            table: null,
             primes: [
                 ['Prime de merite', '30000', 'CDF', 'Mensuelle'],
                 ['Prime de motivation', '25000', 'CDF', 'Mensuelle'],
@@ -88,14 +89,13 @@ export default {
 
 
     unmounted() {
-        let table = $('#primesTable').DataTable();
-        table.destroy();
-
+        this.table.destroy();
+        this.table = null;
     },
 
     mounted() {
         /*Test loading data*/
-        $('#primesTable').DataTable({
+        this.table = $('#primesTable').DataTable({
             language: datatableFr,
             columns: [
                 { title: 'Libellé' },

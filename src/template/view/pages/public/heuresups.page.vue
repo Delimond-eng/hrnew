@@ -81,6 +81,7 @@ export default {
         return {
             submitLoading: false,
             dataProcessing: false,
+            table: null,
             primes: [
                 ['Heure supp600', '130', '2'],
                 ['Heure supp160', '160', '4'],
@@ -90,7 +91,7 @@ export default {
 
     mounted() {
         /*Test loading data*/
-        $('#heuresSupTable').DataTable({
+        this.table = $('#heuresSupTable').DataTable({
             language: datatableFr,
             columns: [
                 { title: 'Nom formule' },
@@ -117,7 +118,8 @@ export default {
     },
 
     unmounted() {
-        $('#heuresSupTable').DataTable().clear().destroy();
+        this.table.destroy();
+        this.table = null;
     },
 
 

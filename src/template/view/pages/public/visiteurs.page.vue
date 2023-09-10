@@ -48,11 +48,18 @@ import visiteursCreateModal from './modals/visiteurs.modal'
 export default {
     name: "VisiteursPage",
 
+
+    data() {
+        return {
+            table: null
+        }
+    },
+
     components: {
         visiteursCreateModal,
     },
     mounted() {
-        $('#visiteursTable').DataTable({
+        this.table = $('#visiteursTable').DataTable({
             language: datatableFr,
             columns: [
                 { title: 'Date Visite' },
@@ -97,7 +104,8 @@ export default {
     },
 
     unmounted() {
-        $('#visiteursTable').DataTable().clear().destroy();
+        this.table.destroy();
+        this.table = null;
     }
 }
 </script>@/js/datatable.fr

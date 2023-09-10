@@ -52,13 +52,20 @@ export default {
         baremeCreateModal,
     },
 
+    data() {
+        return {
+            table: null
+        }
+    },
+
 
     unmounted() {
-        $('#baremesTable').DataTable().clear().destroy();
+        this.table.destroy();
+        this.table = null;
     },
 
     mounted() {
-        $('#baremesTable').DataTable({
+        this.table = $('#baremesTable').DataTable({
             language: datatableFr,
             columns: [
                 { title: "Catégorie salarial" },
@@ -99,9 +106,7 @@ export default {
         $('#modalBareme').on('show.bs.modal', function (event) {
             var animation = $(event.relatedTarget).data('animation');
             $(this).addClass(animation);
-            new PerfectScrollbar(".modal", {
-                suppressScrollX: true,
-            });
+
         })
 
         // hide modal with effect
@@ -113,4 +118,3 @@ export default {
     }
 }
 </script>
-@/js/datatable.fr

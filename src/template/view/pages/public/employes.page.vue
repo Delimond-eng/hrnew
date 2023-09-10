@@ -24,12 +24,12 @@
                     </div>
                     <div class="d-none d-md-block">
                         <div class="d-flex">
-                            <a href="#modalEmployes" class="btn btn-lg btn-primary mg-r-3" data-bs-toggle="modal"
-                                data-animation="effect-slide-in-right"><i data-feather="plus" class="wd-10 mg-r-5"></i>
+                            <button @click.prevent="showCreateModal" class="btn btn-lg btn-primary mg-r-3"><i
+                                    data-feather="plus" class="wd-10 mg-r-5"></i>
                                 Nouveau
-                                employé</a>
-                            <a href="#modalEmployes" class="btn btn-lg btn-outline-primary" data-bs-toggle="modal"
-                                data-animation="effect-slide-in-right"><i data-feather="download" class="wd-10 mg-r-5"></i>
+                                employé</button>
+                            <a href="javascript:void(0)" class="btn btn-lg btn-outline-primary"><i data-feather="download"
+                                    class="wd-10 mg-r-5"></i>
                                 Importer liste agents</a>
                         </div>
                     </div>
@@ -53,22 +53,32 @@ import datatableFr from '@/assets/js/datatable.fr';
 import employesCreateModal from './modals/employes.modal'
 export default {
     name: "EmployesPage",
+    data() {
+        return {
+            table: null,
+            modalShown: false,
+        }
+    },
 
     components: {
         employesCreateModal,
     },
 
+    methods: {
+        showCreateModal() {
+            $('#modalEmployes').modal('show');
+        }
+    },
+
     unmounted() {
-        $('#modalEmployes').DataTable().clear().destroy();
+        this.table.destroy();
+        this.table = null;
     },
     mounted() {
         $('#modalEmployes').on('show.bs.modal', function (event) {
-            $(this).addClass("scale-effect");
-            new PerfectScrollbar(".modal", {
-                suppressScrollX: true,
-            });
+            $(this).addClass("effect-slide-in-right");
         })
-        $('#employesTable').DataTable({
+        this.table = $('#employesTable').DataTable({
             language: datatableFr,
             columns: [
                 { title: 'Nom' },
@@ -99,4 +109,4 @@ export default {
         });
     }
 }
-</script>@/js/datatable.fr
+</script>
