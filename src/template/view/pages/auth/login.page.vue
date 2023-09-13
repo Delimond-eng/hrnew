@@ -61,9 +61,9 @@ export default {
             }
         }
     },
-    unmounted() {
+    /* unmounted() {
         this.$router.go();
-    },
+    }, */
 
     methods: {
         submitLogin(e) {

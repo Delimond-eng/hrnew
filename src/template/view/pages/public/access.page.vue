@@ -27,7 +27,26 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="df-example">
+                        <div class="accordion">
+                            <div class="accordion-item mb-1" v-for="i in 5" :key="i">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" data-bs-toggle="collapse"
+                                        :data-bs-target="`#collapse__${i}`">Super administrateur</button>
+                                </h2>
+                                <div class="accordion-collapse collapse" :id="`collapse__${i}`"
+                                    :class="i == 0 ? 'show' : ''">
+                                    <div class="accordion-body">
+                                        <div class="custom-control custom-checkbox" v-for="a in 4" :key="a">
+                                            <input type="checkbox" class="custom-control-input mg-4" :id="'check__' + a"
+                                                checked>
+                                            <label class="custom-control-label" :for="'check__' + a">Custom checkbox
+                                                (checked)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="df-example">
                             <div class="list-group">
                                 <li class="list-group-item d-flex align-items-center " v-for="(ac, index) in access"
                                     :key="index">
@@ -40,8 +59,7 @@
                                     </div>
                                 </li>
                             </div>
-
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="df-example">
@@ -99,7 +117,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'AccessPage',
 
@@ -111,7 +128,6 @@ export default {
                     data: ""
                 }
             ],
-
             access: [
                 {
                     label: 'Super administrateur'
@@ -126,6 +142,10 @@ export default {
     mounted() {
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
+        });
+        $('#accordion1').accordion({
+            heightStyle: 'content',
+            collapsible: true
         });
     },
 
