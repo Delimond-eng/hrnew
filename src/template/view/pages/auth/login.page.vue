@@ -68,12 +68,10 @@ export default {
     methods: {
         submitLogin(e) {
             this.loginLoading = true;
-
             var data = {
                 email: this.form.email.trim(),
                 pass: this.form.pwd
             };
-
             /*   ajax options */
             var options = {
                 data: data,

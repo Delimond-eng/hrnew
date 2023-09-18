@@ -22,7 +22,12 @@ import PointagesPage from "@/template/view/pages/public/pointages.page";
 import DecomptesPage from "@/template/view/pages/public/decomptes.page";
 import EditionsPage from "@/template/view/pages/public/editions.page";
 import AffectationsPage from "@/template/view/pages/public/affectations.page";
-import heurepointsPageVue from "@/template/view/pages/public/heurepoints.page.vue";
+import heurepointsPageVue from "@/template/view/pages/public/heurepoints.page";
+import AgencyHomeScreen from "@/template/view/screens/agence.screen";
+
+/*agence screen*/
+import AgenceDashboard from "@/template/view/screens/agencePages/dashboard";
+/*agence*/
 
 const routes = [
   /* Route pour la boite de connexion ou login */
@@ -153,6 +158,19 @@ const routes = [
         path: "/secure/affectations/:affect",
         component: AffectationsPage,
         name: "affectations",
+      },
+      {
+        path: "/secure/agence/home",
+        component: AgencyHomeScreen,
+        name: "agence.home",
+        redirect: { name: "agence.dashboard" },
+        children: [
+          {
+            path: "",
+            component: AgenceDashboard,
+            name: "agence.dashboard",
+          },
+        ],
       },
     ],
   },

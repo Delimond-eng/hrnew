@@ -42,14 +42,12 @@
                     <label class="form-label">Province <span class="tx-danger">*</span></label>
                     <select class="select2 form-select provinceSelect">
                         <option label="--Sélectionnez une province--"></option>
-                        <option v-for="i in 26" :key="i" :value="'province__' + i">Province__{{ i }}</option>
                     </select>
                 </div>
                 <div class="col-md-6 mt-2">
                     <label class="form-label">Agence <span class="tx-danger">*</span></label>
                     <select class="select2 form-select agenceSelect">
                         <option label="--Sélectionnez une agence--"></option>
-                        <option v-for="i in 26" :key="i" :value="'agence__' + i">Agence__{{ i }}</option>
                     </select>
                 </div>
 
@@ -76,13 +74,39 @@ export default {
     },
 
     mounted() {
-        $('.agenceSelect').select2({
-            placeholder: '--Sélectionnez une agence--',
-            searchInputPlaceholder: 'Recherche agence...'
-        });
-        $('.provinceSelect').select2({
-            placeholder: '--Sélectionnez une fonction--',
-            searchInputPlaceholder: 'Recherche fonction...'
+        $(document).ready(() => {
+            $('.agenceSelect').select2({
+                placeholder: '--Sélectionnez une agence--',
+                searchInputPlaceholder: 'Recherche agence...',
+                language: {
+                    noResults: (params) => {
+                        return 'Aucun résultat trouvé !'
+                    }
+                },
+                allowClear: true,
+                data: [
+                    { id: 1, text: 'Kitambo' },
+                    { id: 2, text: 'Kimbaseke' },
+                    { id: 3, text: 'Masina' },
+                ]
+            });
+            $('.provinceSelect').select2({
+                placeholder: '--Sélectionnez une fonction--',
+                searchInputPlaceholder: 'Recherche province...',
+                language: {
+                    noResults: (params) => {
+                        return 'Aucun résultat trouvé !'
+                    }
+                },
+                allowClear: true,
+                data: [
+                    { id: 2, text: 'Kongo Central' },
+                    { id: 3, text: 'Kasaï Central' },
+                    { id: 3, text: 'Haut Katanga' },
+                    { id: 1, text: 'Kasaï Oriental' },
+                    { id: 1, text: 'Bas Uele' },
+                ]
+            });
         });
     },
 
