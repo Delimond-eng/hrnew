@@ -31,6 +31,9 @@
                                     class="nav-link">
                                     <i data-feather="grid"></i> <span>Tableau de bord</span>
                                 </router-link>
+                                <router-link :to="{ name: 'agence.services' }" exact-active-class="active" class="nav-link">
+                                    <i data-feather="briefcase"></i> <span>Services</span>
+                                </router-link>
                                 <router-link :to="{ name: 'agence.employes' }" exact-active-class="active"
                                     class="nav-link"><i data-feather="users"></i> <span>Employés</span>
                                 </router-link>
@@ -70,6 +73,11 @@
 export default {
     name: "AgenceScreen",
 
+
+    unmounted() {
+        $('.aside').removeClass('minimize');
+    },
+
     mounted() {
         this.init();
     },
@@ -78,6 +86,11 @@ export default {
     methods: {
         init() {
             $(document).ready(() => {
+                if (window.matchMedia('(min-width: 1200px)').matches) {
+                    $('.aside').removeClass('maximize');
+                    $('.aside').addClass('minimize');
+                }
+
                 new PerfectScrollbar('.filemgr-sidebar-body', {
                     suppressScrollX: true
                 });

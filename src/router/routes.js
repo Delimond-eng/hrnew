@@ -27,6 +27,7 @@ import AgencyHomeScreen from "@/template/view/screens/agence.screen";
 
 /*agence screen*/
 import AgenceDashboard from "@/template/view/screens/agencePages/dashboard";
+import AgenceServices from "@/template/view/screens/agencePages/services";
 import AgenceEmployes from "@/template/view/screens/agencePages/employes";
 import AgencePresences from "@/template/view/screens/agencePages/presences";
 import AgenceEnroll from "@/template/view/screens/agencePages/enroll";
@@ -173,6 +174,11 @@ const routes = [
             path: "",
             component: AgenceDashboard,
             name: "agence.dashboard",
+          },
+          {
+            path: "/secure/agence/services",
+            component: AgenceServices,
+            name: "agence.services",
           },
           {
             path: "/secure/agence/employes",

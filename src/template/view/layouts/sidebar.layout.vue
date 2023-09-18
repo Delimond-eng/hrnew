@@ -51,7 +51,7 @@
             <ul class="nav nav-aside">
                 <li class="nav-label">Menu</li>
                 <li class="nav-item with-sub" :class="currentRoute.includes('admin.') ? 'active' : ''">
-                    <a href="javascript:void(0)" class="nav-link"><i data-feather="briefcase"></i>
+                    <a href="javascript:void(0)" class="nav-link"><i data-feather="settings"></i>
                         <span>Administration</span>
                     </a>
                     <ul>
