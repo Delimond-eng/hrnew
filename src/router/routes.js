@@ -27,6 +27,11 @@ import AgencyHomeScreen from "@/template/view/screens/agence.screen";
 
 /*agence screen*/
 import AgenceDashboard from "@/template/view/screens/agencePages/dashboard";
+import AgenceEmployes from "@/template/view/screens/agencePages/employes";
+import AgencePresences from "@/template/view/screens/agencePages/presences";
+import AgenceEnroll from "@/template/view/screens/agencePages/enroll";
+import AgenceUsersAccounts from "@/template/view/screens/agencePages/usersAccounts";
+import AgenceVisitors from "@/template/view/screens/agencePages/visitors";
 /*agence*/
 
 const routes = [
@@ -64,7 +69,6 @@ const routes = [
 
     children: [
       /*Admin routes*/
-
       {
         path: "/secure/agences",
         component: AgencesPage,
@@ -169,6 +173,31 @@ const routes = [
             path: "",
             component: AgenceDashboard,
             name: "agence.dashboard",
+          },
+          {
+            path: "/secure/agence/employes",
+            component: AgenceEmployes,
+            name: "agence.employes",
+          },
+          {
+            path: "/secure/agence/presences",
+            component: AgencePresences,
+            name: "agence.presences",
+          },
+          {
+            path: "/secure/agence/enroll",
+            component: AgenceEnroll,
+            name: "agence.enroll",
+          },
+          {
+            path: "/secure/agence/users",
+            component: AgenceUsersAccounts,
+            name: "agence.users",
+          },
+          {
+            path: "/secure/agence/visitors",
+            component: AgenceVisitors,
+            name: "agence.visitors",
           },
         ],
       },

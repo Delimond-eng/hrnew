@@ -95,7 +95,7 @@ export default {
         });
     },
     unmounted() {
-        this.table.distroy();
+        this.table.destroy();
         this.table = null;
     }
 }

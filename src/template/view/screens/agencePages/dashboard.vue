@@ -1,7 +1,7 @@
 <template>
     <!-- filemgr-content-header -->
     <div class="filemgr-content-header">
-        <h4 class="mg-b-0">Employés</h4>
+        <h6 class="mg-b-0 tx-primary"><i class="mr-2" data-feather="grid" width="15"></i> Tableau de bord</h6>
     </div>
     <!-- filemgr-content-header -->
 

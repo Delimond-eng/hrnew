@@ -121,70 +121,22 @@
 
 
 <script>
-
 import EnrollAuthModal from '@/template/view/pages/auth/modals/biotime.login.modal'
-import ScanModal from './modals/scannig.modal'
 export default {
     name: "VisiteursPage",
+
+    data() {
+        return {
+            deviceSelect: null
+        }
+    },
 
 
     components: {
         EnrollAuthModal,
-        ScanModal
     },
     mounted() {
-
-        new PerfectScrollbar(".content-body", {
-            suppressScrollX: true,
-        });
-        $('.deviceSelect').select2({
-            data: [
-                {
-                    id: 1,
-                    text: 'Device 18SH'
-                },
-                {
-                    id: 2,
-                    text: 'Device 300SH'
-                },
-                {
-                    id: 3,
-                    text: 'Device 240SH'
-                },
-                {
-                    id: 4,
-                    text: 'Device ZT0SH'
-                }
-            ]
-        });
-        $('#modalSignIn').on('show.bs.modal', function (event) {
-            $(this).addClass("effect-scale");
-            new PerfectScrollbar(".modal", {
-                suppressScrollX: true,
-            });
-        })
-        $('#modalScannig').on('show.bs.modal', function (event) {
-            $(this).addClass("effect-scale");
-            new PerfectScrollbar(".modal", {
-                suppressScrollX: true,
-            });
-        })
-        // hide modal with effect
-        $('#modalSignIn').on('hidden.bs.modal', function (e) {
-            $(this).removeClass(function (index, className) {
-                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
-            });
-        });
-        $('#modalScannig').on('hidden.bs.modal', function (e) {
-            $(this).removeClass(function (index, className) {
-                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
-            });
-        });
-
-
-        this.$nextTick(() => {
-            $('#modalSignIn').modal('show');
-        });
+        this.init();
     },
 
     methods: {
@@ -193,6 +145,55 @@ export default {
             setTimeout(() => {
                 $('#modalScannig').modal('hide');
             }, 10000);
+        },
+
+        init() {
+            new PerfectScrollbar(".content-body", {
+                suppressScrollX: true,
+            });
+            let select = $('.deviceSelect').select2({
+                data: [
+                    {
+                        id: 1,
+                        text: 'Device 18SH'
+                    },
+                    {
+                        id: 2,
+                        text: 'Device 300SH'
+                    },
+                    {
+                        id: 3,
+                        text: 'Device 240SH'
+                    },
+                    {
+                        id: 4,
+                        text: 'Device ZT0SH'
+                    }
+                ]
+            });
+            $('#modalSignIn').on('show.bs.modal', function (event) {
+                $(this).addClass("effect-scale");
+                new PerfectScrollbar(".modal", {
+                    suppressScrollX: true,
+                });
+            })
+            // hide modal with effect
+            $('#modalSignIn').on('hidden.bs.modal', function (e) {
+                $(this).removeClass(function (index, className) {
+                    return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
+                });
+            });
+            $('#modalScannig').on('hidden.bs.modal', function (e) {
+                $(this).removeClass(function (index, className) {
+                    return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
+                });
+            });
+            $('#modalScannig').on('show.bs.modal', function (event) {
+                $(this).addClass("effect-scale");
+                new PerfectScrollbar(".modal", {
+                    suppressScrollX: true,
+                });
+            })
         }
     },
 }

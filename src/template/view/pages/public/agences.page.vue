@@ -23,15 +23,8 @@
                         <h4 class="mg-b-0 tx-spacing--1">Agences</h4>
                     </div>
                     <div class="d-none d-md-block">
-                        <select class="select2 form-control-lg">
+                        <select class="select2 select2i form-control-lg">
                             <option label="--Filtre agence par province--"></option>
-                            <option value="Kinshasa">Kinshasa</option>
-                            <option value="Bandundu">Bandundu</option>
-                            <option value="Kasaï Central">Kasaï Central</option>
-                            <option value="Kasaï Oriental">Kasaï Oriental</option>
-                            <option value="Kasaï Central">Kasaï</option>
-                            <option value="Haut Uele">Haut Uele</option>
-                            <option value="Bas Uele">Bas Uele</option>
                         </select>
                         <a href="#modalAgence" class="btn btn-primary m-lg-2" data-bs-toggle="modal"
                             data-animation="effect-slide-in-right"><i data-feather="plus" class="wd-10"></i>Ajout
@@ -98,6 +91,7 @@
 import AgenceModal from './modals/agences.modal'
 export default {
     name: 'ServicesPage',
+
     data() {
         return {
             submitLoading: false,
@@ -125,20 +119,37 @@ export default {
                     province: "Kinshasa"
                 }
             ],
+            iselect: null
         }
     },
 
     components: {
         AgenceModal,
     },
-
+    unmounted() {
+        $('.select2i').select2('destroy');
+    },
     mounted() {
-        $('.select2').select2({
+
+        $('.select2i').select2({
             placeholder: '--Filtre agence par province--',
             searchInputPlaceholder: 'Recherche province...',
-            allowClear: true
+            allowClear: true,
+            data: [
+                {
+                    id: 1, text: 'Kitambo'
+                },
+                {
+                    id: 2, text: 'Bandal'
+                },
+                {
+                    id: 3, text: 'Masina Liberté'
+                },
+                {
+                    id: 4, text: 'Nsele Aeroport'
+                },
+            ]
         });
-
         $('.select2').change((event) => {
             console.log(event.target.value);
         })

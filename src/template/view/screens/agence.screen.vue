@@ -1,20 +1,23 @@
 <template>
     <div class="content ht-100v pd-0">
+        <!-- content-header -->
         <div class="content-header">
-            <div class="d-flex align-items-center">
-                <i data-feather="home"></i>
-                <h4 class="m-lg-2">Agence de kinshasa</h4>
-            </div>
+            <button class="btn btn-icon btn-sm tx-primary" @click.prevent="$router.replace({ name: 'admin.agences' })"> <i
+                    data-feather="arrow-left"></i> </button>
             <nav class="nav">
                 <a href="#" class="nav-link"><i data-feather="align-left"></i></a>
             </nav>
-        </div><!-- content-header -->
+        </div>
+        <!-- content-header -->
 
+        <!-- content-body -->
         <div class="content-body pd-0">
             <div class="filemgr-wrapper filemgr-wrapper-two">
                 <div class="filemgr-sidebar">
                     <!-- filemgr-sidebar-header -->
                     <div class="filemgr-sidebar-header">
+                        <i data-feather="home"></i>
+                        <h5 class="m-lg-2">Agence de kinshasa</h5>
                     </div>
                     <!-- filemgr-sidebar-header -->
 
@@ -24,15 +27,23 @@
                             <label
                                 class="tx-sans tx-uppercase tx-medium tx-10 tx-spacing-1 tx-color-03 pd-l-10 mb-2">Menu</label>
                             <nav class="nav nav-sidebar tx-13">
-                                <a href="#" class="nav-link active"><i data-feather="grid"></i> <span>Tableau de
-                                        bord</span></a>
-                                <a href="#" class="nav-link"><i data-feather="users"></i> <span>Employés</span></a>
-                                <a href="#" class="nav-link"><i data-feather="clock"></i> <span>Presences</span></a>
-                                <a href="#" class="nav-link"><i data-feather="stop-circle"></i> <span>Enrollement
-                                        agents</span></a>
-                                <a href="#" class="nav-link"><i data-feather="user"></i> <span>Comptes
-                                        utilisateurs</span></a>
-                                <a href="#" class="nav-link"><i data-feather="user-check"></i> <span>Visiteurs</span></a>
+                                <router-link :to="{ name: 'agence.dashboard' }" exact-active-class="active"
+                                    class="nav-link">
+                                    <i data-feather="grid"></i> <span>Tableau de bord</span>
+                                </router-link>
+                                <router-link :to="{ name: 'agence.employes' }" exact-active-class="active"
+                                    class="nav-link"><i data-feather="users"></i> <span>Employés</span>
+                                </router-link>
+                                <router-link :to="{ name: 'agence.presences' }" exact-active-class="active"
+                                    class="nav-link"><i data-feather="clock"></i> <span>Presences</span></router-link>
+                                <router-link :to="{ name: 'agence.enroll' }" exact-active-class="active" class="nav-link"><i
+                                        data-feather="stop-circle"></i> <span>Enrollement
+                                        agents</span></router-link>
+                                <router-link :to="{ name: 'agence.users' }" exact-active-class="active" class="nav-link"><i
+                                        data-feather="user"></i> <span>Comptes
+                                        utilisateurs</span></router-link>
+                                <router-link :to="{ name: 'agence.visitors' }" exact-active-class="active"
+                                    class="nav-link"><i data-feather="user-check"></i> <span>Visiteurs</span></router-link>
                             </nav>
                         </div>
 
@@ -50,6 +61,7 @@
             </div>
             <!-- filemgr-wrapper -->
         </div>
+        <!-- content-body -->
     </div>
 </template>
 

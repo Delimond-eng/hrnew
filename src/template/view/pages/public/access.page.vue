@@ -36,12 +36,23 @@
                                 <div class="accordion-collapse collapse" :id="`collapse__${i}`"
                                     :class="i == 0 ? 'show' : ''">
                                     <div class="accordion-body">
-                                        <div class="custom-control custom-checkbox" v-for="a in 4" :key="a">
-                                            <input type="checkbox" class="custom-control-input mg-4" :id="'check__' + a"
-                                                checked>
-                                            <label class="custom-control-label" :for="'check__' + a">Custom checkbox
-                                                (checked)</label>
-                                        </div>
+                                        <ul class="list-group">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <span>Administrateur</span>
+                                                <button class="btn btn-icon btn-white btn-sm"><i
+                                                        data-feather="trash"></i></button>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <span>Super Administrateur</span>
+                                                <button class="btn btn-icon btn-white btn-sm"><i
+                                                        data-feather="trash"></i></button>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <span>Chef d'agence</span>
+                                                <button class="btn btn-icon btn-white btn-sm"><i
+                                                        data-feather="trash"></i></button>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
