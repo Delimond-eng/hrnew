@@ -23,8 +23,8 @@
                         <h4 class="mg-b-0 tx-spacing--1">Agences</h4>
                     </div>
                     <div class="d-none d-md-block">
-                        <select class="select2 select2i form-control-lg">
-                            <option label="--Filtre agence par province--"></option>
+                        <select class="select2i form-control-lg select2">
+                            <option label="Filtez agence par province"></option>
                         </select>
                         <a href="#modalAgence" class="btn btn-primary m-lg-2" data-bs-toggle="modal"
                             data-animation="effect-slide-in-right"><i data-feather="plus" class="wd-10"></i>Ajout
@@ -126,9 +126,7 @@ export default {
     components: {
         AgenceModal,
     },
-    unmounted() {
-        $('.select2i').select2('destroy');
-    },
+
     mounted() {
 
         $('.select2i').select2({
@@ -137,26 +135,28 @@ export default {
             allowClear: true,
             data: [
                 {
-                    id: 1, text: 'Kitambo'
+                    id: 1, text: 'Kasaï Central'
                 },
                 {
-                    id: 2, text: 'Bandal'
+                    id: 2, text: 'Kasaï oriental'
                 },
                 {
-                    id: 3, text: 'Masina Liberté'
+                    id: 3, text: 'Bas Kongo'
                 },
                 {
-                    id: 4, text: 'Nsele Aeroport'
+                    id: 4, text: 'Bas Uele'
                 },
             ]
         });
-        $('.select2').change((event) => {
-            console.log(event.target.value);
-        })
+
         /*End loading test data*/
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
+
+        $('.select2i').change((event) => {
+            console.log(event.target.value);
+        })
     },
 
     methods: {

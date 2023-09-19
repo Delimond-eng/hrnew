@@ -107,8 +107,8 @@
                                 <div class="col-md-4">
                                     <label class="form-label">Barème <span class="tx-danger">*</span></label><br>
                                     <div class="w-100">
-                                        <select class="baremeSelect" style="width:300px" required>
-
+                                        <select class="baremeSelect" style="width:100%" required>
+                                            <option label="--Sélectionnez barème--"></option>
                                         </select>
                                     </div>
                                 </div>

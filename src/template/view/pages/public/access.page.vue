@@ -37,19 +37,22 @@
                                     :class="i == 0 ? 'show' : ''">
                                     <div class="accordion-body">
                                         <ul class="list-group">
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <li
+                                                class="list-group-item border-botton-only d-flex justify-content-between align-items-center">
                                                 <span>Administrateur</span>
-                                                <button class="btn btn-icon btn-white btn-sm"><i
+                                                <button class="btn btn-icon btn-sm btn-white rounded-circle"><i
                                                         data-feather="trash"></i></button>
                                             </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <li
+                                                class="list-group-item border-botton-only d-flex justify-content-between align-items-center">
                                                 <span>Super Administrateur</span>
-                                                <button class="btn btn-icon btn-white btn-sm"><i
+                                                <button class="btn btn-icon btn-sm btn-white rounded-circle"><i
                                                         data-feather="trash"></i></button>
                                             </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <li
+                                                class="list-group-item border-botton-only d-flex justify-content-between align-items-center">
                                                 <span>Chef d'agence</span>
-                                                <button class="btn btn-icon btn-white btn-sm"><i
+                                                <button class="btn btn-icon btn-sm btn-white rounded-circle"><i
                                                         data-feather="trash"></i></button>
                                             </li>
                                         </ul>

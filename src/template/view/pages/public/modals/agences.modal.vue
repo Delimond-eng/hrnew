@@ -25,11 +25,9 @@
                                     required>
                             </div>
                             <div class="col-md-12">
-                                <label class="form-label">Province <span class="tx-danger">*</span></label>
-                                <select class="form-select">
+                                <label class="form-label">Province <span class="tx-danger">*</span></label><br>
+                                <select class="form-select agenceSelect2" style="width: 100%;">
                                     <option label="--Sélectionnez province--"></option>
-                                    <option value="">Povince01</option>
-                                    <option value="">Povince012</option>
                                 </select>
                             </div>
 
@@ -37,9 +35,10 @@
                                 <div class="mt-2">
                                     <label>Sélectionnez les dispositifs pour cette agence : <span
                                             class="tx-danger">*</span></label> <br>
-                                    <div class="row">
-                                        <div class="col-md-3" v-for="i in 8" :key="i">
-                                            <div class="custom-control custom-checkbox">
+                                    <div class="row overflow-auto flex-nowrap mt-lg-2 mb-lg-2">
+                                        <div class="col-5" v-for="i in 86" :key="i">
+                                            <div
+                                                class="custom-control custom-checkbox df-example py-1 px-2 mb-2 d-flex align-items-center justify-content-center">
                                                 <input type="checkbox" class="custom-control-input" :id="`customCheck${i}`">
                                                 <label class="custom-control-label p-lg-1" :for="`customCheck${i}`">
                                                     Dispositif{{ i + 1 }} </label>
@@ -71,6 +70,34 @@ export default {
             isSubmitLoading: false
         }
     },
+    mounted() {
+        $(document).ready(() => {
+            $('.agenceSelect2').select2({
+                dropdownParent: $('#modalAgence'),
+                placeholder: '--Sélectionnez province--',
+                data: [
+                    {
+                        id: 1, text: 'Kasaï Central'
+                    },
+                    {
+                        id: 2, text: 'Kasaï oriental'
+                    },
+                    {
+                        id: 3, text: 'Bas Kongo'
+                    },
+                    {
+                        id: 4, text: 'Bas Uele'
+                    },
+                    {
+                        id: 5, text: 'Ituri'
+                    },
+                    {
+                        id: 6, text: 'Sud Ubangi'
+                    },
+                ]
+            });
+        });
+    },
 
 
     methods: {
@@ -84,3 +111,5 @@ export default {
     },
 }
 </script>
+
+

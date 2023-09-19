@@ -29,12 +29,13 @@
                     <div class="col-md-6">
                         <div class="df-example">
                             <div class="list-group">
-                                <li class="list-group-item d-flex align-items-center " v-for="(ac, index) in posts"
-                                    :key="index">
+                                <li class="list-group-item d-flex align-items-center border-botton-only"
+                                    v-for="(ac, index) in posts" :key="index">
                                     <div class="wd-15 ht-15 rounded-circle bd bd-3 bd-primary mg-r-10"></div>
                                     <div class="d-flex justify-content-between w-100 align-items-center">
                                         <h6 class="tx-13 tx-inverse tx-semibold mg-b-0">{{ ac.label }}</h6>
-                                        <button class="btn btn-sm btn-white" @click.prevent="posts.splice(index, 1)">
+                                        <button class="btn btn-sm btn-icon btn-white rounded-circle"
+                                            @click.prevent="posts.splice(index, 1)">
                                             <i data-feather="trash"></i>
                                         </button>
                                     </div>
@@ -45,7 +46,8 @@
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="df-example">
-                            <p class="mg-b-20 tx-12">Veuillez créer les diffirentes accès utilisateur !
+                            <p class="mg-b-20 tx-12 tx-danger">Veuillez renseigner les champs pour créer les diffirentes
+                                accès utilisateur !
                             </p>
                             <form @submit.prevent="submitData">
                                 <div class="form-group m-0">
@@ -54,9 +56,9 @@
                                     <div class="input-group mb-2" v-for="(form, index) in forms" :key="index">
                                         <input type="text" class="form-control" v-model="form.data"
                                             placeholder="entrez le libellé fonction..." required>
-                                        <button v-if="index === forms.length - 1" class="btn btn-brand-01 btn-lg"
+                                        <button v-if="index === forms.length - 1" class="btn btn-white tx-primary btn-lg"
                                             @click.prevent="forms.push({ data: '' })"><i data-feather="plus"></i></button>
-                                        <button v-else class="btn btn-white tx-danger"
+                                        <button v-else class="btn btn-white  tx-danger"
                                             @click.prevent="forms.splice(index, 1)">
                                             <i data-feather="trash"></i></button>
                                     </div>

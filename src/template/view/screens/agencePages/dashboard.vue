@@ -58,7 +58,7 @@
                     <div class="media media-folder">
                         <i data-feather="clock"></i>
                         <div class="media-body">
-                            <h6><a href="#" class="link-02">Presences</a></h6>
+                            <h6><a href="#" class="link-02">Présences</a></h6>
                             <span>12 | 03</span>
                         </div><!-- media-body -->
                         <div class="dropdown-file">
@@ -102,33 +102,35 @@
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-6">
-                                <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 tx-nowrap mg-b-5">Normal</p>
+                                <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 tx-nowrap mg-b-5">Présences
+                                </p>
                                 <div class="d-flex align-items-center">
                                     <div class="wd-10 ht-10 rounded-circle bg-success mg-r-5"></div>
-                                    <h6 class="tx-normal tx-rubik mg-b-0">25 <small class="tx-color-04">60%</small></h6>
+                                    <h6 class="tx-normal tx-rubik mg-b-0">25 |<small class="tx-color-04">60%</small></h6>
                                 </div>
                             </div>
                             <!-- col -->
                             <div class="col-6">
-                                <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Absence</p>
+                                <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Absences</p>
                                 <div class="d-flex align-items-center">
                                     <div class="wd-10 ht-10 rounded-circle bg-danger mg-r-5"></div>
-                                    <h6 class="tx-normal tx-rubik mg-b-0">08 <small class="tx-color-04">20%</small></h6>
+                                    <h6 class="tx-normal tx-rubik mg-b-0">08 |<small class="tx-color-04">20%</small></h6>
                                 </div>
                             </div>
                             <!-- col -->
                             <div class="col-6 mg-t-20">
-                                <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Retard</p>
+                                <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Retards</p>
                                 <div class="d-flex align-items-center">
                                     <div class="wd-10 ht-10 rounded-circle bg-orange mg-r-5"></div>
-                                    <h6 class="tx-normal tx-rubik mg-b-0">08 <small class="tx-color-04">20%</small></h6>
+                                    <h6 class="tx-normal tx-rubik mg-b-0">08 |<small class="tx-color-04">20%</small></h6>
                                 </div>
                             </div><!-- col -->
                             <div class="col-6 mg-t-20">
-                                <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Depart anticipé</p>
+                                <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Departs anticipés
+                                </p>
                                 <div class="d-flex align-items-center">
                                     <div class="wd-10 ht-10 rounded-circle bg-info mg-r-5"></div>
-                                    <h6 class="tx-normal tx-rubik mg-b-0">04 <small class="tx-color-04">10%</small></h6>
+                                    <h6 class="tx-normal tx-rubik mg-b-0">04 |<small class="tx-color-04">10%</small></h6>
                                 </div>
                             </div>
                             <!-- col -->
@@ -156,7 +158,7 @@ export default {
 
             /** PIE CHART **/
             var datapie = {
-                labels: ['Normal', 'Absence', 'Retard', 'Depart anticipé'],
+                labels: ['Présences', 'Absences', 'Retards', 'Departs anticipés'],
                 datasets: [{
                     data: [60, 20, 20, 10],
                     backgroundColor: ['#0c8842', '#dc3545', '#fd7e14', '#00b8d4']
