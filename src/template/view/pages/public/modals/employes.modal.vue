@@ -69,7 +69,7 @@
                                     <input type="date" class="form-control" placeholder="dateeng" required>
                                 </div>
 
-                                <div class="col-md-4 mt-md-2">
+                                <div class="col-md-4 mt-md-2" v-if="!forAgency">
                                     <label class="form-label">Agence <small>(Optionnel)</small></label>
                                     <select class="form-select" required>
                                         <option label="--Sélectionnez une agence--"></option>
@@ -107,7 +107,7 @@
                                 <div class="col-md-4">
                                     <label class="form-label">Barème <span class="tx-danger">*</span></label><br>
                                     <div class="w-100">
-                                        <select class="baremeSelect" required>
+                                        <select class="baremeSelect" style="width:300px" required>
 
                                         </select>
                                     </div>
@@ -128,25 +128,36 @@
 </template>
 
 <script>
-$(document).ready(() => {
-    $('.baremeSelect').select2({
-        dropdownParent: $('#modalEmployes'),
-        placeholder: '--Sélectionnez barème--',
-        data: [
-            { id: 1, text: "Bareme O1" },
-            { id: 2, text: "Bareme O2" },
-            { id: 3, text: "Bareme O3" },
-            { id: 4, text: "Bareme O4" },
-        ]
-    })
-})
+
 export default {
     name: 'EmployesCreateModal',
+
+    props: {
+        forAgency: {
+            type: Boolean,
+            default: false
+        }
+    },
 
     data() {
         return {
             isSubmitLoading: false
         }
+    },
+
+    mounted() {
+        $(document).ready(() => {
+            $('.baremeSelect').select2({
+                dropdownParent: $('#modalEmployes'),
+                placeholder: '--Sélectionnez barème--',
+                data: [
+                    { id: 1, text: "Bareme O1" },
+                    { id: 2, text: "Bareme O2" },
+                    { id: 3, text: "Bareme O3" },
+                    { id: 4, text: "Bareme O4" },
+                ]
+            });
+        });
     },
 }
 </script>

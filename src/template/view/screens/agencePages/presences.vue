@@ -8,7 +8,7 @@
     <!-- filemgr-content-body -->
     <div class="filemgr-content-body scrollbar-primary scrollbar-lg">
         <div class="pd-20 pd-lg-25 pd-xl-30">
-            <label class="d-block tx-medium tx-10 tx-uppercase tx-sans tx-spacing-1 tx-color-03 mg-b-15">Liste des presences
+            <label class="d-block tx-medium tx-10 tx-uppercase tx-sans tx-spacing-1 tx-color-03 mg-b-15">Presences
                 journalières</label>
             <div class="row row-xs">
 

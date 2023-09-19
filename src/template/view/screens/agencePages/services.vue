@@ -9,7 +9,7 @@
     <div class="filemgr-content-body scrollbar-primary scrollbar-lg">
         <div class="pd-20 pd-lg-25 pd-xl-30">
             <label class="d-block tx-medium tx-10 tx-uppercase tx-sans tx-spacing-1 tx-color-03 mg-b-15">Liste des
-                services</label>
+                services de l'agence</label>
             <div class="row row-xs">
                 <div class="col-md-3 mg-md-b-15" v-for="(service, index) in services" :key="index">
                     <div class="card card-event animate__pulse">

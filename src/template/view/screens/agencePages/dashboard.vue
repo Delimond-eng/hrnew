@@ -89,13 +89,100 @@
             </div>
             <!-- row -->
         </div>
+
+        <div class="pd-20 pd-lg-25 pd-xl-30">
+            <label class="d-block tx-medium tx-10 tx-uppercase tx-sans tx-spacing-1 tx-color-03 mg-b-15">Agence
+                Statistiques de presence de l'Agence</label>
+
+            <div class="df-example">
+                <div class="row row-sm d-flex align-items-center">
+                    <div class="col-md-6">
+                        <div class="chart-seven"><canvas id="chartDonut"></canvas></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 tx-nowrap mg-b-5">Normal</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="wd-10 ht-10 rounded-circle bg-success mg-r-5"></div>
+                                    <h6 class="tx-normal tx-rubik mg-b-0">25 <small class="tx-color-04">60%</small></h6>
+                                </div>
+                            </div>
+                            <!-- col -->
+                            <div class="col-6">
+                                <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Absence</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="wd-10 ht-10 rounded-circle bg-danger mg-r-5"></div>
+                                    <h6 class="tx-normal tx-rubik mg-b-0">08 <small class="tx-color-04">20%</small></h6>
+                                </div>
+                            </div>
+                            <!-- col -->
+                            <div class="col-6 mg-t-20">
+                                <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Retard</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="wd-10 ht-10 rounded-circle bg-orange mg-r-5"></div>
+                                    <h6 class="tx-normal tx-rubik mg-b-0">08 <small class="tx-color-04">20%</small></h6>
+                                </div>
+                            </div><!-- col -->
+                            <div class="col-6 mg-t-20">
+                                <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Depart anticipé</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="wd-10 ht-10 rounded-circle bg-info mg-r-5"></div>
+                                    <h6 class="tx-normal tx-rubik mg-b-0">04 <small class="tx-color-04">10%</small></h6>
+                                </div>
+                            </div>
+                            <!-- col -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- filemgr-content-body -->
 </template>
 
 <script>
 export default {
-    name: 'Dashboard'
+    name: 'Dashboard',
+
+
+    mounted() {
+        this.init();
+    },
+
+
+    methods: {
+        init() {
+
+            /** PIE CHART **/
+            var datapie = {
+                labels: ['Normal', 'Absence', 'Retard', 'Depart anticipé'],
+                datasets: [{
+                    data: [60, 20, 20, 10],
+                    backgroundColor: ['#0c8842', '#dc3545', '#fd7e14', '#00b8d4']
+                }]
+            };
+
+            var optionpie = {
+                maintainAspectRatio: false,
+                responsive: true,
+                legend: {
+                    display: false,
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                }
+            };
+            // For a pie chart
+            var ctx2 = document.getElementById('chartDonut');
+            var myDonutChart = new Chart(ctx2, {
+                type: 'doughnut',
+                data: datapie,
+                options: optionpie
+            });
+        }
+    },
 }
 </script>
 <style scoped src="@/assets/css/dashforge.filemgr.css"></style>

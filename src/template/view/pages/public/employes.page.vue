@@ -50,7 +50,7 @@
 
 <script>
 import datatableFr from '@/assets/js/datatable.fr';
-import employesCreateModal from './modals/employes.modal'
+
 export default {
     name: "EmployesPage",
     data() {
@@ -58,10 +58,6 @@ export default {
             table: null,
             modalShown: false,
         }
-    },
-
-    components: {
-        employesCreateModal,
     },
 
     methods: {
