@@ -60,7 +60,7 @@
                 <div class="row row-sm">
                     <div class="col-md-3 mg-md-b-15" v-for="(agence, index) in agences" :key="index">
                         <a class="card card-event agenceCard shadow-none" href="javascript:void(0)"
-                            @click.prevent="$router.push({ name: 'agence.home' })">
+                            @click.prevent="$router.push({ name: 'admin.agence' })">
                             <div class="card-img-top bg-primary-light w-100 d-flex align-content-center align-items-center"
                                 style="height: 55px;">
                                 <h6 class="m-2 tx-primary tx-bold">{{ agence.label }}</h6>

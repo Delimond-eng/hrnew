@@ -27,25 +27,26 @@
                             <label
                                 class="tx-sans tx-uppercase tx-medium tx-10 tx-spacing-1 tx-color-03 pd-l-10 mb-2">Menu</label>
                             <nav class="nav nav-sidebar tx-13">
-                                <router-link :to="{ name: 'agence.dashboard' }" exact-active-class="active"
+                                <router-link :to="{ name: 'admin.agence.dashboard' }" exact-active-class="active"
                                     class="nav-link">
                                     <i data-feather="grid"></i> <span>Tableau de bord</span>
                                 </router-link>
-                                <router-link :to="{ name: 'agence.services' }" exact-active-class="active" class="nav-link">
+                                <router-link :to="{ name: 'admin.agence.services' }" exact-active-class="active"
+                                    class="nav-link">
                                     <i data-feather="briefcase"></i> <span>Services</span>
                                 </router-link>
-                                <router-link :to="{ name: 'agence.employes' }" exact-active-class="active"
+                                <router-link :to="{ name: 'admin.agence.employes' }" exact-active-class="active"
                                     class="nav-link"><i data-feather="users"></i> <span>Employés</span>
                                 </router-link>
-                                <router-link :to="{ name: 'agence.presences' }" exact-active-class="active"
+                                <router-link :to="{ name: 'admin.agence.presences' }" exact-active-class="active"
                                     class="nav-link"><i data-feather="clock"></i> <span>Presences</span></router-link>
-                                <router-link :to="{ name: 'agence.enroll' }" exact-active-class="active" class="nav-link"><i
-                                        data-feather="stop-circle"></i> <span>Enrollement
+                                <router-link :to="{ name: 'admin.agence.enroll' }" exact-active-class="active"
+                                    class="nav-link"><i data-feather="stop-circle"></i> <span>Enrollement
                                         agents</span></router-link>
-                                <router-link :to="{ name: 'agence.users' }" exact-active-class="active" class="nav-link"><i
-                                        data-feather="user"></i> <span>Comptes
+                                <router-link :to="{ name: 'admin.agence.users' }" exact-active-class="active"
+                                    class="nav-link"><i data-feather="user"></i> <span>Comptes
                                         utilisateurs</span></router-link>
-                                <router-link :to="{ name: 'agence.visitors' }" exact-active-class="active"
+                                <router-link :to="{ name: 'admin.agence.visitors' }" exact-active-class="active"
                                     class="nav-link"><i data-feather="user-check"></i> <span>Visiteurs</span></router-link>
                             </nav>
                         </div>

@@ -167,43 +167,43 @@ const routes = [
       {
         path: "/secure/agence/home",
         component: AgencyHomeScreen,
-        name: "agence.home",
-        redirect: { name: "agence.dashboard" },
+        name: "admin.agence",
+        redirect: { name: "admin.agence.dashboard" },
         children: [
           {
-            path: "",
+            path: "/secure/agence/dashboard",
             component: AgenceDashboard,
-            name: "agence.dashboard",
+            name: "admin.agence.dashboard",
           },
           {
             path: "/secure/agence/services",
             component: AgenceServices,
-            name: "agence.services",
+            name: "admin.agence.services",
           },
           {
             path: "/secure/agence/employes",
             component: AgenceEmployes,
-            name: "agence.employes",
+            name: "admin.agence.employes",
           },
           {
             path: "/secure/agence/presences",
             component: AgencePresences,
-            name: "agence.presences",
+            name: "admin.agence.presences",
           },
           {
             path: "/secure/agence/enroll",
             component: AgenceEnroll,
-            name: "agence.enroll",
+            name: "admin.agence.enroll",
           },
           {
             path: "/secure/agence/users",
             component: AgenceUsersAccounts,
-            name: "agence.users",
+            name: "admin.agence.users",
           },
           {
             path: "/secure/agence/visitors",
             component: AgenceVisitors,
-            name: "agence.visitors",
+            name: "admin.agence.visitors",
           },
         ],
       },
