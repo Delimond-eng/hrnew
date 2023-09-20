@@ -43,14 +43,10 @@
                                 <router-link :to="{ name: 'admin.agence.enroll' }" exact-active-class="active"
                                     class="nav-link"><i data-feather="stop-circle"></i> <span>Enrollement
                                         agents</span></router-link>
-                                <router-link :to="{ name: 'admin.agence.users' }" exact-active-class="active"
-                                    class="nav-link"><i data-feather="user"></i> <span>Comptes
-                                        utilisateurs</span></router-link>
                                 <router-link :to="{ name: 'admin.agence.visitors' }" exact-active-class="active"
                                     class="nav-link"><i data-feather="user-check"></i> <span>Visiteurs</span></router-link>
                             </nav>
                         </div>
-
                     </div>
                     <!-- filemgr-sidebar-body -->
                 </div>

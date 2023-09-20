@@ -22,58 +22,35 @@
                         </nav>
                         <h4 class="mg-b-0 tx-spacing--1">Accès utilisateurs</h4>
                     </div>
-
                 </div>
 
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="accordion">
-                            <div class="accordion-item mb-1" v-for="i in 5" :key="i">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" data-bs-toggle="collapse"
-                                        :data-bs-target="`#collapse__${i}`">Super administrateur</button>
-                                </h2>
-                                <div class="accordion-collapse collapse" :id="`collapse__${i}`"
-                                    :class="i == 0 ? 'show' : ''">
-                                    <div class="accordion-body">
-                                        <ul class="list-group">
-                                            <li
-                                                class="list-group-item border-botton-only d-flex justify-content-between align-items-center">
-                                                <span>Administrateur</span>
-                                                <button class="btn btn-icon btn-sm btn-white rounded-circle"><i
-                                                        data-feather="trash"></i></button>
-                                            </li>
-                                            <li
-                                                class="list-group-item border-botton-only d-flex justify-content-between align-items-center">
-                                                <span>Super Administrateur</span>
-                                                <button class="btn btn-icon btn-sm btn-white rounded-circle"><i
-                                                        data-feather="trash"></i></button>
-                                            </li>
-                                            <li
-                                                class="list-group-item border-botton-only d-flex justify-content-between align-items-center">
-                                                <span>Chef d'agence</span>
-                                                <button class="btn btn-icon btn-sm btn-white rounded-circle"><i
-                                                        data-feather="trash"></i></button>
-                                            </li>
-                                        </ul>
-                                    </div>
+                        <div class="accordion" id="accessListAccordion">
+                            <div v-for="(acc, i) in access" :key="i" class="mb-2">
+                                <h6 class="d-flex justify-content-between align-items-center"><span>{{ acc.label }}</span><a
+                                        href="javascript:void(0)"><i width="15" data-feather="trash"></i>
+                                    </a>
+                                </h6>
+                                <div class="df-example pt-1 pb-3">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center pb-0">
+                                        <span>Administrateur</span>
+                                        <a href="javascript:void(0)"><i width="15" data-feather="x"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center pb-0">
+                                        <span>Super Administrateur</span>
+                                        <a href="javascript:void(0)"><i width="15" data-feather="x"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center pb-0">
+                                        <span>Chef d'agence</span>
+                                        <a href="javascript:void(0)"><i width="15" data-feather="x"></i>
+                                        </a>
+                                    </li>
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="df-example">
-                            <div class="list-group">
-                                <li class="list-group-item d-flex align-items-center " v-for="(ac, index) in access"
-                                    :key="index">
-                                    <div class="wd-15 ht-15 rounded-circle bd bd-3 bd-primary mg-r-10"></div>
-                                    <div class="d-flex justify-content-between w-100 align-items-center">
-                                        <h6 class="tx-13 tx-inverse tx-semibold mg-b-0">{{ ac.label }}</h6>
-                                        <button class="btn btn-sm btn-white" @click.prevent="access.splice(index, 1)">
-                                            <i data-feather="trash"></i>
-                                        </button>
-                                    </div>
-                                </li>
-                            </div>
-                        </div> -->
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div class="df-example">
@@ -88,14 +65,28 @@
                                 </div>
                                 <div class="mt-2">
                                     <label>Choisir les menus accessibles : <span class="tx-danger">*</span></label> <br>
-                                    <div class="form-check-inline">
-                                        <div class="custom-control custom-checkbox" v-for="(menu, index) in menus"
-                                            :key="index">
-                                            <input type="checkbox" class="custom-control-input"
-                                                :id="`customCheck${menu.id}`">
-                                            <label class="custom-control-label p-lg-1" :for="`customCheck${menu.id}`">
-                                                {{ menu.text }}
-                                            </label>
+                                    <div class="accordion mt-2" id="menuAccordion">
+                                        <div v-for="(menu, index) in menus" :key="index" class="mb-1">
+                                            <h6>{{ menu.title }}</h6>
+                                            <div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" @change="triggerCheckAll($event, menu)"
+                                                        class="custom-control-input" :id="`customCheckAll${menu.id}`">
+                                                    <label class="custom-control-label p-lg-1"
+                                                        :for="`customCheckAll${menu.id}`">
+                                                        Cochez tous
+                                                    </label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox"
+                                                    v-for="(sub, i) in menu.submenus" :key="i">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        :id="`customCheck${sub.id}`" :checked="sub.checked">
+                                                    <label class="custom-control-label p-lg-1"
+                                                        :for="`customCheck${sub.id}`">
+                                                        {{ sub.text }}
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +129,10 @@ export default {
                 },
                 {
                     label: 'Administrateur'
-                }
+                },
+                {
+                    label: 'Chef d\'agence'
+                },
             ],
             menus: menus
         }
@@ -148,13 +142,38 @@ export default {
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
-        $('#accordion1').accordion({
+        $('#menuAccordion').accordion({
             heightStyle: 'content',
-            collapsible: true
+            header: "div h6",
+            active: false,
+            collapsible: true,
+        });
+
+        $('#accessListAccordion').accordion({
+            heightStyle: 'content',
+            header: 'div h6',
+            collapsible: true,
+            active: false
         });
     },
 
     methods: {
+        /*trigger check all access for a group  */
+        triggerCheckAll(event, menu) {
+            let isChecked = event.target.checked
+            if (isChecked) {
+                for (let sub of menu.submenus) {
+                    sub.checked = true;
+                }
+            }
+            else {
+                for (let sub of menu.submenus) {
+                    sub.checked = false;
+                }
+            }
+        },
+
+        /* Method allow to submit user fields(not empty) form datas */
         submitData(e) {
             this.submitLoading = true;
             setTimeout(() => {
@@ -172,67 +191,70 @@ var menus = [
     {
         id: "01",
         title: "Administration",
+        checkedAll: false,
         submenus: [
-            { id: '011', text: 'Configuration accès utilisateurs' },
+            { id: '011', text: 'Configuration accès utilisateurs', checked: false },
             { id: '012', text: 'Gestion agences' },
-            { id: '013', text: 'Gestion employés' },
-            { id: '014', text: 'Configuration barèmes' },
-            { id: '015', text: 'Configuration fonctions' },
-            { id: '016', text: 'Configuration heures de pointage' },
-            { id: '017', text: 'Configuration heures supplémentaires' },
-            { id: '018', text: 'Configuration primes' },
-            { id: '019', text: 'Configuration services' },
-            { id: '0120', text: 'Création utilisateurs' },
-            { id: '0121', text: 'Voir rapport visiteurs' },
-            { id: '0122', text: 'Configuration planning des congés' },
-            { id: '0123', text: 'Enrollement employés' },
+            { id: '013', text: 'Gestion employés', checked: false },
+            { id: '014', text: 'Configuration barèmes', checked: false },
+            { id: '015', text: 'Configuration fonctions', checked: false },
+            { id: '016', text: 'Configuration heures de pointage', checked: false },
+            { id: '017', text: 'Configuration heures supplémentaires', checked: false },
+            { id: '018', text: 'Configuration primes', checked: false },
+            { id: '019', text: 'Configuration services', checked: false },
+            { id: '0120', text: 'Création utilisateurs', checked: false },
+            { id: '0121', text: 'Voir rapport visiteurs', checked: false },
+            { id: '0122', text: 'Configuration planning des congés', checked: false },
+            { id: '0123', text: 'Enrollement employés', checked: false },
         ]
     },
     {
         id: "02",
         title: "Agence",
+        checkedAll: false,
         submenus: [
-            { id: '021', text: 'Voir services' },
-            { id: '022', text: 'Gestion des employés' },
-            { id: '023', text: 'Voir rapport des présences' },
-            { id: '023', text: 'Enrollement des agents' },
-            { id: '023', text: 'Voir rapport des visiteurs' },
+            { id: '021', text: 'Voir services', checked: false },
+            { id: '022', text: 'Gestion des employés', checked: false },
+            { id: '023', text: 'Voir rapport des présences', checked: false },
+            { id: '023', text: 'Enrollement des agents', checked: false },
+            { id: '023', text: 'Voir rapport des visiteurs', checked: false },
 
         ]
     },
     {
         id: '03',
         title: "Affectation",
+        checkedAll: false,
         submenus: [
-            { id: '031', text: 'Affectation agents' },
-            { id: '032', text: 'Affectation primes' },
-            { id: '033', text: 'Affectation congés' },
-            { id: '034', text: 'Affectation avances sur salaire' },
+            { id: '031', text: 'Affectation agents', checked: false },
+            { id: '032', text: 'Affectation primes', checked: false },
+            { id: '033', text: 'Affectation congés', checked: false },
+            { id: '034', text: 'Affectation avances sur salaire', checked: false },
         ]
     },
-
     {
         id: "04",
         title: "Editions",
+        checkedAll: false,
         submenus: [
-            { id: '041', text: 'Edition Feuille de paie' },
-            { id: '042', text: 'Edition Bulletin de paie' },
-            { id: '043', text: 'Edition CNSS' },
-            { id: '014', text: 'Edition IPR' },
-            { id: '045', text: 'Edition INPP & ONEM' },
-            { id: '046', text: 'Edition Intercalaire' },
-            { id: '047', text: 'Edition Net à payer' },
-            { id: '048', text: 'Edition Quinzaine' },
-            { id: '049', text: 'Edition Avance sur salaire' },
+            { id: '041', text: 'Edition Feuille de paie', checked: false },
+            { id: '042', text: 'Edition Bulletin de paie', checked: false },
+            { id: '043', text: 'Edition CNSS', checked: false },
+            { id: '014', text: 'Edition IPR', checked: false },
+            { id: '045', text: 'Edition INPP & ONEM', checked: false },
+            { id: '046', text: 'Edition Intercalaire', checked: false },
+            { id: '047', text: 'Edition Net à payer', checked: false },
+            { id: '048', text: 'Edition Quinzaine', checked: false },
+            { id: '049', text: 'Edition Avance sur salaire', checked: false },
         ]
     },
-
     {
         id: "05",
         title: "Décompte",
+        checkedAll: false,
         submenus: [
-            { id: '051', text: 'Calcul décompte' },
-            { id: '052', text: 'Bulletin décompte' },
+            { id: '051', text: 'Calcul décompte', checked: false },
+            { id: '052', text: 'Bulletin décompte', checked: false },
         ]
     }
 
