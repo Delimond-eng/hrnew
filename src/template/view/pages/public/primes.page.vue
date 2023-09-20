@@ -105,9 +105,9 @@ export default {
                 {
                     title: '',
                     defaultContent: `<div class="d-flex">
-                                            <button class="btn btn-white btn-sm mg-r-2"> <i
+                                            <button class="btn btn-white btn-icon rounded-circle tx-primary btn-sm mg-r-2"> <i
                                                     data-feather="edit"></i></button>
-                                            <button class="btn btn-white tx-danger btn-sm mg-r-2"> <i
+                                            <button class="btn btn-white btn-icon rounded-circle tx-danger btn-sm mg-r-2"> <i
                                                     data-feather="trash"></i></button>
                                         </div>`
                 },
@@ -134,4 +134,4 @@ export default {
         }
     }, */
 }
-</script>@/js/datatable.fr
+</script>

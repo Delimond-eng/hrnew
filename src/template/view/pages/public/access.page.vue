@@ -89,26 +89,13 @@
                                 <div class="mt-2">
                                     <label>Choisir les menus accessibles : <span class="tx-danger">*</span></label> <br>
                                     <div class="form-check-inline">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                            <label class="custom-control-label p-lg-1" for="customCheck1">
-                                                Agences </label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                            <label class="custom-control-label p-lg-1" for="customCheck1">Service
-                                                Services</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                            <label class="custom-control-label p-lg-1" for="customCheck1">
-                                                Configuration fonctions</label>
-                                        </div>
-
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                            <label class="custom-control-label p-lg-1" for="customCheck1">
-                                                ...</label>
+                                        <div class="custom-control custom-checkbox" v-for="(menu, index) in menus"
+                                            :key="index">
+                                            <input type="checkbox" class="custom-control-input"
+                                                :id="`customCheck${menu.id}`">
+                                            <label class="custom-control-label p-lg-1" :for="`customCheck${menu.id}`">
+                                                {{ menu.text }}
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -131,6 +118,9 @@
 </template>
 
 <script>
+
+
+
 export default {
     name: 'AccessPage',
 
@@ -149,7 +139,8 @@ export default {
                 {
                     label: 'Administrateur'
                 }
-            ]
+            ],
+            menus: menus
         }
     },
 
@@ -176,4 +167,74 @@ export default {
         }
     },
 }
+
+var menus = [
+    {
+        id: "01",
+        title: "Administration",
+        submenus: [
+            { id: '011', text: 'Configuration accès utilisateurs' },
+            { id: '012', text: 'Gestion agences' },
+            { id: '013', text: 'Gestion employés' },
+            { id: '014', text: 'Configuration barèmes' },
+            { id: '015', text: 'Configuration fonctions' },
+            { id: '016', text: 'Configuration heures de pointage' },
+            { id: '017', text: 'Configuration heures supplémentaires' },
+            { id: '018', text: 'Configuration primes' },
+            { id: '019', text: 'Configuration services' },
+            { id: '0120', text: 'Création utilisateurs' },
+            { id: '0121', text: 'Voir rapport visiteurs' },
+            { id: '0122', text: 'Configuration planning des congés' },
+            { id: '0123', text: 'Enrollement employés' },
+        ]
+    },
+    {
+        id: "02",
+        title: "Agence",
+        submenus: [
+            { id: '021', text: 'Voir services' },
+            { id: '022', text: 'Gestion des employés' },
+            { id: '023', text: 'Voir rapport des présences' },
+            { id: '023', text: 'Enrollement des agents' },
+            { id: '023', text: 'Voir rapport des visiteurs' },
+
+        ]
+    },
+    {
+        id: '03',
+        title: "Affectation",
+        submenus: [
+            { id: '031', text: 'Affectation agents' },
+            { id: '032', text: 'Affectation primes' },
+            { id: '033', text: 'Affectation congés' },
+            { id: '034', text: 'Affectation avances sur salaire' },
+        ]
+    },
+
+    {
+        id: "04",
+        title: "Editions",
+        submenus: [
+            { id: '041', text: 'Edition Feuille de paie' },
+            { id: '042', text: 'Edition Bulletin de paie' },
+            { id: '043', text: 'Edition CNSS' },
+            { id: '014', text: 'Edition IPR' },
+            { id: '045', text: 'Edition INPP & ONEM' },
+            { id: '046', text: 'Edition Intercalaire' },
+            { id: '047', text: 'Edition Net à payer' },
+            { id: '048', text: 'Edition Quinzaine' },
+            { id: '049', text: 'Edition Avance sur salaire' },
+        ]
+    },
+
+    {
+        id: "05",
+        title: "Décompte",
+        submenus: [
+            { id: '051', text: 'Calcul décompte' },
+            { id: '052', text: 'Bulletin décompte' },
+        ]
+    }
+
+]
 </script>
