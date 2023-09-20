@@ -2,7 +2,7 @@
     <teleport to='body'>
         <form @submit.prevent="submitAgence" class="modal fade scrollbar-lg" id="modalAgence" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel6" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog" role="document" id="modalAgenceBody">
                 <div class="modal-content tx-14">
                     <div class="modal-header">
                         <h4 class="modal-title" id="exampleModalLabel6">Nouvelle agence</h4>
@@ -71,6 +71,7 @@ export default {
         }
     },
     mounted() {
+        $("#modalAgenceBody").draggable();
         $(document).ready(() => {
             $('.agenceSelect2').select2({
                 dropdownParent: $('#modalAgence'),

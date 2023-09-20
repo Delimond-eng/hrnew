@@ -2,7 +2,7 @@
     <teleport to='body'>
         <form @submit.prevent="submitBareme" class="modal fade scrollbar-lg" id="modalBareme" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel6" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-dialog modal-xl" role="document" id="modalBaremeBody">
                 <div class="modal-content tx-14">
                     <div class="modal-header">
                         <h4 class="modal-title" id="exampleModalLabel6">Nouveau barème</h4>
@@ -102,6 +102,9 @@ export default {
         return {
             isSubmitLoading: false
         }
+    },
+    mounted() {
+        $("#modalBaremeBody").draggable();
     },
 
 

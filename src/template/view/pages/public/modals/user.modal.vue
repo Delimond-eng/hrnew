@@ -1,7 +1,7 @@
 <template>
     <teleport to='body'>
         <div class="modal fade scrollbar-lg" id="modalUser" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-dialog modal-xl" role="document" id="modalUserBody">
                 <div class="modal-content">
                     <div class="modal-header pd-y-20 pd-x-20 pd-sm-x-30">
                         <a href="#" role="button" class="close pos-absolute t-15 r-15" data-bs-dismiss="modal"
@@ -117,6 +117,10 @@ export default {
                 }
             ]
         }
+    },
+
+    mounted() {
+        $("#modalUserBoy").draggable();
     },
 }
 </script>
