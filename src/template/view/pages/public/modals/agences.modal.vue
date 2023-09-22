@@ -33,18 +33,22 @@
 
                             <div class="col-md-12">
                                 <div class="mt-2">
-                                    <label>Sélectionnez les dispositifs pour cette agence : <span
-                                            class="tx-danger">*</span></label> <br>
-                                    <div class="row overflow-auto flex-nowrap mt-lg-2 mb-lg-2">
-                                        <div class="col-5" v-for="i in 86" :key="i">
-                                            <div
-                                                class="custom-control custom-checkbox df-example py-1 px-2 mb-2 d-flex align-items-center justify-content-center">
-                                                <input type="checkbox" class="custom-control-input" :id="`customCheck${i}`">
-                                                <label class="custom-control-label p-lg-1" :for="`customCheck${i}`">
-                                                    Dispositif{{ i + 1 }} </label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <label
+                                        class="tx-sans tx-10 tx-semibold tx-uppercase tx-color-01 tx-spacing-1 mg-b-15">Sélectionnez
+                                        les dispositifs pour cette agence !</label>
+                                    <ul class="list-inline list-inline-skills" style="max-height: 100px; overflow-y: auto;">
+                                        <li class="list-inline-item" v-for="i in 76" :key="i">
+                                            <a href="javascript:void(0)">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        :id="`customCheck0${i}`">
+                                                    <label class="custom-control-label p-lg-1" :for="`customCheck0${i}`">
+                                                        Device 0{{ i }}
+                                                    </label>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -61,6 +65,7 @@
     </teleport>
 </template>
 
+<style scoped src="@/assets/css/dashforge.profile.css"></style>
 <script>
 export default {
     name: 'AgenceCreateModal',

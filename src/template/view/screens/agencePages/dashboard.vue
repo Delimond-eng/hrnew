@@ -13,7 +13,7 @@
             <div class="row row-xs">
                 <!-- col -->
                 <div class="col-sm-6 col-lg-4 col-xl-3 mg-t-10">
-                    <div class="media media-folder">
+                    <div class="media media-folder bg-primary-light">
                         <i data-feather="users"></i>
                         <div class="media-body">
                             <h6><a href="#" class="link-02">Utilisateurs</a></h6>
@@ -34,7 +34,7 @@
 
                 <!-- col -->
                 <div class="col-sm-6 col-lg-4 col-xl-3 mg-t-10">
-                    <div class="media media-folder">
+                    <div class="media media-folder bg-primary-light">
                         <i data-feather="users"></i>
                         <div class="media-body">
                             <h6><a href="#" class="link-02">Employés</a></h6>
@@ -55,7 +55,7 @@
 
                 <!-- col -->
                 <div class="col-sm-6 col-lg-4 col-xl-3 mg-t-10">
-                    <div class="media media-folder">
+                    <div class="media media-folder bg-primary-light">
                         <i data-feather="clock"></i>
                         <div class="media-body">
                             <h6><a href="#" class="link-02">Présences</a></h6>
@@ -75,7 +75,7 @@
 
                 <!-- col -->
                 <div class="col-sm-6 col-lg-4 col-xl-3 mg-t-10">
-                    <div class="media media-folder">
+                    <div class="media media-folder bg-primary-light">
                         <i data-feather="user-check"></i>
                         <div class="media-body">
                             <h6><a href="#" class="link-02">Visiteurs</a></h6>

@@ -32,22 +32,41 @@
                                         href="javascript:void(0)"><i width="15" data-feather="trash"></i>
                                     </a>
                                 </h6>
-                                <div class="df-example pt-1 pb-3">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center pb-0">
-                                        <span>Administrateur</span>
-                                        <a href="javascript:void(0)"><i width="15" data-feather="x"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center pb-0">
-                                        <span>Super Administrateur</span>
-                                        <a href="javascript:void(0)"><i width="15" data-feather="x"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center pb-0">
-                                        <span>Chef d'agence</span>
-                                        <a href="javascript:void(0)"><i width="15" data-feather="x"></i>
-                                        </a>
-                                    </li>
+                                <div class="df-example p-3">
+                                    <ul class="list-inline list-inline-skills">
+                                        <li class="list-inline-item">
+                                            <a href="javascript:void(0)"
+                                                class="d-flex justify-content-between align-items-center">
+                                                <span class="mg-r-10">Configuration utilisateurs</span>
+                                                <i width="12" data-feather="x"></i>
+                                            </a>
+                                        </li>
+
+                                        <li class="list-inline-item">
+                                            <a href="javascript:void(0)"
+                                                class="d-flex justify-content-between align-items-center">
+                                                <span class="mg-r-10">Gestion agents</span>
+                                                <i width="12" data-feather="x"></i>
+                                            </a>
+
+                                        </li>
+                                        <li class="list-inline-item">
+
+                                            <a href="javascript:void(0)"
+                                                class="d-flex justify-content-between align-items-center">
+                                                <span class="mg-r-10">Gestion agence</span>
+                                                <i width="12" data-feather="x"></i>
+                                            </a>
+                                        </li>
+
+                                        <li class="list-inline-item">
+                                            <a href="javascript:void(0)"
+                                                class="d-flex justify-content-between align-items-center">
+                                                <span class="mg-r-10">Configuration heures de pointage</span>
+                                                <i width="12" data-feather="x"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -72,9 +91,9 @@
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" @change="triggerCheckAll($event, menu)"
                                                         class="custom-control-input" :id="`customCheckAll${menu.id}`">
-                                                    <label class="custom-control-label p-lg-1"
+                                                    <label class="custom-control-label fw-bold p-lg-1"
                                                         :for="`customCheckAll${menu.id}`">
-                                                        Cochez tous
+                                                        Cochez tout
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox"
@@ -108,10 +127,9 @@
     </div>
 </template>
 
+
+<style scoped src="@/assets/css/dashforge.profile.css"></style>
 <script>
-
-
-
 export default {
     name: 'AccessPage',
 

@@ -63,32 +63,38 @@
                         </div><!-- col -->
                     </div>
 
-                    <div class="row">
-                        <div class="custom-control custom-checkbox col-md-3">
-                            <input type="checkbox" @change.prevent="selectAll" class="custom-control-input"
-                                id="customCheck1">
-                            <label class="custom-control-label p-lg-1" for="customCheck1">Sélectionnez tous</label>
-                        </div>
-                        <div class="custom-control custom-checkbox col-md-3">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2">
-                            <label class="custom-control-label p-lg-1" for="customCheck2">Service Informatique</label>
-                        </div>
-                        <div class="custom-control custom-checkbox col-md-3">
-                            <input type="checkbox" class="custom-control-input" id="customCheck3">
-                            <label class="custom-control-label p-lg-1" for="customCheck3">Service Technique</label>
-                        </div>
-                        <div class="custom-control custom-checkbox col-md-3">
-                            <input type="checkbox" class="custom-control-input" id="customCheck4">
-                            <label class="custom-control-label p-lg-1" for="customCheck4">Service Caisse</label>
-                        </div>
 
-                        <div class="custom-control custom-checkbox col-md-5">
-                            <input type="checkbox" class="custom-control-input" id="customCheck5">
-                            <label class="custom-control-label p-lg-1" for="customCheck5">Service Comptabilité</label>
-                        </div>
+                    <div class="mt-2">
+                        <label class="form-label">Sélectionnez les services(depts.) concerné <span
+                                class="tx-danger">*</span></label>
+                        <ul class="list-inline list-inline-skills">
+                            <li class="list-inline-item">
+                                <a href="javascript:void(0)">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" @change="selectAll($event)" class="custom-control-input"
+                                            id="customCheckAll">
+                                        <label class="custom-control-label fw-bold p-lg-1" for="customCheckAll">
+                                            Cochez tout
+                                        </label>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-inline-item" v-for="(dept, index ) in services" :key="index">
+                                <a href="javascript:void(0)">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" :checked="dept.checked"
+                                            :id="`customCheck0${index}`">
+                                        <label class="custom-control-label p-lg-1" :for="`customCheck0${index}`">
+                                            {{ dept.label }}
+                                        </label>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
 
                     <div class="d-flex justify-content-end">
+                        <button class="btn btn-white btn-lg mg-r-10">Annuler</button>
                         <bs-button btn-type="submit" :loading="submitLoading" class-name="btn-success btn-block btn-lg"> <i
                                 data-feather="check"></i>
                             Valider configuration</bs-button>
@@ -99,7 +105,7 @@
         </div>
     </div>
 </template>
-
+<style scoped src="@/assets/css/dashforge.profile.css"></style>
 <script>
 import datatableFr from '@/assets/js/datatable.fr';
 export default {
@@ -108,11 +114,24 @@ export default {
         return {
             submitLoading: false,
             dataProcessing: false,
-            primes: [
-                ['Heure supp100', '100'],
-                ['Heure supp160', '160'],
-                ['Heure supp160', '300'],
-            ],
+            services: [
+                {
+                    label: "Service informatique",
+                    checked: false
+                },
+                {
+                    label: "Service comptabilité",
+                    checked: false
+                },
+                {
+                    label: "Service commerciale",
+                    checked: false
+                },
+                {
+                    label: "Service consulting",
+                    checked: false
+                },
+            ]
         }
     },
 
@@ -131,9 +150,17 @@ export default {
         submitPrime(e) {
             this.submitLoading = true;
         },
-        selectAll(e) {
-            for (let i = 1; i < 6; i++) {
-                $(`#customCheck${i}`).prop('checked', true);
+        selectAll(event) {
+            let isChecked = event.target.checked
+            if (isChecked) {
+                for (let s of this.services) {
+                    s.checked = true;
+                }
+            }
+            else {
+                for (let s of this.services) {
+                    s.checked = false;
+                }
             }
         }
     },
@@ -144,4 +171,4 @@ export default {
         }
     }, */
 }
-</script>@/js/datatable.fr
+</script>
