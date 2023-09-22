@@ -55,6 +55,7 @@
                         <span>Administration</span>
                     </a>
                     <ul>
+                        <li><router-link :to="{ name: 'admin.dashboard' }">Tableau de bord</router-link></li>
                         <li><router-link :to="{ name: 'admin.agences' }">Agences</router-link></li>
                         <li><router-link :to="{ name: 'admin.services' }">Services</router-link></li>
                         <li><router-link :to="{ name: 'admin.postes' }">Configuration fonctions</router-link></li>

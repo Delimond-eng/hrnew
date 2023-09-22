@@ -216,8 +216,8 @@ var menus = [
             { id: '021', text: 'Voir services', checked: false },
             { id: '022', text: 'Gestion des employés', checked: false },
             { id: '023', text: 'Voir rapport des présences', checked: false },
-            { id: '023', text: 'Enrollement des agents', checked: false },
-            { id: '023', text: 'Voir rapport des visiteurs', checked: false },
+            { id: '024', text: 'Enrollement des agents', checked: false },
+            { id: '025', text: 'Voir rapport des visiteurs', checked: false },
 
         ]
     },

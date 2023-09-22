@@ -106,7 +106,7 @@
                                 </p>
                                 <div class="d-flex align-items-center">
                                     <div class="wd-10 ht-10 rounded-circle bg-success mg-r-5"></div>
-                                    <h6 class="tx-normal tx-rubik mg-b-0">25 |<small class="tx-color-04">60%</small></h6>
+                                    <h6 class="tx-normal tx-rubik mg-b-0">25 <small class="tx-color-04">| 60%</small></h6>
                                 </div>
                             </div>
                             <!-- col -->
@@ -114,7 +114,7 @@
                                 <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Absences</p>
                                 <div class="d-flex align-items-center">
                                     <div class="wd-10 ht-10 rounded-circle bg-danger mg-r-5"></div>
-                                    <h6 class="tx-normal tx-rubik mg-b-0">08 |<small class="tx-color-04">20%</small></h6>
+                                    <h6 class="tx-normal tx-rubik mg-b-0">08 <small class="tx-color-04">| 20%</small></h6>
                                 </div>
                             </div>
                             <!-- col -->
@@ -122,7 +122,7 @@
                                 <p class="tx-10 tx-uppercase tx-medium tx-color-03 tx-spacing-1 mg-b-5">Retards</p>
                                 <div class="d-flex align-items-center">
                                     <div class="wd-10 ht-10 rounded-circle bg-orange mg-r-5"></div>
-                                    <h6 class="tx-normal tx-rubik mg-b-0">08 |<small class="tx-color-04">20%</small></h6>
+                                    <h6 class="tx-normal tx-rubik mg-b-0">08 <small class="tx-color-04">| 20%</small></h6>
                                 </div>
                             </div><!-- col -->
                             <div class="col-6 mg-t-20">
@@ -130,7 +130,7 @@
                                 </p>
                                 <div class="d-flex align-items-center">
                                     <div class="wd-10 ht-10 rounded-circle bg-info mg-r-5"></div>
-                                    <h6 class="tx-normal tx-rubik mg-b-0">04 |<small class="tx-color-04">10%</small></h6>
+                                    <h6 class="tx-normal tx-rubik mg-b-0">04 <small class="tx-color-04">| 10%</small></h6>
                                 </div>
                             </div>
                             <!-- col -->
@@ -141,21 +141,39 @@
         </div>
     </div>
     <!-- filemgr-content-body -->
+    <agence-presences-details-modal :title="title" />
 </template>
 
 <script>
+import AgencePresencesDetailsModal from '../../pages/public/modals/agence_stats_presences.modal'
 export default {
     name: 'Dashboard',
+    data() {
+        return {
+            title: ''
+        }
+    },
 
-
+    components: {
+        AgencePresencesDetailsModal,
+    },
     mounted() {
+        $('#modalPresencesDetails').on('show.bs.modal', function (event) {
+            $(this).addClass("effect-scale");
+        });
+
+        // hide modal with effect
+        $('#modalPresencesDetails').on('hidden.bs.modal', function (e) {
+            $(this).removeClass(function (index, className) {
+                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
+            });
+        });
         this.init();
     },
 
 
     methods: {
         init() {
-
             /** PIE CHART **/
             var datapie = {
                 labels: ['Présences', 'Absences', 'Retards', 'Departs anticipés'],
@@ -174,6 +192,31 @@ export default {
                 animation: {
                     animateScale: true,
                     animateRotate: true
+                },
+
+                onClick: (evt, item) => {
+                    myDonutChart.update();
+                    if (item[0] !== undefined) {
+                        let index = item[0]._index;
+                        switch (index) {
+                            case 0:
+                                this.title = "Présences"
+                                break;
+                            case 1:
+                                this.title = "Absences"
+
+                                break;
+                            case 2:
+                                this.title = "Retards"
+
+                                break;
+                            case 3:
+                                this.title = "Departs anticipés"
+                                break;
+                        }
+                        this.$showBsModal('modalPresencesDetails');
+                    }
+
                 }
             };
             // For a pie chart

@@ -15,10 +15,11 @@
                                 <h4 class="tx-18 tx-sm-20 mg-b-2">Création Compte utilisateur</h4>
                                 <p class="tx-13 tx-color-03 mg-b-0">Veuillez renseigner tous les champs obligatoires ! </p>
                             </div>
-                        </div><!-- media -->
-                    </div><!-- modal-header -->
+                        </div>
+                        <!-- media -->
+                    </div>
+                    <!-- modal-header -->
                     <div class="modal-body pd-sm-t-30 pd-sm-b-40 pd-sm-x-30">
-
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">

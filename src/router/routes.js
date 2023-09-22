@@ -7,6 +7,7 @@ import Main from "@/template/view/main";
 
 /*public pages*/
 import AgencesPage from "@/template/view/pages/public/agences.page";
+import DashboardPage from "@/template/view/pages/public/dashboard.page";
 import ServicesPage from "@/template/view/pages/public/services.page";
 import EmployeesPage from "@/template/view/pages/public/employes.page";
 import BaremesPage from "@/template/view/pages/public/baremes.page";
@@ -64,12 +65,18 @@ const routes = [
     path: "/secure",
     component: Main,
     name: "secure",
-    redirect: { name: "admin.agences" },
+    redirect: { name: "admin.dashboard" },
 
     /*Les pages(routes) securisés*/
 
     children: [
       /*Admin routes*/
+      {
+        path: "/secure/dashboard",
+        component: DashboardPage,
+        name: "admin.dashboard",
+      },
+
       {
         path: "/secure/agences",
         component: AgencesPage,
