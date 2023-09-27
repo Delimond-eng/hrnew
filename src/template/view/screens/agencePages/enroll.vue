@@ -21,9 +21,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-label">Dispositif <span class="tx-danger">*</span></label>
-                                <select class="select2 form-select deviceSelect2">
-                                    <option>--Sélectionnez un dispositif--
+                                <label class="form-label">Dispositif <span class="tx-danger">*</span></label><br>
+                                <select class="select2 form-select deviceSelect3">
+                                    <option label="--Sélectionnez un dispositif--">
                                     </option>
                                 </select>
                             </div>
@@ -110,9 +110,10 @@
 export default {
     name: 'AgencePresences',
 
-
     mounted() {
-        let select2 = $('.deviceSelect2').select2({
+        $('.deviceSelect3').select2({
+            placeholder: '--Sélectionnez un dispositif--',
+            allowClear: true,
             data: [
                 {
                     id: 1,

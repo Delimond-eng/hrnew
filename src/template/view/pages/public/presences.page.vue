@@ -20,7 +20,7 @@
                                 <li class="breadcrumb-item active" aria-current="page">Présences</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Liste des présences</h4>
+
                     </div>
 
 

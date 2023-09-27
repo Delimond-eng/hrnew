@@ -17,10 +17,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                                 <li class="breadcrumb-item">Administration</li>
-                                <li class="breadcrumb-item active" aria-current="page">Employés</li>
+                                <li class="breadcrumb-item active" aria-current="page">Rapport des visiteurs</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Employés</h4>
+
                     </div>
                     <div class="d-none d-md-block">
                         <a href="#modalVisiteurs" class="btn btn-lg btn-primary" data-bs-toggle="modal"

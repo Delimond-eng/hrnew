@@ -24,7 +24,7 @@
                                 </li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Affectations</h4>
+                        
                     </div>
                 </div>
 

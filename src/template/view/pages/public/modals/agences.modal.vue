@@ -54,7 +54,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-white btn-lg" data-bs-dismiss="modal">Fermer</button>
                         <bs-button btn-type="submit" :loading="isSubmitLoading" class-name="btn-success btn-lg"> <i
                                 data-feather="plus"></i>
                             Enregister</bs-button>

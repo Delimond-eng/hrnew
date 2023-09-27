@@ -17,10 +17,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                                 <li class="breadcrumb-item">Administration</li>
-                                <li class="breadcrumb-item active" aria-current="page">Accès utilisateurs</li>
+                                <li class="breadcrumb-item active" aria-current="page">Configuration accès utilisateurs</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Accès utilisateurs</h4>
+                        
                     </div>
                 </div>
 

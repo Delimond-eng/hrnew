@@ -20,7 +20,7 @@
                                 <li class="breadcrumb-item active" aria-current="page">Pointages</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Pointages</h4>
+
                     </div>
                 </div>
 

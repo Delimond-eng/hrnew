@@ -20,7 +20,7 @@
                                 <li class="breadcrumb-item active" aria-current="page">Configuration Fonctions agent</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Fonctions agents</h4>
+
                     </div>
 
                 </div>

@@ -20,7 +20,7 @@
                                 <li class="breadcrumb-item active" aria-current="page">Configuration heures sup</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Configuration heures suplémentaires</h4>
+
                     </div>
                     <div class="d-none d-md-block">
                     </div>

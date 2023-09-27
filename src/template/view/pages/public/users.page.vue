@@ -20,7 +20,7 @@
                                 <li class="breadcrumb-item active" aria-current="page">Compte utilisateurs</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Compte utilisateurs</h4>
+
                     </div>
                     <div class="d-none d-md-block">
                         <a href="#modalUser" class="btn btn-lg btn-primary" data-animation="effect-scale"

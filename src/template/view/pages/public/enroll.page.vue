@@ -20,7 +20,7 @@
                                 <li class="breadcrumb-item active" aria-current="page">Enrollement agents</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Enrollement agent</h4>
+
                     </div>
                 </div>
 
@@ -36,7 +36,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label">Dispositif <span class="tx-danger">*</span></label>
-                                    <select class="select2 form-select deviceSelect">
+                                    <select class="select2 form-select deviceSelect2">
+                                        <option label="--Sélectionnez dispositif--"></option>
                                     </select>
                                 </div>
                             </div>
@@ -151,7 +152,9 @@ export default {
             new PerfectScrollbar(".content-body", {
                 suppressScrollX: true,
             });
-            let select = $('.deviceSelect').select2({
+            $('.deviceSelect2').select2({
+                placeholder: '--Sélectionnez dispositif--',
+                allowClear: true,
                 data: [
                     {
                         id: 1,

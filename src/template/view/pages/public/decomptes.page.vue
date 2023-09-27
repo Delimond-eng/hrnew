@@ -21,7 +21,7 @@
                                     $route.params.tab.includes('bulletin') ? 'Bulletin decompte' : 'Calcul decompte' }}</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">Décompte</h4>
+                        
                     </div>
                 </div>
 

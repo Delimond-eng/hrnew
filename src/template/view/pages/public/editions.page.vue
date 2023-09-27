@@ -24,12 +24,11 @@
                                 <li class="breadcrumb-item active" aria-current="page">{{ $route.query.q }}</li>
                             </ol>
                         </nav>
-                        <h4 class="mg-b-0 tx-spacing--1">{{ $route.query.q }}</h4>
                     </div>
                     <div class="d-none d-md-block">
                     </div>
                 </div>
-                <div :data-label="`Edition ${$route.query.q}`" class="df-example mt-3">
+                <div class="df-example mt-3">
                     <h6> {{ $route.query.q.includes('Intercalaire') ? 'Exercice annuel' : 'Période' }} </h6>
                     <div class="row">
                         <div class="col-md-8">
