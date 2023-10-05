@@ -20,7 +20,7 @@
                                 <li class="breadcrumb-item active" aria-current="page">Tableau de bord</li>
                             </ol>
                         </nav>
-                        
+
                     </div>
                     <div class="d-none d-md-block">
                     </div>
@@ -71,7 +71,7 @@
                                         name="chevron-down-outline"></ion-icon></a>
                             </div><!-- card-header -->
                             <div class="card-body pd-y-15 pd-x-10">
-                                <div class="table-responsive" style="overflow-x: hidden;">
+                                <!-- <div class="table-responsive" style="overflow-x: hidden;">
                                     <table class="table table-borderless table-sm tx-13 tx-nowrap mg-b-0 overflow-hidden">
                                         <thead>
                                             <tr class="tx-10 tx-spacing-1 tx-color-03 tx-uppercase">
@@ -133,9 +133,46 @@
 
                                         </tbody>
                                     </table>
-                                </div><!-- table-responsive -->
+                                </div> -->
+                                <div class="row row-xs">
+                                    <div class="col-sm-6 col-lg-4 col-xl-4 mb-2" v-for="i in 20" :key="i">
+                                        <div class="media media-folder">
+                                            <img src="assets/img/device_image.png" style="height: 50px; object-fit: cover"
+                                                alt="device">
+                                            <div class="media-body">
+                                                <h6><a href="#" class="link-02">ICLOCK 680</a></h6>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <span>192.168.4.{{ i }}</span>
+                                                    <div style="height: 8px; width: 8px;"
+                                                        class="bg-success rounded-circle pos-relative"></div>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- media-body -->
+                                            <div class="dropdown-file">
+                                                <a href="#" class="dropdown-link" data-bs-toggle="dropdown"><i
+                                                        data-feather="more-vertical"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <a href="javascript:void(0)"
+                                                        @click.prevent="$showBsModal('modalDeviceLink', 'effect-scale')"
+                                                        class="dropdown-item details"><i data-feather="link"></i>Lier à une
+                                                        agence</a>
+                                                    <a href="#" class="dropdown-item important"><i
+                                                            data-feather="info"></i>Voir infos</a>
+
+
+                                                </div>
+                                            </div>
+                                            <!-- dropdown -->
+                                        </div>
+                                        <!-- media -->
+                                    </div>
+                                </div>
+                                <!-- table-responsive -->
                             </div><!-- card-body -->
                         </div><!-- card -->
+
                     </div>
                 </div>
             </div>
@@ -143,15 +180,18 @@
         </div>
     </div>
     <devices-details-modal :title="selectedTitle" :datas="selectedDatas" />
+    <device-link-modal />
 </template>
 
 <script>
-import DevicesDetailsModal from './modals/devices_stats_detail.modal'
+import DevicesDetailsModal from './modals/devices_stats_detail.modal';
+import DeviceLinkModal from './modals/device_link_modal.vue';
 export default {
     name: 'ServicesPage',
 
     components: {
         DevicesDetailsModal,
+        DeviceLinkModal
     },
     data() {
         return {
@@ -238,3 +278,4 @@ export default {
     }
 }
 </script>
+<style scoped src="@/assets/css/dashforge.filemgr.css"></style>
