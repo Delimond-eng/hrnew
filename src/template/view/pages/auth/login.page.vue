@@ -32,14 +32,14 @@
                                 <label class="mg-b-0-f"></label>
                                 <a href="#/reset" class="tx-13">Mot de passe oublié ?</a>
                             </div>
-                            <bs-button class="btn-primary btn-brand-02 w-100" btn-type="submit"
+                            <bs-button class="btn-primary btn-brand-02 w-100 tx-uppercase" btn-type="submit"
                                 :loading="loginLoading">Connecter</bs-button>
-                            <div class="divider-text"></div>
+                            <!--<div class="divider-text"></div>
                             <div class="d-grid gap-2">
                                 <button class="btn btn-success btn-block"
                                     @click.prevent="$router.push({ name: 'register' })">Créer
                                     société</button>
-                            </div>
+                            </div>-->
                         </form>
                     </div>
 

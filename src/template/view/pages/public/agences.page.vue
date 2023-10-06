@@ -27,35 +27,9 @@
                             <option label="Filtez agence par province"></option>
                         </select>
 
-                      <button class="btn btn-primary m-lg-2"  @click="$showBsModal('modalAgence', 'effect-scale')"> Nouvelle agence</button>
+                      <button class="btn btn-primary m-lg-2"  @click="$showBsModal('modalAgence', 'effect-scale')"> <i data-feather="plus"></i> Nouvelle agence</button>
                     </div>
                 </div>
-
-                <!-- <div class="df-example">
-                    <table id="agencesTable" class="table">
-                        <thead>
-                            <tr>
-                                <th class="wd-25p">Libellé agence</th>
-                                <th class="wd-25p">Province</th>
-                                <th class="wd-25p">Adresse</th>
-                                <th class="wd-20p">Nombre agents</th>
-                                <th class="wd-10p"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="i in 30" :key="i">
-                                <td>Lorem ipsum</td>
-                                <td>Kinshasa</td>
-                                <td>03 Bismark Gombe kinshasa</td>
-                                <td>400</td>
-                                <td class="d-flex">
-                                    <button class="btn btn-white btn-sm mg-r-3"><i data-feather="trash"></i></button>
-                                    <button class="btn btn-primary btn-sm"><i data-feather="chevron-right"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> -->
 
                 <div class="row row-sm">
                     <div class="col-md-3 mg-md-b-15" v-for="(agence, index) in agences" :key="index">

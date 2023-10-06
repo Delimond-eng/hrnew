@@ -1,7 +1,7 @@
 <template>
     <teleport to="body">
-        <div class="modal fade" id="modalDeviceLink" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered wd-sm-700" role="document">
+        <div class="modal fade" id="modalDevicesChoice" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered wd-sm-700" role="document" id="modalDevicesBody">
                 <div class="modal-content">
                     <div class="modal-header pd-y-20 pd-x-20 pd-sm-x-30">
                         <a href="#" role="button" class="close pos-absolute t-15 r-15" data-bs-dismiss="modal"
@@ -17,10 +17,10 @@
                             </div>
                         </div><!-- media -->
                     </div><!-- modal-header -->
-                    <div class="modal-body pd-sm-t-30 pd-sm-b-40 pd-sm-x-30">
+                    <div class="modal-body">
                       <div class="row row-xs">
-                        <div class="col-sm-6 col-lg-4 col-xl-4 mb-2" v-for="i in 20" :key="i">
-                          <div class="media media-folder">
+                        <label class="col-sm-6 col-lg-4 col-xl-4 mb-2 mx-0" style="cursor: pointer" :for="`customCheck${i}`" v-for="i in 10" :key="i">
+                          <div class="media media-folder m-0">
                             <img src="assets/img/device_image.png" style="height: 50px; object-fit: cover"
                                  alt="device">
                             <div class="media-body">
@@ -35,21 +35,12 @@
 
                             <!-- media-body -->
                             <div class="dropdown-file">
-                              <a href="#" class="dropdown-link" data-bs-toggle="dropdown"><i
-                                  data-feather="more-vertical"></i></a>
-                              <div class="dropdown-menu dropdown-menu-end">
-                                <a href="javascript:void(0)"
-                                   @click.prevent="$showBsModal('modalDeviceLink', 'effect-scale')"
-                                   class="dropdown-item details"><i data-feather="link"></i>Lier à une
-                                  agence</a>
-                                <a href="#" class="dropdown-item important"><i
-                                    data-feather="info"></i>Voir infos</a>
-                              </div>
+                              <input type="checkbox" class="custom-control-input" :id="`customCheck${i}`">
                             </div>
                             <!-- dropdown -->
                           </div>
                           <!-- media -->
-                        </div>
+                        </label>
                       </div>
                     </div><!-- modal-body -->
                     <div class="modal-footer pd-x-20 pd-y-15">
@@ -64,7 +55,9 @@
 
 <script>
 export default {
-
+  mounted() {
+    $("#modalDevicesBody").draggable();
+  },
 }
 </script>
 
