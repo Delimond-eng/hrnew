@@ -160,8 +160,6 @@
                                                         agence</a>
                                                     <a href="#" class="dropdown-item important"><i
                                                             data-feather="info"></i>Voir infos</a>
-
-
                                                 </div>
                                             </div>
                                             <!-- dropdown -->

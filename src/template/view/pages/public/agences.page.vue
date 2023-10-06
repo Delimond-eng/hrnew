@@ -26,9 +26,8 @@
                         <select class="select2i form-control-lg select2">
                             <option label="Filtez agence par province"></option>
                         </select>
-                        <a href="#modalAgence" class="btn btn-primary m-lg-2" data-bs-toggle="modal"
-                            data-animation="effect-slide-in-right"><i data-feather="plus" class="wd-10"></i>Ajout
-                            agence</a>
+
+                      <button class="btn btn-primary m-lg-2"  @click="$showBsModal('modalAgence', 'effect-scale')"> Nouvelle agence</button>
                     </div>
                 </div>
 
@@ -57,6 +56,7 @@
                         </tbody>
                     </table>
                 </div> -->
+
                 <div class="row row-sm">
                     <div class="col-md-3 mg-md-b-15" v-for="(agence, index) in agences" :key="index">
                         <a class="card card-event agenceCard shadow-none" href="javascript:void(0)"
@@ -163,14 +163,18 @@ export default {
 
         submitService(e) {
 
+        },
+
+        createAgency(){
+          this.$store.dispatch('agency/create', {name:"Gaston delimond"});
         }
     },
 
-    /* computed: {
-        services() {
-            return this.$store.getters.GET_SERVICES
+     computed: {
+        agencies() {
+            return this.$store.getters['agency/GET_AGENCIES']
         }
-    }, */
+    },
 }
 </script>
 
