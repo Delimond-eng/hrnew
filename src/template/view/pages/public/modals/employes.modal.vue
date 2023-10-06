@@ -2,7 +2,7 @@
     <teleport to='body'>
         <form class="modal fade scrollbar-lg" id="modalEmployes" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel6" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document" id="modalEmployesBody">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document" id="modalEmployesBody">
                 <div class="modal-content tx-14">
                     <div class="modal-header">
                         <h4 class="modal-title" id="exampleModalLabel6">Nouveau employé</h4>

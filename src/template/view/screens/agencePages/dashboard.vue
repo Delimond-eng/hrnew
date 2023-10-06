@@ -35,7 +35,7 @@
                 <!-- col -->
                 <div class="col-sm-6 col-lg-4 col-xl-3 mg-t-10">
                     <div class="media media-folder bg-primary-light">
-                        <i data-feather="users"></i>
+                        <i data-feather="briefcase"></i>
                         <div class="media-body">
                             <h6><a href="#" class="link-02">Employés</a></h6>
                             <span>12</span>
