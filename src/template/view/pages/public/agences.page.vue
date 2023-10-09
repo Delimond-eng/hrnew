@@ -27,7 +27,8 @@
                             <option label="Filtez agence par province"></option>
                         </select>
 
-                      <button class="btn btn-primary m-lg-2"  @click="$showBsModal('modalAgence', 'effect-scale')"> <i data-feather="plus"></i> Nouvelle agence</button>
+                        <button class="btn btn-primary m-lg-2" @click="$showBsModal('modalAgence', 'effect-scale')"> <i
+                                data-feather="plus"></i> Nouvelle agence</button>
                     </div>
                 </div>
 
@@ -128,9 +129,9 @@ export default {
             suppressScrollX: true,
         });
 
-        $('.select2i').change((event) => {
+        /* $('.select2i').change((event) => {
             console.log(event.target.value);
-        })
+        }) */
     },
 
     methods: {
@@ -138,15 +139,11 @@ export default {
         submitService(e) {
 
         },
-
-        createAgency(){
-          this.$store.dispatch('agency/create', {name:"Gaston delimond"});
-        }
     },
 
-     computed: {
+    computed: {
         agencies() {
-            return this.$store.getters['agency/GET_AGENCIES']
+            return this.$store.getters['agence/GET_AGENCES']
         }
     },
 }
