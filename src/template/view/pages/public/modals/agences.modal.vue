@@ -1,6 +1,6 @@
 <template>
     <teleport to='body'>
-        <form @submit.prevent="submitAgence" class="modal fade scrollbar-lg" id="modalAgence" tabindex="-1" role="dialog"
+        <form @submit.prevent="submitData" class="modal fade scrollbar-lg" id="modalAgence" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel6" aria-hidden="true">
             <div class="modal-dialog modal-lg shadow-lg" role="document" id="modalAgenceBody">
                 <div class="modal-content tx-14">
@@ -53,25 +53,7 @@
 
 
                             <div class="col-md-12">
-                                <!--<div class="mt-2">
-                                    <label
-                                        class="tx-sans tx-10 tx-semibold tx-uppercase tx-color-01 tx-spacing-1 mg-b-15">Sélectionnez
-                                        les dispositifs pour cette agence !</label>
-                                    <ul class="list-inline list-inline-skills" style="max-height: 100px; overflow-y: auto;">
-                                        <li class="list-inline-item" v-for="i in 76" :key="i">
-                                            <a href="javascript:void(0)">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                        :id="`customCheck0${i}`">
-                                                    <label class="custom-control-label p-lg-1" :for="`customCheck0${i}`">
-                                                        Device 0{{ i }}
-                                                    </label>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                              -->
+
                                 <div class="d-grid gap-2 mt-3">
                                     <button type="button" class="btn btn-lg btn-outline-danger"
                                         @click="$showBsModal('modalDevicesChoice', 'effect-scale')">
@@ -152,13 +134,13 @@ export default {
         });
     },
     methods: {
-        submitAgence(e) {
+        submitData(e) {
             this.formData.province = this.select2.val();
             this.isSubmitLoading = true;
-            this.$store.dispatch('agence/create', {}).then((res) => {
+            this.$store.dispatch('biotime/createAgence', this.formData).then((res) => {
+                console.log(JSON.stringify(res));
                 this.isSubmitLoading = false;
                 this.cleanField();
-                console.log(res);
             });
         },
 
@@ -169,6 +151,7 @@ export default {
             this.formData.libelle = '';
             this.formData.avenue = '';
             this.formData.numero = '';
+            $(".agenceSelect2").val('').trigger('change')
         }
     },
 }

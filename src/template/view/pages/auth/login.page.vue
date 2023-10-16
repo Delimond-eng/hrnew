@@ -15,11 +15,11 @@
                 </div><!-- media-body -->
                 <div class="sign-wrapper mg-lg-l-50 mg-xl-l-60">
                     <div class="df-example wd-100p">
-                        <form @submit.prevent="$router.replace({ name: 'secure' })">
+                        <form @submit.prevent="submitLogin">
                             <div class="form-group">
                                 <label>Identifiant</label>
-                                <input type="email" v-model="form.email" class="form-control"
-                                    placeholder="exemple@domain.com" required>
+                                <input type="text" v-model="form.username" class="form-control"
+                                    placeholder="ex.Geronimo" required>
                             </div>
                             <div class="form-group mb-1">
                                 <div class="d-flex justify-content-between mg-b-5">
@@ -56,7 +56,7 @@ export default {
         return {
             loginLoading: false,
             form: {
-                email: '',
+                username: '',
                 pwd: ''
             }
         }
@@ -67,42 +67,24 @@ export default {
 
     methods: {
         submitLogin(e) {
-            this.loginLoading = true;
-            var data = {
-                email: this.form.email.trim(),
-                pass: this.form.pwd
-            };
-            /*   ajax options */
-            var options = {
-                data: data,
-                type: "POST",
-                url: "http://dev.pavieholding.net",
-                success: (response) => {
-                    console.log(JSON.stringify(response));
-                    this.loginLoading = false;
-                    /*success user data*/
-                    if (response.login.status === 'success') {
-                        this.$router.replace({ name: 'secure' })
-                    }
-                    /*failed user data*/
-                    else {
-                        alert(response.login.message);
-                    }
-                },
-                /*request error callback*/
-                error: () => {
-                    this.loginLoading = false;
-                    alert('Echec lors du traitement des informations !');
-                }
-            };
+          let form = {
+            username: this.form.username,
+            password: this.form.pwd
+          };
+          this.loginLoading = true;
+          this.$store.dispatch('auth/loggedIn', form).then((res)=>{
+            console.log(JSON.stringify(res));
+            this.loginLoading = false;
+            if(res.response !== undefined){
+              if(res.response.status === 'failed'){
+                alert('nom d\'utilisateur ou mot de passe invalide !');
+              }
+              else{
+                this.$router.replace({ name: 'secure' });
+              }
+            }
 
-            /*ajax request*/
-            $.ajax(options);
-
-            /* setTimeout(() => {
-                this.loginLoading = false;
-                this.$router.replace({ name: 'secure-home' })
-            }, 3000) */
+          })
         }
     },
 }

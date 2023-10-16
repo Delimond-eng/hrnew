@@ -1,21 +1,20 @@
 import axios from "axios";
 
-var baseURL = "http://backend-payroll.milleniumhorizon.com/";
+const baseURL = "http://backend-payroll.milleniumhorizon.com/";
 
 /**
  * Create a new axios instance
  * */
 const instance = axios.create({
-    baseURL: baseURL,
+    baseURL: location.href.includes('.com')  ? baseURL : 'http://127.0.0.1/backend_payroll/',
 });
 
-// before a request is made start the nprogress
+
 instance.interceptors.request.use((config) => {
     //NProgress.start();
     return config;
 });
 
-// before a response is returned stop nprogress
 instance.interceptors.response.use((response) => {
     //NProgress.done();
     return response;
@@ -26,20 +25,27 @@ instance.interceptors.response.use((response) => {
  * si data est defini c'est la requete POST qui sera lancée,
  * Autrement c'est la requete GET qui sera lancer
  * @param {String} [url=null]
- * @param {Object} data
+ * @param {Object} form
  * @returns {data, status} data: http response if status equal 200 or 201
  */
 
-export async function post(url, formData, header = null) {
-    let { data } = await instance.post(url, formData, {
-        headers: header !== null ? header : {},
+export async function post(url, form) {
+    let token = localStorage.getItem('biotime-user-token');
+    let { data,status } = await instance.post(url, form, {
+        headers: {
+            'Authorization': token !== undefined ? `JWT ${token}` : null
+        }
     });
-    return data;
+    return {data, status};
 }
 
-export async function get(url, header = null) {
-    let { data } = await instance.get(url, {
-        headers: header !== null ? header : {},
+export async function get(url) {
+    let token = localStorage.getItem('biotime-user-token');
+    let { data, status } = await instance.get(url, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token !== undefined ? `JWT ${token}` : null
+        }
     });
-    return data;
+    return {data, status};
 }
