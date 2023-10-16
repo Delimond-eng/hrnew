@@ -100,6 +100,12 @@
 						<div data-label="Informations de travail" class="df-example mt-md-3 demo-forms">
 							<div class="row">
 								<div class="col-md-4 mt-md-2" v-show="!forAgency">
+									<label class="form-label">Province <span class="tx-danger">*</span></label> <br>
+									<select class="form-select" id="provinceSelect2" required style="width: 100%">
+										<option label="--Sélectionnez une province--"></option>
+									</select>
+								</div>
+								<div class="col-md-4 mt-md-2" v-show="!forAgency">
 									<label class="form-label">Agence <span class="tx-danger">*</span></label> <br>
 									<select class="form-select" id="agenceSelect2" required style="width: 100%">
 										<option label="--Sélectionnez une agence--"></option>
@@ -162,7 +168,7 @@
 								<div class="col-md-4">
 									<label class="form-label">Barème <span class="tx-danger">*</span></label><br>
 									<div class="w-100">
-										<select class="baremeSelect" style="width:100%">
+										<select class="baremeSelect form-select" style="width:100%">
 											<option label="--Sélectionnez barème--"></option>
 										</select>
 									</div>
@@ -183,6 +189,8 @@
 </template>
 
 <script>
+import { useStore } from 'vuex';
+import { onMounted } from "vue";
 export default {
 	name: 'EmployesCreateModal',
 
@@ -224,12 +232,7 @@ export default {
 
 	async mounted() {
 		$("#modalEmployesBody").draggable();
-
-		/**
-		 * inti select2
-		 * */
-		this.initSelects2();
-
+		await this.initSelects2();
 	},
 
 	methods: {
@@ -289,21 +292,42 @@ export default {
 		},
 
 		async initSelects2() {
+			let self = this;
+			const areas = await this.$store.dispatch('biotime/allAreas');
+			$('#provinceSelect2').select2({
+				dropdownParent: $('#modalEmployes'),
+				placeholder: '--Sélectionnez une province--',
+				data: $.map(areas, function (item) {
+					return {
+						text: item.area_name,
+						id: item.id
+					}
+				})
+			}).on('change', async function (e) {
+				//$(this).select2('data')
+				let id = $(this).val();
+				const agences = await self.$store.dispatch('erp/getAgences', id);
+				$('#agenceSelect2').select2();
+				$('#agenceSelect2').select2({
+					dropdownParent: $('#modalEmployes'),
+					placeholder: '--Sélectionnez une agence--',
+					data: $.map(agences, function (item) {
+						return {
+							text: item.libelle,
+							id: item.agence_id
+						}
+					})
+				});
+			});
 
 			/**
 			 * Load all organizations agencies
 			 * and build select2
 			 * */
-			const agences = await this.$store.dispatch('erp/gatAgences');
+
 			$('#agenceSelect2').select2({
 				dropdownParent: $('#modalEmployes'),
 				placeholder: '--Sélectionnez une agence--',
-				data: $.map(agences, function (item) {
-					return {
-						text: item.libelle,
-						id: item.agence_id
-					}
-				})
 			});
 			/**
 			 * End Agence Select
@@ -314,7 +338,6 @@ export default {
 			 * and build select2
 			 * */
 			const fonctions = await this.$store.dispatch('biotime/allPositions');
-
 			$('#fonctionSelect2').select2({
 				dropdownParent: $('#modalEmployes'),
 				placeholder: '--Sélectionnez une fonction--',

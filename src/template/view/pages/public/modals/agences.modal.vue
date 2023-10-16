@@ -22,7 +22,7 @@
 
                             <div class="col-md-6">
                                 <label class="form-label">Province <span class="tx-danger">*</span></label><br>
-                                <select class="form-select agenceSelect2" red style="width: 100%;">
+                                <select class="form-select areasSelect2" red style="width: 100%;">
                                     <option label="--Sélectionnez province--"></option>
                                 </select>
                             </div>
@@ -99,43 +99,20 @@ export default {
                 commune: '',
                 quartier: '',
                 avenue: '',
-                numero: ''
+                numero: '',
+                code_zone: 0,
             }
         }
     },
     beforeUnmount() {
         this.select2.select2('destroy');
     },
-    mounted() {
+    async mounted() {
         $("#modalAgenceBody").draggable();
-        this.select2 = $('.agenceSelect2').select2({
-            dropdownParent: $('#modalAgence'),
-            placeholder: '--Sélectionnez province--',
-            data: [
-                {
-                    id: 'Kasaï Central', text: 'Kasaï Central'
-                },
-                {
-                    id: 'Kasaï oriental', text: 'Kasaï oriental'
-                },
-                {
-                    id: 'Bas Kongo', text: 'Bas Kongo'
-                },
-                {
-                    id: 'Bas Uele', text: 'Bas Uele'
-                },
-                {
-                    id: 'Ituri', text: 'Ituri'
-                },
-                {
-                    id: 'Sud Ubangi', text: 'Sud Ubangi'
-                },
-            ]
-        });
+        await this.initSelect2();
     },
     methods: {
         submitData(e) {
-            this.formData.province = this.select2.val();
             this.isSubmitLoading = true;
             this.$store.dispatch('biotime/createAgence', this.formData).then((res) => {
                 console.log(JSON.stringify(res));
@@ -151,7 +128,27 @@ export default {
             this.formData.libelle = '';
             this.formData.avenue = '';
             this.formData.numero = '';
-            $(".agenceSelect2").val('').trigger('change')
+            this.formData.code_zone = 0;
+            $(".aresSelect2").val('').trigger('change')
+        },
+
+        async initSelect2() {
+            let self = this;
+            const areas = await this.$store.dispatch('biotime/allAreas');
+            this.select2 = $('.areasSelect2').select2({
+                dropdownParent: $('#modalAgence'),
+                placeholder: '--Sélectionnez province--',
+                data: $.map(areas, function (item) {
+                    return {
+                        text: item.area_name,
+                        id: item.id
+                    }
+                })
+            }).on('change', function (e) {
+                self.formData.code_zone = parseInt($(this).val());
+                self.formData.province = $(this).select2('data')[0].text;
+                console.log(self.formData.code_zone);
+            });
         }
     },
 }

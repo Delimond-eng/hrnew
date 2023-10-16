@@ -10,6 +10,7 @@ const states = {
   devices: [],
   employees: [],
   positions: [],
+  areas: [],
 };
 
 /**
@@ -21,7 +22,7 @@ const setters = {
   SET_DEVICES: (state, data) => (state.devices = data),
   SET_EMPLOYEES: (state, data) => (state.employees = data),
   SET_POSITIONS: (state, data) => (state.positions = data),
-  SET_AGENCES: (state, data) => (state.agences = data),
+  SET_AGENCES: (state, data) => (state.areas = data),
 };
 
 /**
@@ -34,6 +35,7 @@ const getters = {
   GET_EMPLOYEES: (state) => state.employees,
   GET_POSITIONS: (state) => state.positions,
   GET_AGENCES: (state) => state.agences,
+  GET_AREAS: (state) => state.areas,
 };
 
 /**
@@ -41,6 +43,27 @@ const getters = {
  * @returns Object actions
  * */
 const actions = {
+  /**
+   * All areas
+   * @param commit vuex mutator
+   * @returns Array areas
+   */
+  async allAreas({ commit }) {
+    let { data } = await get("api/areas");
+    if (data.response !== undefined) {
+      const results = data.response.results.data;
+      let areas = [];
+      results.forEach((e) => {
+        if (e.id !== 1) {
+          areas.push(e);
+        }
+      });
+      commit("SET_DEPARTMENTS", areas);
+      return areas;
+    }
+    return [];
+  },
+
   /**
    * Create Employee position
    * @param context vuex context,
@@ -61,7 +84,12 @@ const actions = {
     const { data } = await get("api/fonctions");
     if (data.response !== undefined) {
       const allPos = data.response.results.data;
-      const positions = allPos.map((e) => (e.id !== 1 ? e : {}));
+      let positions = [];
+      allPos.forEach((e) => {
+        if (e.id !== 1) {
+          positions.push(e);
+        }
+      });
       commit("SET_POSITIONS", positions);
       return positions;
     }
@@ -133,7 +161,12 @@ const actions = {
     let { data } = await get("api/departments");
     if (data.response !== undefined) {
       const allDepts = data.response.results.data;
-      const depts = allDepts.map((e) => (e.id !== 1 ? e : {}));
+      let depts = [];
+      allDepts.forEach((e) => {
+        if (e.id !== 1) {
+          depts.push(e);
+        }
+      });
       commit("SET_DEPARTMENTS", depts);
       return depts;
     }
@@ -163,7 +196,7 @@ const actions = {
    * */
   async createAgence(context, form) {
     let formData = {
-      code_zone: "3",
+      code_zone: form.code_zone,
       libelle: form.libelle,
       province: form.province,
       commune: form.commune,
