@@ -45,7 +45,7 @@
 
                 </div><!-- sign-wrapper -->
             </div><!-- media -->
-        </div><!-- container -->
+        </div>
     </div>
 </template>
 
