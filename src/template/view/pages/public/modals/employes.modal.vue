@@ -254,7 +254,7 @@ export default {
 				Swal({
 					icon: 'success',
 					title: 'Succès !',
-					text: 'agent créé avec succès dans le système ! ',
+					text: 'Agent créé avec succès dans le système ! ',
 					showConfirmButton: false,
 					showCancelButton: false,
 					timer: 4000,
