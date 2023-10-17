@@ -32,7 +32,7 @@
                     <div class="col-lg-8 col-xl-8">
                         <!-- row -->
                         <data-loading :processing="dataProcessing">
-                            <div class="row row-sm">
+                            <div class="row row-sm ">
                                 <div class="col-md-4 mg-md-b-15" v-for="(service, index) in services" :key="index">
                                     <div class="card card-event animate__pulse">
                                         <div class="card-img-top bg-primary w-100 d-flex align-content-center align-items-center"
