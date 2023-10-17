@@ -54,13 +54,13 @@
 
                             <div class="col-md-12">
 
-                                <div class="d-grid gap-2 mt-3">
+                                <!-- <div class="d-grid gap-2 mt-3">
                                     <button type="button" class="btn btn-lg btn-outline-danger"
                                         @click="$showBsModal('modalDevicesChoice', 'effect-scale')">
                                         Cliquez pour sélectionner les dispositifs pour l'agence ! <small>(action
                                             optionnelle)</small> <span class="badge text-bg-light mx-1">0</span>
                                     </button>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

@@ -29,20 +29,20 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="df-example">
-                            <div class="list-group">
-                                <li class="list-group-item d-flex align-items-center border-botton-only"
-                                    v-for="(ac, index) in posts" :key="index">
-                                    <div class="wd-15 ht-15 rounded-circle bd bd-3 bd-primary mg-r-10"></div>
-                                    <div class="d-flex justify-content-between w-100 align-items-center">
-                                        <h6 class="tx-13 tx-inverse tx-semibold mg-b-0">{{ ac.label }}</h6>
-                                        <button class="btn btn-sm btn-icon btn-white rounded-circle"
-                                            @click.prevent="posts.splice(index, 1)">
-                                            <i data-feather="trash"></i>
-                                        </button>
-                                    </div>
-                                </li>
-                            </div>
-
+                            <data-loading :processing="dataProcessing">
+                                <div class="list-group">
+                                    <li class="list-group-item d-flex align-items-center border-botton-only"
+                                        v-for="(position, index) in positions" :key="index">
+                                        <div class="d-flex justify-content-between w-100 align-items-center">
+                                            <h6 class="tx-13 tx-inverse tx-semibold mg-b-0">{{ position.position_name }}
+                                            </h6>
+                                            <button class="btn btn-sm btn-icon btn-danger">
+                                                <i data-feather="trash"></i>
+                                            </button>
+                                        </div>
+                                    </li>
+                                </div>
+                            </data-loading>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -55,17 +55,19 @@
                                     <label class="mg-b-10 form-label">Libellé fonction : <span
                                             class="tx-danger">*</span></label>
                                     <div class="input-group mb-2" v-for="(form, index) in forms" :key="index">
-                                        <input type="text" class="form-control" v-model="form.data"
+                                        <input type="text" class="form-control" v-model="form.libelle"
                                             placeholder="entrez le libellé fonction..." required>
                                         <button v-if="index === forms.length - 1" class="btn btn-white tx-primary btn-lg"
-                                            @click.prevent="forms.push({ data: '' })"><i data-feather="plus"></i></button>
+                                            @click.prevent="forms.push({ libelle: '' })"><i
+                                                data-feather="plus"></i></button>
                                         <button v-else class="btn btn-white  tx-danger"
                                             @click.prevent="forms.splice(index, 1)">
                                             <i data-feather="trash"></i></button>
                                     </div>
                                 </div>
                                 <div class="d-flex ">
-                                    <button type="button" class="btn btn-white  btn-block btn-lg mg-r-10">
+                                    <button @click.prevent="resetAll" type="button"
+                                        class="btn btn-white  btn-block btn-lg mg-r-10">
                                         Annuler</button>
                                     <bs-button btn-type="submit" :loading="submitLoading"
                                         class-name="btn-success btn-block btn-lg flex-fill"> <i data-feather="check"></i>
@@ -89,30 +91,17 @@ export default {
     data() {
         return {
             submitLoading: false,
+            dataProcessing: false,
             forms: [
                 {
-                    data: ""
+                    libelle: ""
                 }
             ],
-
-            posts: [
-                {
-                    label: 'Directeur informatique',
-                },
-                {
-                    label: 'Chef d\'agence',
-                },
-                {
-                    label: 'Caissier',
-                },
-                {
-                    label: 'Chef comptable',
-                },
-            ]
         }
     },
 
     mounted() {
+        this.refreshData();
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
@@ -121,15 +110,32 @@ export default {
 
 
     methods: {
-        submitData(e) {
+        async submitData(e) {
             this.submitLoading = true;
-            setTimeout(() => {
-                this.submitLoading = false;
-                for (var f of this.forms) {
-                    this.posts.push({ label: f.data });
-                }
-                this.forms = [{ data: '' }];
-            }, 2000)
+            for (let form of this.forms) {
+                await this.$store.dispatch('biotime/createPosition', form)
+            }
+            this.submitLoading = false;
+            this.refreshData();
+            this.resetAll();
+        },
+        refreshData() {
+            this.dataProcessing = true;
+            this.$store.dispatch('biotime/allPositions')
+                .then((_) => this.dataProcessing = false)
+                .catch((_) => this.dataProcessing = false)
+        },
+
+        resetAll() {
+            this.forms = [{
+                libelle: ''
+            }];
+        }
+    },
+
+    computed: {
+        positions() {
+            return this.$store.getters['biotime/GET_POSITIONS']
         }
     },
 }

@@ -3,20 +3,26 @@ import { get, post } from "@/http";
  * Vuex state
  * @returns Object state
  * */
-const state = {};
+const state = {
+  agences: [],
+};
 
 /**
  * Vuex mutation
  * @returns Object mutation
  * */
-const setters = {};
+const setters = {
+  SET_AGENCES: (state, data) => (state.agences = data),
+};
 
 /**
  * Vuex Getters
  * @returns Object Getters
  * */
 
-const getters = {};
+const getters = {
+  GET_AGENCES: (state) => state.agences,
+};
 
 /**
  * Vuex actions
@@ -27,7 +33,7 @@ const actions = {
    * GET List of agences
    * @returns HttpResponse
    * */
-  async getAgences(context, payload) {
+  async getAgences({ commit }, payload) {
     const { data, status } = await get("agences/all");
     if (status === 200) {
       const results = data.agences;
@@ -41,6 +47,7 @@ const actions = {
       } else {
         agences = results;
       }
+      commit("SET_AGENCES", agences);
       return agences;
     }
     return [];

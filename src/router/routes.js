@@ -172,13 +172,15 @@ const routes = [
         name: "affectations",
       },
       {
-        path: "/secure/agence/home",
+        path: "/secure/agence/home/:libelle/:id",
         component: AgencyHomeScreen,
         name: "admin.agence",
-        redirect: { name: "admin.agence.dashboard" },
+        redirect: (to) => {
+          return `/secure/agence/dashboard/${to.params.libelle}/${to.params.id}`;
+        },
         children: [
           {
-            path: "/secure/agence/dashboard",
+            path: "/secure/agence/dashboard/:libelle/:id",
             component: AgenceDashboard,
             name: "admin.agence.dashboard",
           },

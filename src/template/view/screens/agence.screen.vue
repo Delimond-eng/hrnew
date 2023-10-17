@@ -17,7 +17,7 @@
                     <!-- filemgr-sidebar-header -->
                     <div class="filemgr-sidebar-header">
                         <i data-feather="home"></i>
-                        <h5 class="m-lg-2">Agence de kinshasa</h5>
+                        <h5 class="m-lg-2 text-capitalize">{{ $route.params.libelle }}</h5>
                     </div>
                     <!-- filemgr-sidebar-header -->
 
@@ -73,6 +73,7 @@ export default {
 
     unmounted() {
         $('.aside').removeClass('minimize');
+        console.log(JSON.stringify(this.$route.params), ":::::Route Params");
     },
 
     mounted() {

@@ -147,6 +147,12 @@
                                                     style="height: 50px; object-fit: cover" alt="device">
                                                 <div class="media-body">
                                                     <h6><a href="#" class="link-02">{{ device.alias }}</a></h6>
+                                                    <div class="d-flex">
+                                                        <i data-feather="map-pin"
+                                                            style="width:10px; margin-top: -4px; margin-right: 2px;"></i>
+                                                        <span>{{ device.area_name
+                                                        }}</span>
+                                                    </div>
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <span>{{ device.ip_address }}</span>
                                                         <div style="height: 8px; width: 8px;"

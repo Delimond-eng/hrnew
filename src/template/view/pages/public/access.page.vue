@@ -20,7 +20,7 @@
                                 <li class="breadcrumb-item active" aria-current="page">Configuration accès utilisateurs</li>
                             </ol>
                         </nav>
-                        
+
                     </div>
                 </div>
 
@@ -111,7 +111,7 @@
                                 </div>
                                 <hr>
                                 <div class="d-flex ">
-                                    <button type="button" class="btn btn-white  btn-block btn-lg mg-r-4 flex-fill">
+                                    <button type="button" class="btn btn-white  btn-block btn-lg mg-r-10">
                                         Annuler</button>
                                     <bs-button btn-type="submit" :loading="submitLoading"
                                         class-name="btn-success btn-block btn-lg flex-fill"> <i data-feather="check"></i>

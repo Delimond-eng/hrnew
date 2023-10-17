@@ -1,5 +1,5 @@
 import { get, post } from "@/http";
-
+import { v4 as uuidv4 } from "uuid";
 /**
  * Vuex state
  * @returns Object states
@@ -71,13 +71,17 @@ const actions = {
    * @returns HttpResponse
    * */
   async createPosition(context, form) {
+    let uuid = uuidv4();
     const formData = {
-      fonction_code: form.fonction_code,
+      fonction_code: uuid,
       libelle: form.libelle,
       user_id: "1",
     };
     const { data, status } = await post("api/createFonction", formData);
-    return data;
+    if (data.response !== undefined) {
+      return data;
+    }
+    return false;
   },
 
   async allPositions({ commit }) {
@@ -151,10 +155,14 @@ const actions = {
   async allDevices({ commit }) {
     let { data } = await get("api/devices");
     if (data.response !== undefined) {
-      const devices = data.response.results.data;
+      const results = data.response.results.data;
+      let devices = [];
+      results.forEach((e) => {
+        e.checked = false;
+        devices.push(e);
+      });
       commit("SET_DEVICES", devices);
       return devices;
-      //TODO: add checked key
     }
     return [];
   },

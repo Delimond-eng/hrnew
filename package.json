@@ -16,6 +16,7 @@
         "jszip": "^3.10.1",
         "lottie-web-vue": "^2.0.7",
         "nano-sql": "^1.8.5",
+        "uuid": "^9.0.1",
         "vue": "^3.3.4",
         "vue-multiselect": "^2.1.7",
         "vue-router": "^4.1.6",

@@ -6,7 +6,7 @@
                 <input type="search" class="form-control" placeholder="Recherche agence...">
             </div>
             <nav class="nav">
-               <async-button></async-button>
+                <async-button></async-button>
             </nav>
         </div><!-- content-header -->
 
@@ -23,7 +23,7 @@
 
                     </div>
                     <div class="d-none d-md-block">
-                        <select class="select2i form-control-lg select2">
+                        <select id="agenceFilterSelect" class="form-select" v-show="!dataProcessing">
                             <option label="Filtez agence par province"></option>
                         </select>
 
@@ -31,30 +31,33 @@
                                 data-feather="plus"></i> Nouvelle agence</button>
                     </div>
                 </div>
-
-                <div class="row row-sm">
-                    <div class="col-md-3 mg-md-b-15" v-for="(agence, index) in agences" :key="index">
-                        <a class="card card-event agenceCard shadow-none" href="javascript:void(0)"
-                            @click.prevent="$router.push({ name: 'admin.agence' })">
-                            <div class="card-img-top bg-primary-light w-100 d-flex align-content-center align-items-center"
-                                style="height: 55px;">
-                                <h6 class="m-2 tx-primary tx-bold">{{ agence.label }}</h6>
-                            </div>
-                            <div class="card-body">
-                                <h6 class="tx-12"> <i data-feather="map-pin" width="12" height="12"></i> {{ agence.province
-                                }}</h6>
-                            </div>
-                            <!-- card-body -->
-                            <div class="card-footer tx-13">
-                                <span class="tx-color-03">Agents</span>
-                                <span class="tx-color-01">{{ agence.nb_agent }}</span>
-                            </div>
-                            <!-- card-footer -->
-                        </a>
-                        <!-- card -->
+                <data-loading :processing="dataProcessing">
+                    <div class="row row-sm">
+                        <div class="col-md-3 mg-md-b-15" v-for="(agence, index) in agences" :key="index">
+                            <a class="card card-event agenceCard shadow-none" href="javascript:void(0)"
+                                @click.prevent="$router.push({ name: 'admin.agence', params: { libelle: agence.libelle, id: agence.agence_id } })">
+                                <div class="card-img-top bg-primary-light w-100 d-flex align-content-center align-items-center"
+                                    style="height: 55px;">
+                                    <h5 class="m-2 tx-primary tx-bold">{{ agence.libelle }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="tx-12"> <i data-feather="map-pin" width="12" height="12"></i> {{
+                                        agence.province
+                                    }}</h6>
+                                </div>
+                                <!-- card-body -->
+                                <div class="card-footer tx-13">
+                                    <span class="tx-color-03">Agents</span>
+                                    <span class="tx-color-01">0</span>
+                                </div>
+                                <!-- card-footer -->
+                            </a>
+                            <!-- card -->
+                        </div>
+                        <!-- col -->
                     </div>
-                    <!-- col -->
-                </div>
+                </data-loading>
+
             </div>
             <!-- container -->
         </div>
@@ -71,30 +74,6 @@ export default {
         return {
             submitLoading: false,
             dataProcessing: false,
-            agences: [
-                {
-                    label: "Kitambo",
-                    nb_agent: "20",
-                    province: "Kinshasa"
-                },
-                {
-                    label: "Gombe",
-                    nb_agent: "43",
-                    province: "Kinshasa"
-                },
-
-                {
-                    label: "Masina",
-                    nb_agent: "10",
-                    province: "Kinshasa"
-                },
-                {
-                    label: "Bandal",
-                    nb_agent: "10",
-                    province: "Kinshasa"
-                }
-            ],
-            iselect: null
         }
     },
 
@@ -102,26 +81,27 @@ export default {
         AgenceModal,
     },
 
-    mounted() {
-
-        $('.select2i').select2({
-            placeholder: '--Filtre agence par province--',
+    async mounted() {
+        await this.refreshData();
+        let self = this;
+        const areas = await this.$store.dispatch('biotime/allAreas');
+        $('#agenceFilterSelect').select2({
+            placeholder: 'Filtre agence par province',
             searchInputPlaceholder: 'Recherche province...',
             allowClear: true,
-            data: [
-                {
-                    id: 1, text: 'Kasaï Central'
-                },
-                {
-                    id: 2, text: 'Kasaï oriental'
-                },
-                {
-                    id: 3, text: 'Bas Kongo'
-                },
-                {
-                    id: 4, text: 'Bas Uele'
-                },
-            ]
+            data: $.map(areas, function (item) {
+                return {
+                    text: item.area_name,
+                    id: item.id
+                }
+            })
+        }).on('change', async function (e) {
+            /**
+             * Load agencies of select area
+            */
+            let payload = $(this).select2('data')[0].text;
+            self.refreshData(payload);
+
         });
 
         /*End loading test data*/
@@ -129,21 +109,20 @@ export default {
             suppressScrollX: true,
         });
 
-        /* $('.select2i').change((event) => {
-            console.log(event.target.value);
-        }) */
     },
 
     methods: {
-
-        submitService(e) {
-
-        },
+        async refreshData(payload) {
+            this.dataProcessing = true
+            this.$store.dispatch('erp/getAgences', payload)
+                .then((res) => this.dataProcessing = false)
+                .catch((e) => this.dataProcessing = false)
+        }
     },
 
     computed: {
-        agencies() {
-            return this.$store.getters['agence/GET_AGENCES']
+        agences() {
+            return this.$store.getters['erp/GET_AGENCES']
         }
     },
 }

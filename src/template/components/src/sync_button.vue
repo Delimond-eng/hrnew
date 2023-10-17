@@ -43,6 +43,12 @@
                                         alt="device">
                                     <div class="media-body">
                                         <h6><a href="javascript:void(0)" class="link-02">{{ device.alias }}</a></h6>
+                                        <div class="d-flex">
+                                            <i data-feather="map-pin"
+                                                style="width:10px; margin-top: -4px; margin-right: 2px;"></i>
+                                            <span>{{ device.area_name
+                                            }}</span>
+                                        </div>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span>{{ device.ip_address }}</span>
                                             <div style="height: 8px; width: 8px;"
@@ -53,8 +59,10 @@
                                     <!-- media-body -->
                                     <div class="dropdown-file">
                                         <input @change.prevent="onSelectDevice($event, device)" type="checkbox"
-                                            class="custom-control-input" :id="`customCheck${i}`">
+                                            class="custom-control-input" :id="`customCheck${i}`" :checked="device.checked">
                                     </div>
+
+
                                     <!-- dropdown -->
                                 </div>
                                 <!-- media -->
@@ -84,7 +92,16 @@ export default {
     },
 
     async mounted() {
-        await this.$store.dispatch('biotime/allDevices')
+        await this.$store.dispatch('biotime/allDevices');
+
+        /**
+         * Uncheck all checkbox device when modal hidden trigger
+        */
+        $('#modalDevices').on("hidden.bs.modal", function (e) {
+            $('input:checkbox').each(function () {
+                $(`#${$(this).attr('id')}`).prop("checked", false);
+            });
+        });
     },
 
     methods: {
@@ -112,7 +129,11 @@ export default {
             }
             else {
                 this.$closeBsModal('modalDevices');
+
                 this.loading = true;
+                $('input:checkbox').each(function () {
+                    $(`#${$(this).attr('id')}`).prop("checked", false);
+                });
                 this.$store.dispatch('biotime/uploadAll', this.selectedIds).then((res) => {
                     this.loading = false;
                     if (res.response !== undefined) {
