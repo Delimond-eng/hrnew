@@ -6,7 +6,7 @@
                 <input type="search" class="form-control" placeholder="Recherche service...">
             </div>
             <nav class="nav">
-                <a href="javascript:void(0)" class="nav-link"><i data-feather="align-left"></i></a>
+                <async-button></async-button>
             </nav>
         </div><!-- content-header -->
 
@@ -27,7 +27,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-lg-4 col-xl-4 mg-t-10">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-header d-flex justify-content-between">
                                 <h6 class="lh-5 mg-b-0">Statistiques des appareils</h6>
                                 <a href="#" class="tx-13 link-03"><i data-feather="more-horizontal"
@@ -64,11 +64,15 @@
                     <!-- col -->
 
                     <div class="col-lg-8 mg-t-10">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-header d-sm-flex align-items-start justify-content-between">
                                 <h6 class="lh-5 mg-b-0">Tous les appareils</h6>
-                                <a href="#" class="tx-13 link-03 d-flex align-items-center">Mar 01 - Mar 20, 2023 <ion-icon
-                                        name="chevron-down-outline"></ion-icon></a>
+                                <a href="#" class="tx-13 link-03 d-flex align-items-center">
+                                    <button type="button" class="btn btn-sm btn-outline-dark"
+                                        @click.prevent="refreshDevices">
+                                        <i data-feather="refresh-ccw" style="with:10px"></i> Actualiser
+                                    </button>
+                                </a>
                             </div><!-- card-header -->
                             <div class="card-body pd-y-15 pd-x-10">
                                 <!-- <div class="table-responsive" style="overflow-x: hidden;">
@@ -134,39 +138,45 @@
                                         </tbody>
                                     </table>
                                 </div> -->
-                                <div class="row row-xs">
-                                    <div class="col-sm-6 col-lg-4 col-xl-4 mb-2" v-for="i in 20" :key="i">
-                                        <div class="media media-folder">
-                                            <img src="assets/img/device_image.png" style="height: 50px; object-fit: cover"
-                                                alt="device">
-                                            <div class="media-body">
-                                                <h6><a href="#" class="link-02">ICLOCK 680</a></h6>
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <span>192.168.4.{{ i }}</span>
-                                                    <div style="height: 8px; width: 8px;"
-                                                        class="bg-success rounded-circle pos-relative"></div>
+                                <data-loading :processing="dataProcessing">
+                                    <div class="row row-xs">
+                                        <div class="col-sm-6 col-lg-4 col-xl-4 mb-2" v-for="( device, i) in devices"
+                                            :key="i">
+                                            <div class="media media-folder">
+                                                <img src="assets/img/device_image.png"
+                                                    style="height: 50px; object-fit: cover" alt="device">
+                                                <div class="media-body">
+                                                    <h6><a href="#" class="link-02">{{ device.alias }}</a></h6>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <span>{{ device.ip_address }}</span>
+                                                        <div style="height: 8px; width: 8px;"
+                                                            :class="(device.state === '3') ? 'bg-danger' : (device.state !== 2) ? 'bg-warning' : 'bg-success'"
+                                                            class="rounded-circle pos-relative"></div>
+                                                    </div>
+
                                                 </div>
 
-                                            </div>
-
-                                            <!-- media-body -->
-                                            <div class="dropdown-file">
-                                                <a href="#" class="dropdown-link" data-bs-toggle="dropdown"><i
-                                                        data-feather="more-vertical"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a href="javascript:void(0)"
-                                                        @click.prevent="$showBsModal('modalDeviceLink', 'effect-scale')"
-                                                        class="dropdown-item details"><i data-feather="link"></i>Lier à une
-                                                        agence</a>
-                                                    <a href="#" class="dropdown-item important"><i
-                                                            data-feather="info"></i>Voir infos</a>
+                                                <!-- media-body -->
+                                                <div class="dropdown-file">
+                                                    <a href="#" class="dropdown-link" data-bs-toggle="dropdown"><i
+                                                            data-feather="more-vertical"></i></a>
+                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                        <a href="javascript:void(0)"
+                                                            @click.prevent="$showBsModal('modalDeviceLink', 'effect-scale')"
+                                                            class="dropdown-item details"><i data-feather="link"></i>Lier à
+                                                            une
+                                                            agence</a>
+                                                        <a href="#" class="dropdown-item important"><i
+                                                                data-feather="info"></i>Voir infos</a>
+                                                    </div>
                                                 </div>
+                                                <!-- dropdown -->
                                             </div>
-                                            <!-- dropdown -->
+                                            <!-- media -->
                                         </div>
-                                        <!-- media -->
                                     </div>
-                                </div>
+                                </data-loading>
+
                                 <!-- table-responsive -->
                             </div><!-- card-body -->
                         </div><!-- card -->
@@ -203,7 +213,6 @@ export default {
         $('#modalDevicesDetails').on('show.bs.modal', function (event) {
             $(this).addClass("effect-scale");
         });
-
         // hide modal with effect
         $('#modalDevicesDetails').on('hidden.bs.modal', function (e) {
             $(this).removeClass(function (index, className) {
@@ -211,6 +220,7 @@ export default {
             });
         });
         this.init();
+        this.refreshDevices();
     },
 
     methods: {
@@ -272,8 +282,19 @@ export default {
                 data: datapie,
                 options: optionpie
             });
+        },
+
+        refreshDevices() {
+            this.dataProcessing = true;
+            this.$store.dispatch('biotime/allDevices').then((_) => this.dataProcessing = false).catch((_) => this.dataProcessing = false);
         }
-    }
+    },
+
+    computed: {
+        devices() {
+            return this.$store.getters['biotime/GET_DEVICES'];
+        }
+    },
 }
 </script>
 <style scoped src="@/assets/css/dashforge.filemgr.css"></style>

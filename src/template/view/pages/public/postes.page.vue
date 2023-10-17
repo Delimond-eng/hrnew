@@ -6,7 +6,7 @@
                 <input type="search" class="form-control" placeholder="Filtrer poste...">
             </div>
             <nav class="nav">
-                <a href="javascript:void(0)" class="nav-link"><i data-feather="align-left"></i></a>
+                <async-button></async-button>
             </nav>
         </div>
         <!-- content-header -->
@@ -17,7 +17,8 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                                 <li class="breadcrumb-item">Administration</li>
-                                <li class="breadcrumb-item active" aria-current="page">Configuration Fonctions agent</li>
+                                <li class="breadcrumb-item active" aria-current="page">Configuration Fonctions|Positions
+                                </li>
                             </ol>
                         </nav>
 
@@ -64,7 +65,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex ">
-                                    <button type="button" class="btn btn-white  btn-block btn-lg mg-r-4 flex-fill">
+                                    <button type="button" class="btn btn-white  btn-block btn-lg mg-r-10">
                                         Annuler</button>
                                     <bs-button btn-type="submit" :loading="submitLoading"
                                         class-name="btn-success btn-block btn-lg flex-fill"> <i data-feather="check"></i>

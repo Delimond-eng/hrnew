@@ -154,7 +154,9 @@ const actions = {
       const devices = data.response.results.data;
       commit("SET_DEVICES", devices);
       return devices;
+      //TODO: add checked key
     }
+    return [];
   },
 
   /**
@@ -225,6 +227,19 @@ const actions = {
   async allAgences({ commit }) {
     const { data } = await get("api/agences");
     commit("SET_AGENCES", data);
+  },
+
+  async uploadAll(context, datas) {
+    let formData = new FormData();
+    datas.forEach((e) => {
+      formData.append("device_id", e);
+    });
+    const { data } = await post("api/uploadAll", formData);
+    console.log(JSON.stringify(data));
+    if (data.response !== undefined) {
+      return data;
+    }
+    return false;
   },
 };
 

@@ -29,7 +29,6 @@ export default {
     methods: {
         init() {
             feather.replace();
-
             // Initialize PerfectScrollbar of navbar menu for mobile only
             if (window.matchMedia("(max-width: 991px)").matches) {
                 const psNavbar = new PerfectScrollbar("#navbarMenu", {

@@ -1,6 +1,7 @@
 <template>
   <!-- L'entrée principale de tous les view de l'application -->
   <router-view />
+
   <!-- End entrée -->
 </template>
 

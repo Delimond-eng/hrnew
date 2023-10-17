@@ -6,7 +6,7 @@
                 <input type="search" class="form-control" placeholder="Recherche service...">
             </div>
             <nav class="nav">
-                <a href="javascript:void(0)" class="nav-link"><i data-feather="align-left"></i></a>
+                <async-button></async-button>
             </nav>
         </div><!-- content-header -->
 

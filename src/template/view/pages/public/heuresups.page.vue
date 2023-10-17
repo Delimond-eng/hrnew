@@ -23,6 +23,7 @@
 
                     </div>
                     <div class="d-none d-md-block">
+                        <async-button></async-button>
                     </div>
                 </div>
                 <div class="row">
