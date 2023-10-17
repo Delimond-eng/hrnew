@@ -189,11 +189,9 @@
 </template>
 
 <script>
-import { useStore } from 'vuex';
-import { onMounted } from "vue";
+
 export default {
 	name: 'EmployesCreateModal',
-
 	props: {
 		forAgency: {
 			type: Boolean,
@@ -237,20 +235,21 @@ export default {
 
 	methods: {
 		submitData(e) {
+			this.form.code_zone = $("#provinceSelect2").val();
 			this.form.agence_id = $("#agenceSelect2").val();
 			this.form.fonction_id = $("#fonctionSelect2").val();
 			this.form.service_id = $("#serviceSelect2").val();
 			this.isSubmitLoading = true;
-			this.$store.dispatch('biotime/createEmployee', this.form).then((res) => {
+			this.$store.dispatch('biotime/createEmployee', this.form).then((result) => {
 				this.isSubmitLoading = false;
-				if (typeof res === 'boolean') {
+				if (result.response === undefined) {
 					Swal({
 						icon: 'warning',
 						title: 'Echec',
 						text: 'Une erreur est survenu lors de l\'envoie de données ! ',
 						showConfirmButton: false,
 						showCancelButton: false,
-						timer: 2000,
+						timer: 3000,
 					});
 					return;
 				}
@@ -263,6 +262,7 @@ export default {
 					timer: 4000,
 				});
 				this.cleanField();
+
 			});
 		},
 
@@ -281,14 +281,16 @@ export default {
 			this.form.nbre_enfant = '0';
 			this.form.duree = '';
 			this.form.periode_unite = 'mois';
-			this.form.code_zone = 1;
+			this.form.code_zone = 0;
 			this.form.agence_id = 0;
 			this.form.fonction_id = 0;
 			this.form.service_id = 0;
 			this.form.date_affectation = '';
+			$("#provinceSelect2").val('').trigger('change');
 			$("#agenceSelect2").val('').trigger('change');
 			$("#fonctionSelect2").val('').trigger('change');
 			$("#serviceSelect2").val('').trigger('change');
+			this.$emit('onCreate');
 		},
 
 		async initSelects2() {
@@ -304,10 +306,12 @@ export default {
 					}
 				})
 			}).on('change', async function (e) {
-				//$(this).select2('data')
-				let id = $(this).val();
-				const agences = await self.$store.dispatch('erp/getAgences', id);
-				$('#agenceSelect2').select2();
+				/**
+				 * Load agencies of select area
+				*/
+				let payload = $(this).select2('data')[0].text;
+				const agences = await self.$store.dispatch('erp/getAgences', payload);
+				$('#agenceSelect2').empty();
 				$('#agenceSelect2').select2({
 					dropdownParent: $('#modalEmployes'),
 					placeholder: '--Sélectionnez une agence--',
@@ -318,6 +322,7 @@ export default {
 						}
 					})
 				});
+				$("#agenceSelect2").val('').trigger('change');
 			});
 
 			/**

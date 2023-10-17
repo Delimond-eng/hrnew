@@ -115,9 +115,20 @@ export default {
         submitData(e) {
             this.isSubmitLoading = true;
             this.$store.dispatch('biotime/createAgence', this.formData).then((res) => {
-                console.log(JSON.stringify(res));
                 this.isSubmitLoading = false;
-                this.cleanField();
+                if (typeof res !== 'boolean') {
+                    if (res.response.status === 'success') {
+                        Swal({
+                            icon: 'success',
+                            title: 'Succès !',
+                            text: 'Agence créée avec succès dans le système !',
+                            showConfirmButton: false,
+                            showCancelButton: false,
+                            timer: 4000
+                        });
+                        this.cleanField();
+                    }
+                }
             });
         },
 

@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    <employes-create-modal />
+    <employes-create-modal @onCreate="loadData" />
 </template>
 
 
@@ -63,6 +63,24 @@ export default {
     methods: {
         showCreateModal() {
             $('#modalEmployes').modal('show');
+        },
+
+        async loadData() {
+            if (this.table !== null) this.table.destroy();
+            const employees = await this.$store.dispatch('biotime/allEmployees');
+            this.table = $('#employesTable').DataTable({
+                language: datatableFr,
+                columns: [
+                    { title: 'Nom', data: 'first_name' },
+                    { title: 'Postnom', data: 'last_name' },
+                    { title: 'Prénom', data: 'nickname' },
+                    { title: 'Matricule', data: 'emp_code' },
+                    { title: 'Genre', data: 'gender' },
+                    { title: 'Email', data: 'email' },
+                    { title: 'Date engagement', data: 'hire_date' },
+                ],
+                data: employees,
+            });
         }
     },
 
@@ -70,33 +88,15 @@ export default {
         this.table.destroy();
         this.table = null;
     },
-    mounted() {
+    async mounted() {
         $('#modalEmployes').on('show.bs.modal', function (event) {
             $(this).addClass("effect-slide-in-right");
         })
-        this.table = $('#employesTable').DataTable({
-            language: datatableFr,
-            columns: [
-                { title: 'Nom' },
-                { title: 'Postnom' },
-                { title: 'Prénom' },
-                { title: 'Matricule' },
-                { title: 'Fonction' },
-                { title: 'Genre' },
-                { title: 'Etat civil' },
-                { title: 'Date engagement' },
-            ],
-            data: [
-                ['Kayembe', 'Rukundo', 'Jean marc', '773AUE', 'Chef d`\agence', 'Marié', 'M', '03/12/2006'],
-                ['Paty', 'Mutete', 'Viny', '77363E', 'Directeur Technique', 'Marié', 'M', '03/12/2008'],
-                ['Ngongo', 'Kasongo', 'Giresse', '77362E', 'Directeur des opération', 'Marié', 'M', '03/12/2005'],
-            ]
-        });
+
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
-
-
+        await this.loadData();
         // hide modal with effect
         $('#modalEmployes').on('hidden.bs.modal', function (e) {
             $(this).removeClass(function (index, className) {

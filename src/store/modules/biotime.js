@@ -104,7 +104,7 @@ const actions = {
    * */
   async createEmployee(context, form) {
     const { data, status } = await post("api/createAgent", form);
-    if (data.response !== undefined) {
+    if (data.response != undefined) {
       return data;
     }
     return false;
@@ -116,8 +116,13 @@ const actions = {
    * @returns void
    * */
   async allEmployees({ commit }) {
-    const { data } = await get("api/agents");
-    commit("SET_EMPLOYEES", data);
+    const { data, status } = await get("api/agents");
+    if (data.response !== undefined) {
+      const employees = data.response.results.data;
+      commit("SET_EMPLOYEES", employees);
+      return employees;
+    }
+    return [];
   },
 
   /**
@@ -180,12 +185,11 @@ const actions = {
    * @returns httpResponse
    */
   async createDepartment(context, form) {
-    let formData = {
-      dept_code: form.dept_code,
-      nom: form.nom,
-    };
-    let { data } = await post("api/createDepartment", formData);
-    return data;
+    let { data } = await post("api/createDepartment", form);
+    if (data.response !== undefined) {
+      return data;
+    }
+    return false;
   },
 
   /**
@@ -205,8 +209,12 @@ const actions = {
       numero: form.numero,
       user_id: "1",
     };
-    const { data } = await post("api/createAgence", formData);
-    return data;
+    const { data, status } = await post("api/createAgence", formData);
+    if (status === 200) {
+      return data;
+    } else {
+      return false;
+    }
   },
 
   /**

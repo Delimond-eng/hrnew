@@ -27,14 +27,14 @@ const actions = {
    * GET List of agences
    * @returns HttpResponse
    * */
-  async getAgences(context, id) {
+  async getAgences(context, payload) {
     const { data, status } = await get("agences/all");
     if (status === 200) {
       const results = data.agences;
       let agences = [];
-      if (id !== undefined) {
+      if (payload !== undefined) {
         results.forEach((e) => {
-          if (e.agence_id === id) {
+          if (e.province.toLowerCase().includes(payload.toLowerCase())) {
             agences.push(e);
           }
         });
