@@ -162,9 +162,7 @@
                                                             :class="(device.state === '3') ? 'bg-danger' : (device.state !== 2) ? 'bg-warning' : 'bg-success'"
                                                             class="rounded-circle pos-relative"></div>
                                                     </div>
-
                                                 </div>
-
                                                 <!-- media-body -->
                                                 <div class="dropdown-file">
                                                     <a href="#" class="dropdown-link" data-bs-toggle="dropdown"><i
@@ -175,7 +173,8 @@
                                                             class="dropdown-item details"><i data-feather="link"></i>Lier à
                                                             une
                                                             agence</a>
-                                                        <a href="#" class="dropdown-item important"><i
+                                                        <a href="javascript:void(0)" class="dropdown-item important"
+                                                            @click.prevent="$showBsModal('modalDeviceInfo', 'effect-scale')"><i
                                                                 data-feather="info"></i>Voir infos</a>
                                                     </div>
                                                 </div>
@@ -185,11 +184,9 @@
                                         </div>
                                     </div>
                                 </data-loading>
-
                                 <!-- table-responsive -->
                             </div><!-- card-body -->
                         </div><!-- card -->
-
                     </div>
                 </div>
             </div>
@@ -198,23 +195,27 @@
     </div>
     <devices-details-modal :title="selectedTitle" :datas="selectedDatas" />
     <device-link-modal />
+    <device-info-modal :device="selectedDevice" />
 </template>
 
 <script>
 import DevicesDetailsModal from './modals/devices_stats_detail.modal';
 import DeviceLinkModal from './modals/device_link_modal.vue';
+import DeviceInfoModal from './modals/device_info_modal.vue';
 export default {
     name: 'ServicesPage',
 
     components: {
         DevicesDetailsModal,
-        DeviceLinkModal
+        DeviceLinkModal,
+        DeviceInfoModal,
     },
     data() {
         return {
             dataProcessing: false,
             selectedTitle: '',
-            selectedDatas: []
+            selectedDatas: [],
+            selectedDevice: null
         }
     },
 

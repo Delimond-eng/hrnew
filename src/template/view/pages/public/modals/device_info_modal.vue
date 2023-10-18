@@ -1,41 +1,30 @@
 <template>
     <teleport to="body">
-        <div class="modal fade" id="modalDeviceLink" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered wd-sm-650" role="document">
+        <div class="modal fade" id="modalDeviceInfo" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                 <div class="modal-content">
-                    <div class="modal-header pd-y-20 pd-x-20 pd-sm-x-30">
+                    <div class="modal-header" style="border-bottom: 0px !important;">
                         <a href="#" role="button" class="close pos-absolute t-15 r-15" data-bs-dismiss="modal"
                             aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </a>
-                        <div class="media align-items-center">
-                            <span class="tx-color-03 d-none d-sm-block"><i data-feather="link"
-                                    class="wd-60 ht-60"></i></span>
-                            <div class="media-body mg-sm-l-20">
-                                <h4 class="tx-18 tx-sm-20 mg-b-2">Liaison du dispositif à l'agence</h4>
-                                <p class="tx-13 tx-color-03 mg-b-0">Veuillez sélectionner une agence pour la liaison du
-                                    dispositif !</p>
-                            </div>
-                        </div><!-- media -->
+                        <div></div>
                     </div><!-- modal-header -->
-                    <div class="modal-body pd-sm-t-30 pd-sm-b-40 pd-sm-x-30">
-                        <div class="form-group">
-                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Province</label><br>
-                            <select class="form-select" id="provinceLinkSelect2" style="width: 100%;">
-                                <option label="--Veuillez sélectionner une province--"></option>
-                            </select>
+
+                    <div class="row d-flex justify-content-between align-items-center pd-y-20 pd-x-20 pd-sm-x-30">
+                        <div class="col-md-6">
+                            <img src="assets/img/device_image.png" class="img-fluid"
+                                style="height: 200px; object-fit: cover" alt="device">
+                            <h4 class="text-center fw-bold">Device Name</h4>
                         </div>
-                        <div class="form-group">
-                            <label class="tx-10 tx-uppercase tx-medium tx-spacing-1 mg-b-5 tx-color-03">Agence</label> <br>
-                            <select class="form-select" id="agenceLinkSelect2" style="width: 100%;">
-                                <option label="--Veuillez sélectionner agence--"></option>
-                            </select>
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between mb-1" v-for="i in 5" :key="i">
+                                    <span class="align-items-start">Serie : </span>
+                                    <span class="fw-bold align-items-start">JKJKSJKJKSJ</span>
+                                </li>
+                            </ul>
                         </div>
-                    </div><!-- modal-body -->
-                    <div class="modal-footer pd-x-20 pd-y-15">
-                        <button type="button" class="btn btn-white" data-bs-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-primary"> <i data-feather="link"></i>Soumettre la
-                            liaison</button>
                     </div>
                 </div><!-- modal-content -->
             </div><!-- modal-dialog -->
@@ -46,6 +35,12 @@
 <script>
 export default {
 
+    props: {
+        device: {
+            type: Object,
+            default: () => { }
+        }
+    },
     async mounted() {
         await this.initSelect2();
         /**
