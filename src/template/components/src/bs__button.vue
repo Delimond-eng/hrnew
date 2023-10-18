@@ -1,26 +1,21 @@
 <template>
     <button v-if="btnType == 'button'" @click.prevent="$emit('click', $event)" :type="btnType" :disabled="loading"
         class="btn" :class="className">
-        <span class="mx-4" v-show="loading">
-            <svg width="35" fill="#FFFFFF" height="35" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <circle class="spinner_S1WN" cx="4" cy="12" r="3" />
-                <circle class="spinner_S1WN spinner_Km9P" cx="12" cy="12" r="3" />
-                <circle class="spinner_S1WN spinner_JApP" cx="20" cy="12" r="3" />
-            </svg>
-        </span>
+        <svg width="40" fill="#FFFFFF" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle class="spinner_S1WN" cx="4" cy="12" r="3" />
+            <circle class="spinner_S1WN spinner_Km9P" cx="12" cy="12" r="3" />
+            <circle class="spinner_S1WN spinner_JApP" cx="20" cy="12" r="3" />
+        </svg>
         <span v-show="!loading">
             <slot></slot>
         </span>
     </button>
     <button v-else :type="btnType" :disabled="loading" class="btn" :class="className">
-        <span class="mx-4" v-show="loading">
-            <svg width="35" fill="#FFFFFF" height="35" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-
-                <circle class="spinner_S1WN" cx="4" cy="12" r="3" />
-                <circle class="spinner_S1WN spinner_Km9P" cx="12" cy="12" r="3" />
-                <circle class="spinner_S1WN spinner_JApP" cx="20" cy="12" r="3" />
-            </svg>
-        </span>
+        <svg v-show="loading" width="40" fill="#FFFFFF" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle class="spinner_S1WN" cx="4" cy="12" r="3" />
+            <circle class="spinner_S1WN spinner_Km9P" cx="12" cy="12" r="3" />
+            <circle class="spinner_S1WN spinner_JApP" cx="20" cy="12" r="3" />
+        </svg>
         <span v-show="!loading">
             <slot></slot>
         </span>

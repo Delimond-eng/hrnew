@@ -60,6 +60,7 @@
                         <li><router-link :to="{ name: 'admin.services' }">Configuration services</router-link></li>
                         <li><router-link :to="{ name: 'admin.postes' }">Configuration fonctions</router-link></li>
                         <li><router-link :to="{ name: 'admin.access' }">Configuration accès utilis...</router-link></li>
+                        <li><router-link :to="{ name: 'admin.employes' }">Gestion employés</router-link></li>
                         <li><router-link :to="{ name: 'admin.users' }">Comptes utilisateurs</router-link></li>
                         <li><router-link :to="{ name: 'admin.baremes' }">Configuration barèmes</router-link></li>
                         <li><router-link :to="{ name: 'admin.primes' }">Configuration primes</router-link></li>
@@ -67,7 +68,7 @@
                         <li><router-link :to="{ name: 'admin.heurepoints' }">Configuration heures point.</router-link>
                         </li>
                         <li><a href="javascript:void(0)">Planning des congés</a></li>
-                        <li><router-link :to="{ name: 'admin.employes' }">Gestion employés</router-link></li>
+
                         <li><router-link :to="{ name: 'admin.visiteurs' }">Visiteurs</router-link></li>
                         <li><router-link :to="{ name: 'admin.enroll' }">Enrollement agents</router-link></li>
                         <li><router-link :to="{ name: 'admin.presences' }">Rapport des présences</router-link></li>

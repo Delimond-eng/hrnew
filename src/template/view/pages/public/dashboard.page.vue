@@ -34,30 +34,33 @@
                                         class="wd-20 ht-20"></i></a>
                             </div><!-- card-header -->
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="chart-thirteen"><canvas id="chartDonutDevices"></canvas></div>
-                                    </div>
-                                    <div class="col-12 tx-12 mg-t-40">
-                                        <div class="d-flex align-items-center">
-                                            <div class="wd-10 ht-10 bg-success rounded-circle pos-relative t--1"></div>
-                                            <span class="tx-medium mg-l-10">Connecté</span>
-                                            <span class="tx-rubik mg-l-auto">04</span>
+                                <data-loading :processing="dataProcessing">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="chart-thirteen"><canvas id="chartDonutDevices"></canvas></div>
                                         </div>
+                                        <div class="col-12 tx-12 mg-t-40">
+                                            <div class="d-flex align-items-center">
+                                                <div class="wd-10 ht-10 bg-success rounded-circle pos-relative t--1"></div>
+                                                <span class="tx-medium mg-l-10">Connecté</span>
+                                                <span class="tx-rubik mg-l-auto">04</span>
+                                            </div>
 
-                                        <div class="d-flex align-items-center">
-                                            <div class="wd-10 ht-10 bg-danger rounded-circle pos-relative t--1"></div>
-                                            <span class="tx-medium mg-l-10">Hors ligne</span>
-                                            <span class="tx-rubik mg-l-auto">02</span>
-                                        </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="wd-10 ht-10 bg-danger rounded-circle pos-relative t--1"></div>
+                                                <span class="tx-medium mg-l-10">Hors ligne</span>
+                                                <span class="tx-rubik mg-l-auto">02</span>
+                                            </div>
 
-                                        <div class="d-flex align-items-center">
-                                            <div class="wd-10 ht-10 bg-warning rounded-circle pos-relative t--1"></div>
-                                            <span class="tx-medium mg-l-10">Non connecté</span>
-                                            <span class="tx-rubik mg-l-auto">05</span>
+                                            <div class="d-flex align-items-center">
+                                                <div class="wd-10 ht-10 bg-warning rounded-circle pos-relative t--1"></div>
+                                                <span class="tx-medium mg-l-10">Non connecté</span>
+                                                <span class="tx-rubik mg-l-auto">05</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </data-loading>
+
                             </div><!-- card-body -->
                         </div><!-- card -->
                     </div>

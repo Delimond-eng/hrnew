@@ -15,7 +15,7 @@
             </svg>
         </div> -->
         <div>
-            <svg width="40" fill="#4666C8" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg width="30" fill="#9FB3EF" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <rect class="spinner_jCIR" x="1" y="6" width="2.8" height="12" />
                 <rect class="spinner_jCIR spinner_upm8" x="5.8" y="6" width="2.8" height="12" />
                 <rect class="spinner_jCIR spinner_2eL5" x="10.6" y="6" width="2.8" height="12" />
@@ -24,7 +24,7 @@
             </svg>
         </div>
     </div>
-    <div v-else class="m-0 p-0">
+    <div v-show="processing === false" class="m-0 p-0">
         <slot></slot>
     </div>
 </template>

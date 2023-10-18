@@ -23,7 +23,7 @@
 
                     </div>
                     <div class="d-none d-md-block">
-                        <select id="agenceFilterSelect" class="form-select" v-show="!dataProcessing">
+                        <select id="agenceFilterSelect" class="form-select" v-show="dataProcessing === false">
                             <option label="Filtez agence par province"></option>
                         </select>
 

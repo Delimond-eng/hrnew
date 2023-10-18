@@ -35,11 +35,12 @@
                     </div>
                 </div>
 
-                <div class="df-example">
+                <div class="df-example h-100">
+                    <data-loading :processing="dataLoading">
+                        <table id="employesTable" class="table w-100">
 
-                    <table id="employesTable" class="table">
-
-                    </table>
+                        </table>
+                    </data-loading>
                 </div>
                 <!-- container -->
             </div>
@@ -58,6 +59,7 @@ export default {
         return {
             table: null,
             modalShown: false,
+            dataLoading: false
         }
     },
 
@@ -67,8 +69,10 @@ export default {
         },
 
         async loadData() {
+            this.dataLoading = true;
             if (this.table !== null) this.table.destroy();
             const employees = await this.$store.dispatch('biotime/allEmployees');
+            this.dataLoading = false;
             this.table = $('#employesTable').DataTable({
                 language: datatableFr,
                 columns: [

@@ -78,7 +78,7 @@
                                     </div><!-- col -->
                                     <div class="form-group">
                                         <label class="form-label">Code du service: <span class="tx-danger">*</span></label>
-                                        <input id="service-label" class="form-control" name="lastname"
+                                        <input id="service-label" readonly class="form-control" name="lastname"
                                             v-model="form.dept_code" placeholder="Entrer le libellé du service..."
                                             type="text" required>
                                     </div><!-- col -->
@@ -101,6 +101,7 @@
 </template>
 
 <script>
+import { v1 as uuidv1 } from 'uuid';
 export default {
     name: 'ServicesPage',
     data() {
@@ -116,6 +117,8 @@ export default {
     },
 
     async mounted() {
+        let uuid = uuidv1();
+        this.form.dept_code = uuid;
         /*Test loading data*/
         await this.refreshData();
         /*End loading test data*/
@@ -133,6 +136,8 @@ export default {
                     this.refreshData();
                     this.form.nom = '';
                     this.form.dept_code = '';
+                    let uuid = uuidv1();
+                    this.form.dept_code = uuid;
                 }
             }).catch((e) => this.submitLoading = false);
         },
