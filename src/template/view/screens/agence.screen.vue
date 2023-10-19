@@ -68,7 +68,6 @@
 <script>
 export default {
     name: "AgenceScreen",
-    inject: ['selectAgence'],
     unmounted() {
         $('.aside').removeClass('minimize');
         console.log(JSON.stringify(this.$route.params), ":::::Route Params");
