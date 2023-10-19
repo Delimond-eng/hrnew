@@ -9,19 +9,42 @@
                             <span aria-hidden="true">&times;</span>
                         </a>
                         <div></div>
-                    </div><!-- modal-header -->
-
+                    </div>
+                    <!-- modal-header -->
                     <div class="row d-flex justify-content-between align-items-center pd-y-20 pd-x-20 pd-sm-x-30">
                         <div class="col-md-6">
                             <img src="assets/img/device_image.png" class="img-fluid"
                                 style="height: 200px; object-fit: cover" alt="device">
-                            <h4 class="text-center fw-bold">Device Name</h4>
+                            <h4 class="text-center fw-bold text-capitalize">{{ device.alias }}</h4>
                         </div>
                         <div class="col-md-6">
                             <ul class="list-group">
-                                <li class="list-group-item d-flex justify-content-between mb-1" v-for="i in 5" :key="i">
-                                    <span class="align-items-start">Serie : </span>
-                                    <span class="fw-bold align-items-start">JKJKSJKJKSJ</span>
+                                <li class="list-group-item d-flex justify-content-between border-botton-only">
+                                    <span class="align-items-end">Serie </span>
+                                    <span class="fw-bold align-items-start">{{ device.sn }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between border-botton-only">
+                                    <span class="align-items-end">Adresse IP </span>
+                                    <span class="fw-bold align-items-start">{{ device.ip_address }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between border-botton-only">
+                                    <span class="align-items-end">Province </span>
+                                    <span class="fw-bold align-items-start">{{ device.area_name }}</span>
+                                </li>
+
+
+                                <li class="list-group-item d-flex justify-content-between border-botton-only">
+                                    <span class="align-items-end">Status </span>
+
+                                    <span
+                                        :class="(device.state === '3') ? 'tx-danger' : (device.state !== 2) ? 'tx-warning' : 'tx-success'">
+                                        {{ (device.state === '3') ? 'Hors ligne' : (device.state !== 2) ? 'Non connecté' :
+                                            'Connecté'
+                                        }}
+                                    </span>
+
                                 </li>
                             </ul>
                         </div>

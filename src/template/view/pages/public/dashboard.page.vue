@@ -169,12 +169,12 @@
                                                             data-feather="more-vertical"></i></a>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <a href="javascript:void(0)"
-                                                            @click.prevent="$showBsModal('modalDeviceLink', 'effect-scale')"
+                                                            @click.prevent="selectedDevice = device; $showBsModal('modalDeviceLink', 'effect-scale')"
                                                             class="dropdown-item details"><i data-feather="link"></i>Lier à
                                                             une
                                                             agence</a>
                                                         <a href="javascript:void(0)" class="dropdown-item important"
-                                                            @click.prevent="$showBsModal('modalDeviceInfo', 'effect-scale')"><i
+                                                            @click.prevent="selectedDevice = device; $showBsModal('modalDeviceInfo', 'effect-scale');"><i
                                                                 data-feather="info"></i>Voir infos</a>
                                                     </div>
                                                 </div>
@@ -194,7 +194,7 @@
         </div>
     </div>
     <devices-details-modal :title="selectedTitle" :datas="selectedDatas" />
-    <device-link-modal />
+    <device-link-modal :device="selectedDevice" />
     <device-info-modal :device="selectedDevice" />
 </template>
 
@@ -215,7 +215,7 @@ export default {
             dataProcessing: false,
             selectedTitle: '',
             selectedDatas: [],
-            selectedDevice: null
+            selectedDevice: {}
         }
     },
 

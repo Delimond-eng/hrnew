@@ -21,9 +21,7 @@
                                 </li>
                             </ol>
                         </nav>
-
                     </div>
-
                 </div>
 
                 <div class="row">

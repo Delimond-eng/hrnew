@@ -45,7 +45,7 @@ const actions = {
           }
         });
       } else {
-        agences = results;
+        agences = data.agences;
       }
       commit("SET_AGENCES", agences);
       return agences;

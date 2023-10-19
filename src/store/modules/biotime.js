@@ -144,7 +144,10 @@ const actions = {
       agence_id: form.agence_id,
     };
     const { data } = await post("api/addDevice", formData);
-    return data;
+    if (data.reponse !== undefined) {
+      return data;
+    }
+    return false;
   },
 
   /**
