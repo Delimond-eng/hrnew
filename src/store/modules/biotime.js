@@ -182,6 +182,7 @@ const actions = {
       let depts = [];
       allDepts.forEach((e) => {
         if (e.id !== 1) {
+          e.checked = false;
           depts.push(e);
         }
       });

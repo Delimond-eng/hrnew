@@ -83,10 +83,11 @@
                             <li class="list-inline-item" v-for="(dept, index ) in services" :key="index">
                                 <a href="javascript:void(0)">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" :checked="dept.checked"
+                                        <input type="checkbox" class="custom-control-input"
+                                            @change="singleSelect($event, dept)" :checked="dept.checked"
                                             :id="`customCheck0${index}`">
                                         <label class="custom-control-label p-lg-1" :for="`customCheck0${index}`">
-                                            {{ dept.label }}
+                                            {{ dept.dept_name }}
                                         </label>
                                     </div>
                                 </a>
@@ -108,43 +109,33 @@
 </template>
 <style scoped src="@/assets/css/dashforge.profile.css"></style>
 <script>
-import datatableFr from '@/assets/js/datatable.fr';
 export default {
     name: 'PrimesPage',
     data() {
         return {
             submitLoading: false,
             dataProcessing: false,
-            services: [
-                {
-                    label: "Service informatique",
-                    checked: false
-                },
-                {
-                    label: "Service comptabilité",
-                    checked: false
-                },
-                {
-                    label: "Service commerciale",
-                    checked: false
-                },
-                {
-                    label: "Service consulting",
-                    checked: false
-                },
-            ]
+            service_ids: []
         }
     },
 
 
 
-    mounted() {
-        /*Test loading data*/
-
+    async mounted() {
         /*End loading test data*/
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
+        await this.$store.dispatch('biotime/allDepartments')
+    },
+
+    /**
+     * Dispose | uncheck all checkbox
+    */
+    unmounted() {
+        for (let s of this.services) {
+            s.checked = false;
+        }
     },
 
     methods: {
@@ -154,22 +145,38 @@ export default {
         selectAll(event) {
             let isChecked = event.target.checked
             if (isChecked) {
+                this.service_ids = [];
                 for (let s of this.services) {
                     s.checked = true;
+                    this.service_ids.push(s.id);
                 }
             }
             else {
                 for (let s of this.services) {
                     s.checked = false;
+                    this.service_ids = [];
                 }
             }
+
+        },
+
+        singleSelect(event, data) {
+            let checked = event.target.checked;
+            if (checked) {
+                this.service_ids.push(data.id);
+            }
+            else {
+                let i = this.service_ids.indexOf(data.id);
+                this.service_ids.splice(i, 1);
+            }
+            console.log(JSON.stringify(this.service_ids));
         }
     },
 
-    /* computed: {
+    computed: {
         services() {
-            return this.$store.getters.GET_SERVICES
+            return this.$store.getters['biotime/GET_DEPARTMENTS']
         }
-    }, */
+    },
 }
 </script>

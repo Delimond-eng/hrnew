@@ -52,7 +52,6 @@
                 </div>
                 <!-- filemgr-sidebar -->
 
-                <!-- filemgr-content -->
                 <div class="filemgr-content">
                     <router-view />
                 </div>
@@ -69,8 +68,7 @@
 <script>
 export default {
     name: "AgenceScreen",
-
-
+    inject: ['selectAgence'],
     unmounted() {
         $('.aside').removeClass('minimize');
         console.log(JSON.stringify(this.$route.params), ":::::Route Params");

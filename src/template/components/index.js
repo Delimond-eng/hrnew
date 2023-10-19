@@ -5,6 +5,7 @@ import FpIcon from "./src/fp_icon";
 import ScanModal from "@/template/view/pages/public/modals/scannig.modal";
 import EmployesCreateModal from "@/template/view/pages/public/modals/employes.modal";
 import CustomSelect2 from "./src/custom_select_2";
+import EmptyState from "./src/empty__state";
 export default {
   install: (app, opt) => {
     app.component("bs-button", BBtn);
@@ -14,5 +15,6 @@ export default {
     app.component("fp-icon", FpIcon);
     app.component("scan-modal", ScanModal);
     app.component("employes-create-modal", EmployesCreateModal);
+    app.component("empty-state", EmptyState);
   },
 };

@@ -23,7 +23,7 @@
 
                     </div>
                     <div class="d-none d-md-block">
-                        <select id="agenceFilterSelect" class="form-select" v-show="dataProcessing === false">
+                        <select id="agenceFilterSelect" v-show="dataProcessing === false">
                             <option label="Filtez agence par province"></option>
                         </select>
 
@@ -31,45 +31,48 @@
                                 data-feather="plus"></i> Nouvelle agence</button>
                     </div>
                 </div>
+
+
+
                 <data-loading :processing="dataProcessing">
-                    <div class="row row-sm">
-                        <div class="col-md-3 mg-md-b-15" v-for="(agence, index) in agences" :key="index">
-                            <a class="card card-event agenceCard shadow-none" href="javascript:void(0)"
-                                @click.prevent="$router.push({ name: 'admin.agence', params: { libelle: agence.libelle, id: agence.agence_id } })">
-                                <div class="card-img-top bg-primary-light w-100 d-flex align-content-center align-items-center"
-                                    style="height: 55px;">
-                                    <h5 class="m-2 tx-primary tx-bold">{{ agence.libelle }}</h5>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="tx-12"> <i data-feather="map-pin" width="12" height="12"></i> {{
-                                        agence.province
-                                    }}</h6>
-                                </div>
-                                <!-- card-body -->
-                                <div class="card-footer tx-13">
-                                    <span class="tx-color-03">Agents</span>
-                                    <span class="tx-color-01">0</span>
-                                </div>
-                                <!-- card-footer -->
-                            </a>
-                            <!-- card -->
+                    <empty-state :isEmpty="agences.length === 0">
+                        <div class="row row-sm">
+                            <div class="col-md-3" v-for="(agence, index) in agences" :key="index">
+                                <a class="card card-event agenceCard shadow-none" href="javascript:void(0)"
+                                    @click.prevent="$router.push({ name: 'admin.agence', params: { libelle: agence.libelle, id: agence.agence_id } });">
+                                    <div class="card-img-top bg-primary-light w-100 d-flex align-content-center align-items-center"
+                                        style="height: 55px;">
+                                        <h5 class="m-2 tx-primary tx-bold">{{ agence.libelle }}</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <h6 class="tx-12"> <i data-feather="map-pin" width="12" height="12"></i> {{
+                                            agence.province
+                                        }}</h6>
+                                    </div>
+
+                                    <div class="card-footer tx-13">
+                                        <span class="tx-color-03">Agents</span>
+                                        <span class="tx-color-01">0</span>
+                                    </div>
+
+                                </a>
+
+                            </div>
                         </div>
-                        <!-- col -->
-                    </div>
+                    </empty-state>
                 </data-loading>
 
             </div>
             <!-- container -->
         </div>
     </div>
-    <agence-modal></agence-modal>
+    <agence-modal @refreshData="refreshData" />
 </template>
 
 <script>
 import AgenceModal from './modals/agences.modal'
 export default {
     name: 'ServicesPage',
-
     data() {
         return {
             submitLoading: false,
@@ -108,6 +111,7 @@ export default {
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
+
 
     },
 

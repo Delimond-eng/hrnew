@@ -109,11 +109,19 @@ export default {
     },
     async mounted() {
         $("#modalAgenceBody").draggable();
+
+        /**
+         * Empty Areas select
+        */
+        $('#modalAgence').on("hidden.bs.modal", function (e) {
+            $(".areasSelect2").val('').trigger('change');
+        });
         await this.initSelect2();
     },
     methods: {
         submitData(e) {
             this.isSubmitLoading = true;
+            this.formData.libelle = this.formData.libelle.toUpperCase();
             this.$store.dispatch('biotime/createAgence', this.formData).then((res) => {
                 this.isSubmitLoading = false;
                 if (typeof res !== 'boolean') {
@@ -140,7 +148,8 @@ export default {
             this.formData.avenue = '';
             this.formData.numero = '';
             this.formData.code_zone = 0;
-            $(".aresSelect2").val('').trigger('change')
+            $(".areasSelect2").val('').trigger('change');
+            this.$emit('refreshData');
         },
 
         async initSelect2() {

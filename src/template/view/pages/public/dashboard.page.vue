@@ -142,47 +142,50 @@
                                     </table>
                                 </div> -->
                                 <data-loading :processing="dataProcessing">
-                                    <div class="row row-xs">
-                                        <div class="col-sm-6 col-lg-4 col-xl-4 mb-2" v-for="( device, i) in devices"
-                                            :key="i">
-                                            <div class="media media-folder">
-                                                <img src="assets/img/device_image.png"
-                                                    style="height: 50px; object-fit: cover" alt="device">
-                                                <div class="media-body">
-                                                    <h6><a href="#" class="link-02">{{ device.alias }}</a></h6>
-                                                    <div class="d-flex">
-                                                        <i data-feather="map-pin"
-                                                            style="width:10px; margin-top: -4px; margin-right: 2px;"></i>
-                                                        <span>{{ device.area_name
-                                                        }}</span>
+                                    <empty-state :isEmpty="devices.length === 0">
+                                        <div class="row row-xs">
+                                            <div class="col-sm-6 col-lg-4 col-xl-4 mb-2" v-for="( device, i) in devices"
+                                                :key="i">
+                                                <div class="media media-folder">
+                                                    <img src="assets/img/device_image.png"
+                                                        style="height: 50px; object-fit: cover" alt="device">
+                                                    <div class="media-body">
+                                                        <h6><a href="#" class="link-02">{{ device.alias }}</a></h6>
+                                                        <div class="d-flex">
+                                                            <i data-feather="map-pin"
+                                                                style="width:10px; margin-top: -4px; margin-right: 2px;"></i>
+                                                            <span>{{ device.area_name
+                                                            }}</span>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <span>{{ device.ip_address }}</span>
+                                                            <div style="height: 8px; width: 8px;"
+                                                                :class="(device.state === '3') ? 'bg-danger' : (device.state !== 2) ? 'bg-warning' : 'bg-success'"
+                                                                class="rounded-circle pos-relative"></div>
+                                                        </div>
                                                     </div>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <span>{{ device.ip_address }}</span>
-                                                        <div style="height: 8px; width: 8px;"
-                                                            :class="(device.state === '3') ? 'bg-danger' : (device.state !== 2) ? 'bg-warning' : 'bg-success'"
-                                                            class="rounded-circle pos-relative"></div>
+                                                    <!-- media-body -->
+                                                    <div class="dropdown-file">
+                                                        <a href="#" class="dropdown-link" data-bs-toggle="dropdown"><i
+                                                                data-feather="more-vertical"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="javascript:void(0)"
+                                                                @click.prevent="selectedDevice = device; $showBsModal('modalDeviceLink', 'effect-scale')"
+                                                                class="dropdown-item details"><i
+                                                                    data-feather="link"></i>Lier à
+                                                                une
+                                                                agence</a>
+                                                            <a href="javascript:void(0)" class="dropdown-item important"
+                                                                @click.prevent="selectedDevice = device; $showBsModal('modalDeviceInfo', 'effect-scale');"><i
+                                                                    data-feather="info"></i>Voir infos</a>
+                                                        </div>
                                                     </div>
+                                                    <!-- dropdown -->
                                                 </div>
-                                                <!-- media-body -->
-                                                <div class="dropdown-file">
-                                                    <a href="#" class="dropdown-link" data-bs-toggle="dropdown"><i
-                                                            data-feather="more-vertical"></i></a>
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a href="javascript:void(0)"
-                                                            @click.prevent="selectedDevice = device; $showBsModal('modalDeviceLink', 'effect-scale')"
-                                                            class="dropdown-item details"><i data-feather="link"></i>Lier à
-                                                            une
-                                                            agence</a>
-                                                        <a href="javascript:void(0)" class="dropdown-item important"
-                                                            @click.prevent="selectedDevice = device; $showBsModal('modalDeviceInfo', 'effect-scale');"><i
-                                                                data-feather="info"></i>Voir infos</a>
-                                                    </div>
-                                                </div>
-                                                <!-- dropdown -->
+                                                <!-- media -->
                                             </div>
-                                            <!-- media -->
                                         </div>
-                                    </div>
+                                    </empty-state>
                                 </data-loading>
                                 <!-- table-responsive -->
                             </div><!-- card-body -->

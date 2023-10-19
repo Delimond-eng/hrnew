@@ -37,9 +37,11 @@
 
                 <div class="df-example h-100">
                     <data-loading :processing="dataLoading">
-                        <table id="employesTable" class="table w-100">
+                        <empty-state :isEmpty="employees.length === 0">
+                            <table id="employesTable" class="table w-100">
 
-                        </table>
+                            </table>
+                        </empty-state>
                     </data-loading>
                 </div>
                 <!-- container -->
@@ -59,7 +61,8 @@ export default {
         return {
             table: null,
             modalShown: false,
-            dataLoading: false
+            dataLoading: false,
+            employees: []
         }
     },
 
@@ -72,6 +75,11 @@ export default {
             this.dataLoading = true;
             if (this.table !== null) this.table.destroy();
             const employees = await this.$store.dispatch('biotime/allEmployees');
+
+            /**
+             * assign data employees 
+            */
+            this.employees = employees;
             this.dataLoading = false;
             this.table = $('#employesTable').DataTable({
                 language: datatableFr,
@@ -82,6 +90,29 @@ export default {
                     { title: 'Matricule', data: 'emp_code' },
                     { title: 'Genre', data: 'gender' },
                     { title: 'Email', data: 'email' },
+                    {
+                        title: 'Fonction',
+                        data: (row, type, val, meta) => {
+                            if (row.position === null) {
+                                return '-';
+                            }
+                            else {
+                                return row.position.position_name
+                            }
+                        }
+                    },
+
+                    {
+                        title: 'Service',
+                        data: (row, type, val, meta) => {
+                            if (row.department === null) {
+                                return '-';
+                            }
+                            else {
+                                return row.department.dept_name
+                            }
+                        }
+                    },
                     { title: 'Date engagement', data: 'hire_date' },
                 ],
                 data: employees,

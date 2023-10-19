@@ -28,18 +28,21 @@
                     <div class="col-md-6">
                         <div class="df-example">
                             <data-loading :processing="dataProcessing">
-                                <div class="list-group">
-                                    <li class="list-group-item d-flex align-items-center border-botton-only"
-                                        v-for="(position, index) in positions" :key="index">
-                                        <div class="d-flex justify-content-between w-100 align-items-center">
-                                            <h6 class="tx-13 tx-inverse tx-semibold mg-b-0">{{ position.position_name }}
-                                            </h6>
-                                            <button class="btn btn-sm btn-icon btn-danger">
-                                                <i data-feather="trash"></i>
-                                            </button>
-                                        </div>
-                                    </li>
-                                </div>
+                                <empty-state :isEmpty="positions.length === 0">
+                                    <div class="list-group">
+                                        <li class="list-group-item d-flex align-items-center border-botton-only"
+                                            v-for="(position, index) in positions" :key="index">
+                                            <div class="d-flex justify-content-between w-100 align-items-center">
+                                                <h6 class="tx-13 tx-inverse tx-semibold mg-b-0">{{ position.position_name }}
+                                                </h6>
+                                                <button class="btn btn-sm btn-icon btn-danger">
+                                                    <i data-feather="trash"></i>
+                                                </button>
+                                            </div>
+                                        </li>
+                                    </div>
+                                </empty-state>
+
                             </data-loading>
                         </div>
                     </div>
