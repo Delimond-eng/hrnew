@@ -23,23 +23,30 @@
 
                     </div>
                     <div class="d-none d-md-block">
-                        <a href="#modalBareme" class="btn btn-lg btn-primary" data-bs-toggle="modal"
-                            data-animation="effect-slide-in-right"><i data-feather="plus" class="wd-10 mg-r-5"></i>Ajout
+                        <a href="javascript:void(0)" class="btn btn-lg btn-primary"
+                            @click.prevent="$showBsModal('modalBareme', 'effect-scale')"><i data-feather="plus"
+                                class="wd-10 mg-r-5"></i>Ajout
                             barème</a>
                     </div>
                 </div>
 
                 <div class="df-example">
-                    <table id="baremesTable" class="table">
+                    <data-loading :processing="dataLoading">
+                        <empty-state :is-empty="baremes.length === 0">
+                            <table id="baremesTable" class="table w-100">
 
-                    </table>
+                            </table>
+                        </empty-state>
+                    </data-loading>
+
+
                 </div>
                 <!-- container -->
             </div>
         </div>
     </div>
 
-    <bareme-create-modal />
+    <bareme-create-modal @refreshData="refreshBaremes" />
 </template>
 
 <script>
@@ -54,28 +61,45 @@ export default {
 
     data() {
         return {
-            table: null
+            table: null,
+            dataLoading: false,
+            baremes: [],
         }
     },
 
 
     unmounted() {
-        this.table.destroy();
+        if (this.table !== null) this.table.destroy();
         this.table = null;
     },
 
     mounted() {
-        this.table = $('#baremesTable').DataTable({
-            language: datatableFr,
-            columns: [
-                { title: "Catégorie salarial" },
-                { title: "Libellé" },
-                { title: "Salaire mensuel" },
-                { title: "Allocation familiale" },
-                { title: "Transport Journalier" },
-                {
-                    title: '',
-                    defaultContent: `<td class="dropdown-file">
+        this.refreshBaremes();
+        new PerfectScrollbar(".content-body", {
+            suppressScrollX: true,
+        });
+    },
+
+    methods: {
+        async refreshBaremes() {
+            let self = this;
+            this.dataLoading = true;
+            let baremes = await this.$store.dispatch('erp/allBaremes');
+            this.baremes = baremes
+            this.dataLoading = false;
+            if (this.table !== null) this.table.destroy();
+            this.table = $('#baremesTable').DataTable({
+                language: datatableFr,
+                columns: [
+                    { title: "Libellé", data: 'libelle' },
+                    { title: "Catégorie salarial", data: 'categorie_salariale' },
+                    { title: "Salaire mensuel", data: 'salaire_mensuel' },
+                    { title: "Allocation familiale", data: 'allocation_familliale' },
+                    { title: "Transport Journalier", data: 'transport_journalier' },
+                    { title: "Devise", data: 'devise' },
+                    {
+                        title: '',
+                        defaultContent: `<td class="dropdown-file">
                                     <a href="#" class="btn btn-white btn-sm btn-icon" data-bs-toggle="dropdown"><i
                                             data-feather="more-vertical"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end">
@@ -85,36 +109,10 @@ export default {
                                                 class="mg-r-10 tx-12"></i>Supprimer</a>
                                     </div>
                                 </td>` },
-            ],
-
-            data: [
-                ["Qualifié", "Qualifié / Ressources humaines", "600 000 CDF", "250 CDF", "4000 CDF"],
-                ["Semi-qualifié", "Qualifié / Informatique", "450 000 CDF", "250 CDF", "3500 CDF"],
-                ["Manoeuvre Cadre...", "MC / Informatique", "450 000 CDF", "250 CDF", "3500 CDF"],
-            ]
-            /* columns: [
-                {
-                    title: '',
-                    data: null,
-                    defaultContent: ``
-                }
-            ] */
-        })
-        new PerfectScrollbar(".content-body", {
-            suppressScrollX: true,
-        });
-        $('#modalBareme').on('show.bs.modal', function (event) {
-            var animation = $(event.relatedTarget).data('animation');
-            $(this).addClass(animation);
-
-        })
-
-        // hide modal with effect
-        $('#modalBareme').on('hidden.bs.modal', function (e) {
-            $(this).removeClass(function (index, className) {
-                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
+                ],
+                data: self.baremes
             });
-        });
-    }
+        }
+    },
 }
 </script>

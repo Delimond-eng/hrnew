@@ -118,7 +118,7 @@ export default {
     methods: {
         async refreshData(payload) {
             this.dataProcessing = true
-            this.$store.dispatch('erp/getAgences', payload)
+            this.$store.dispatch('erp/allAgences', payload)
                 .then((res) => this.dataProcessing = false)
                 .catch((e) => this.dataProcessing = false)
         }

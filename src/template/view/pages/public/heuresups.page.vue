@@ -23,15 +23,19 @@
 
                     </div>
                     <div class="d-none d-md-block">
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-8 col-xl-8">
-                        <div class="df-example">
-                            <table id="heuresSupTable" class="table">
+                        <div class="df-example h-100">
+                            <data-loading :processing="dataProcessing">
+                                <empty-state :is-empty="heuresup.length === 0">
+                                    <table id="heuresSupTable" class="table w-100">
 
-                            </table>
+                                    </table>
+                                </empty-state>
+                            </data-loading>
                         </div>
                     </div><!-- col -->
                     <div class="col-sm-7 col-md-5 col-lg-4 col-xl-4">
@@ -39,23 +43,24 @@
                             <section>
                                 <p class="mg-b-20 tx-12 tx-danger">Veuillez configurer les heures supplémentaires !
                                 </p>
-                                <form @submit.prevent="submitPrime">
+                                <form @submit.prevent="submitData">
                                     <div class="mb-2">
                                         <label class="form-label">Nom Formule: <span class="tx-danger">*</span></label>
-                                        <input id="service-name" class="form-control" name="firstname"
-                                            placeholder="Entrer le nom du service..." type="text" required>
+                                        <input class="form-control" placeholder="Entrer le nom de la formule..." type="text"
+                                            v-model="form.nom_formule" required>
                                     </div><!-- col -->
                                     <div class="mb-2">
                                         <label class="form-label">% sur le salaire journalier: <span
                                                 class="tx-danger">*</span></label>
-                                        <input class="form-control" name="firstname" placeholder="Entrer la valeur..."
-                                            type="number" required>
+                                        <input class="form-control" v-model="form.pourcentage"
+                                            placeholder="entrer le pourcentage...ex: 10" type="number" required>
                                     </div><!-- col -->
                                     <div class="mb-2">
                                         <label class="form-label">Nb d'heures après travail <span
                                                 class="tx-danger">*</span></label>
-                                        <input class="form-control" name="firstname" placeholder="Entrer la valeur..."
-                                            type="number" required>
+                                        <input class="form-control" v-model="form.total_heures"
+                                            placeholder="Entrer le nbre d'heure après travail...ex: 2" type="number"
+                                            required>
                                     </div><!-- col -->
                                     <div class="d-grid gap-2 mt-4">
                                         <bs-button btn-type="submit" :loading="submitLoading"
@@ -83,35 +88,17 @@ export default {
             submitLoading: false,
             dataProcessing: false,
             table: null,
-            primes: [
-                ['Heure supp600', '130', '2'],
-                ['Heure supp160', '160', '4'],
-            ],
+            heuresup: [],
+            form: {
+                nom_formule: '',
+                pourcentage: '',
+                total_heures: ''
+            }
         }
     },
 
-    mounted() {
-        /*Test loading data*/
-        this.table = $('#heuresSupTable').DataTable({
-            language: datatableFr,
-            columns: [
-                { title: 'Nom formule' },
-                { title: '% sur salaire journ.' },
-                { title: 'Nb heures après travail' },
-                {
-                    title: '',
-                    defaultContent: `<div class="d-flex">
-                                            <button class="btn btn-white btn-sm mg-r-2"> <i
-                                                    data-feather="trash"></i></button>
-                                            <button class="btn btn-white tx-primary btn-sm mg-r-2"> <i
-                                                    data-feather="edit"></i></button>
-                                        </div>`
-                },
-            ],
-
-            data: this.primes
-
-        })
+    async mounted() {
+        this.refreshData();
         /*End loading test data*/
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
@@ -119,21 +106,70 @@ export default {
     },
 
     unmounted() {
-        this.table.destroy();
+        if (this.table !== null) this.table.destroy();
         this.table = null;
     },
 
 
     methods: {
-        submitPrime(e) {
+        submitData(e) {
             this.submitLoading = true;
+            this.$store.dispatch('erp/configHeureSup', this.form)
+                .then((res) => {
+                    this.submitLoading = false;
+                    if (res.reponse !== undefined) {
+                        if (res.reponse.status === 'success') {
+                            this.$showSuccessMessage('Configuration heure supplémentaire effectuée !');
+                            this.cleanFields();
+                        }
+                        else {
+                            this.$showFailMessage();
+                        }
+                    }
+                    else {
+                        this.$showFailMessage();
+                    }
+                })
+                .catch((_) => {
+                    this.submitLoading = false;
+                    this.$showFailMessage();
+                })
+        },
+
+        test() {
+            console.log("test trigger....");
+        },
+
+        cleanFields() {
+            this.form.nom_formule = ''
+            this.form.pourcentage = ''
+            this.form.total_heures = ''
+            this.refreshData();
+        },
+
+        async refreshData() {
+            /*Test loading data*/
+            let self = this;
+            this.dataProcessing = true;
+            if (this.table !== null) this.table.destroy()
+            const configs = await this.$store.dispatch('erp/allConfigs');
+            this.heuresup = configs.heure_supplementaires;
+            this.dataProcessing = false;
+            this.table = $('#heuresSupTable').DataTable({
+                language: datatableFr,
+                columns: [
+                    { title: 'Nom formule', data: 'nom_formule' },
+                    { title: '% sur salaire journ.', data: 'pourcentage' },
+                    { title: 'Nb heures après travail', data: 'total_heures' },
+                    {
+                        title: '',
+                        defaultContent: `<button class="btn btn-danger btn-sm mg-r-2" @click="self.test"> <i
+                                                    data-feather="trash"></i></button>`
+                    },
+                ],
+                data: this.heuresup
+            });
         }
     },
-
-    /* computed: {
-        services() {
-            return this.$store.getters.GET_SERVICES
-        }
-    }, */
 }
-</script>@/js/datatable.fr
+</script>

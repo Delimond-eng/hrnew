@@ -28,9 +28,14 @@
                 <div class="row">
                     <div class="col-lg-8 col-xl-8">
                         <div class="df-example">
-                            <table id="primesTable" class="table">
+                            <data-loading :processing="dataProcessing">
+                                <empty-state :is-empty="primes.length === 0">
+                                    <table id="primesTable" class="table w-100">
 
-                            </table>
+                                    </table>
+                                </empty-state>
+                            </data-loading>
+
                         </div>
                     </div><!-- col -->
                     <div class="col-sm-7 col-md-5 col-lg-4 col-xl-4">
@@ -41,16 +46,16 @@
                                 <form @submit.prevent="submitPrime">
                                     <div class="mb-2">
                                         <label class="form-label">Libellé prime: <span class="tx-danger">*</span></label>
-                                        <input id="service-name" class="form-control" name="firstname"
-                                            placeholder="Entrer le nom du service..." type="text" required>
+                                        <input id="service-name" v-model="form.libelle" class="form-control"
+                                            placeholder="Entrer le libellé..." type="text" required>
                                     </div><!-- col -->
 
                                     <div class="mb-4">
                                         <label class="form-label">Validité : <span class="tx-danger">*</span></label>
-                                        <select class="form-select" required>
-                                            <option value="CDF" selected>Mensuelle</option>
-                                            <option value="USD">Trimestrielle</option>
-                                            <option value="USD">Annuelle</option>
+                                        <select class="form-select" v-model="form.validite" required>
+                                            <option value="Mensuelle" selected>Mensuelle</option>
+                                            <option value="Trimestrielle">Trimestrielle</option>
+                                            <option value="Annuelle">Annuelle</option>
                                         </select>
                                     </div><!-- col -->
                                     <div class="d-grid gap-2">
@@ -79,43 +84,24 @@ export default {
             submitLoading: false,
             dataProcessing: false,
             table: null,
+            form: {
+                libelle: '',
+                validite: 'Mensuelle'
+            },
             primes: [
-                ['Prime de merite', '30000', 'CDF', 'Mensuelle'],
-                ['Prime de motivation', '25000', 'CDF', 'Mensuelle'],
-                ['Prime de caisse', '85000', 'CDF', 'Mensuelle'],
+
             ],
         }
     },
 
 
     unmounted() {
-        this.table.destroy();
+        if (this.table !== null) this.table.destroy();
         this.table = null;
     },
 
     mounted() {
-        /*Test loading data*/
-        this.table = $('#primesTable').DataTable({
-            language: datatableFr,
-            columns: [
-                { title: 'Libellé' },
-                { title: 'Montant' },
-                { title: 'Devise' },
-                { title: 'Validité' },
-                {
-                    title: '',
-                    defaultContent: `<div class="d-flex">
-                                            <button class="btn btn-white btn-icon rounded-circle tx-primary btn-sm mg-r-2"> <i
-                                                    data-feather="edit"></i></button>
-                                            <button class="btn btn-white btn-icon rounded-circle tx-danger btn-sm mg-r-2"> <i
-                                                    data-feather="trash"></i></button>
-                                        </div>`
-                },
-            ],
-
-            data: this.primes
-
-        })
+        this.refreshData();
         /*End loading test data*/
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
@@ -125,13 +111,51 @@ export default {
     methods: {
         submitPrime(e) {
             this.submitLoading = true;
+            this.$store.dispatch('erp/configPrime', this.form).then((res) => {
+                this.submitLoading = false;
+                if (res.reponse !== undefined) {
+                    if (res.reponse.status === 'success') {
+                        this.$showSuccessMessage('Nouvelle prime configurer avec succès !');
+                        this.cleanField();
+                    }
+                }
+                else {
+                    this.$showFailMessage();
+                }
+            }).catch((_) => {
+                this.submitLoading = false;
+                this.$showFailMessage();
+            })
+        },
+
+        cleanField() {
+            this.form.libelle = '';
+            this.form.validite = 'Mensuelle';
+            this.refreshData();
+        },
+
+        async refreshData() {
+            this.dataProcessing = true;
+            if (this.table !== null) this.table.destroy();
+            const configs = await this.$store.dispatch('erp/allConfigs');
+            this.primes = configs.primes;
+            this.dataProcessing = false;
+            this.table = $('#primesTable').DataTable({
+                language: datatableFr,
+                columns: [
+                    { title: 'Libellé', data: 'libelle' },
+                    { title: 'Validité', data: 'validite' },
+                    {
+                        title: '',
+                        defaultContent: `<button class="btn btn-danger btn-icon"> <i
+                                                    data-feather="trash"></i></button>`
+                    },
+                ],
+
+                data: this.primes
+
+            });
         }
     },
-
-    /* computed: {
-        services() {
-            return this.$store.getters.GET_SERVICES
-        }
-    }, */
 }
 </script>

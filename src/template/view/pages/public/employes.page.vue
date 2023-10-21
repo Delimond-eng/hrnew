@@ -24,8 +24,8 @@
                     </div>
                     <div class="d-none d-md-block">
                         <div class="d-flex">
-                            <button @click.prevent="showCreateModal" class="btn btn-lg btn-primary mg-r-3"><i
-                                    data-feather="plus" class="wd-10 mg-r-5"></i>
+                            <button @click.prevent="$showBsModal('modalEmployes', 'effect-slide-in-right')"
+                                class="btn btn-lg btn-primary mg-r-3"><i data-feather="plus" class="wd-10 mg-r-5"></i>
                                 Nouveau
                                 employé</button>
                             <a href="javascript:void(0)" class="btn btn-lg btn-outline-primary"><i data-feather="download"
@@ -115,7 +115,7 @@ export default {
                     },
                     { title: 'Date engagement', data: 'hire_date' },
                 ],
-                data: employees,
+                data: this.employees,
             });
         }
     },
@@ -125,20 +125,10 @@ export default {
         this.table = null;
     },
     async mounted() {
-        $('#modalEmployes').on('show.bs.modal', function (event) {
-            $(this).addClass("effect-slide-in-right");
-        })
-
         new PerfectScrollbar(".content-body", {
             suppressScrollX: true,
         });
         await this.loadData();
-        // hide modal with effect
-        $('#modalEmployes').on('hidden.bs.modal', function (e) {
-            $(this).removeClass(function (index, className) {
-                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
-            });
-        });
     }
 }
 </script>
