@@ -280,6 +280,8 @@ export default {
 			this.form.contrat_type = 'CDD';
 			this.form.nbre_enfant = '0';
 			this.form.duree = '';
+			this.form.email = '';
+			this.form.telephone = '';
 			this.form.periode_unite = 'mois';
 			this.form.code_zone = 0;
 			this.form.agence_id = 0;
@@ -310,7 +312,8 @@ export default {
 				 * Load agencies of select area
 				*/
 				let payload = $(this).select2('data')[0].text;
-				const agences = await self.$store.dispatch('erp/getAgences', payload);
+				const agences = await self.$store.dispatch('erp/allAgences', payload);
+
 				$('#agenceSelect2').empty();
 				$('#agenceSelect2').select2({
 					dropdownParent: $('#modalEmployes'),
