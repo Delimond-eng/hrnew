@@ -168,7 +168,7 @@
 								<div class="col-md-4">
 									<label class="form-label">Barème <span class="tx-danger">*</span></label><br>
 									<div class="w-100">
-										<select class="baremeSelect form-select" style="width:100%">
+										<select class="form-select" style="width:100%" id="baremeSelect2">
 											<option label="--Sélectionnez barème--"></option>
 										</select>
 									</div>
@@ -239,6 +239,7 @@ export default {
 			this.form.agence_id = $("#agenceSelect2").val();
 			this.form.fonction_id = $("#fonctionSelect2").val();
 			this.form.service_id = $("#serviceSelect2").val();
+			this.form.service_id = $("#baremeSelect2").val();
 			this.isSubmitLoading = true;
 			this.$store.dispatch('biotime/createEmployee', this.form).then((result) => {
 				this.isSubmitLoading = false;
@@ -301,6 +302,7 @@ export default {
 			$('#provinceSelect2').select2({
 				dropdownParent: $('#modalEmployes'),
 				placeholder: '--Sélectionnez une province--',
+				allowClear: true,
 				data: $.map(areas, function (item) {
 					return {
 						text: item.area_name,
@@ -318,6 +320,7 @@ export default {
 				$('#agenceSelect2').select2({
 					dropdownParent: $('#modalEmployes'),
 					placeholder: '--Sélectionnez une agence--',
+					allowClear: true,
 					data: $.map(agences, function (item) {
 						return {
 							text: item.libelle,
@@ -349,6 +352,7 @@ export default {
 			$('#fonctionSelect2').select2({
 				dropdownParent: $('#modalEmployes'),
 				placeholder: '--Sélectionnez une fonction--',
+				allowClear: true,
 				data: $.map(fonctions, function (item) {
 					return {
 						text: item.position_name,
@@ -367,6 +371,7 @@ export default {
 			const services = await this.$store.dispatch('biotime/allDepartments');
 			$('#serviceSelect2').select2({
 				dropdownParent: $('#modalEmployes'),
+				allowClear: true,
 				placeholder: '--Sélectionnez un service--',
 				data: $.map(services, function (item) {
 					return {
@@ -382,26 +387,17 @@ export default {
 			/**
 			 * Barème select
 			 * */
-			$('.baremeSelect').select2({
+			const baremes = await this.$store.dispatch('erp/allBaremes');
+			$('#baremeSelect2').select2({
 				dropdownParent: $('#modalEmployes'),
+				allowClear: true,
 				placeholder: '--Sélectionnez barème--',
-				data: [{
-					id: 1,
-					text: "Bareme O1"
-				},
-				{
-					id: 2,
-					text: "Bareme O2"
-				},
-				{
-					id: 3,
-					text: "Bareme O3"
-				},
-				{
-					id: 4,
-					text: "Bareme O4"
-				},
-				]
+				data: $.map(baremes, function (item) {
+					return {
+						text: item.libelle,
+						id: item.bareme_id
+					}
+				})
 			});
 		}
 	}

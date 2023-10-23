@@ -46,7 +46,7 @@ const actions = {
    * @return Array agents
    */
   async allAgents({ commit }) {
-    let { data, status } = await get("agents/all");
+    let { data, status } = await get("dashboard/agents/all");
     if (status === 200) {
       let agents = data.agents;
       commit("SET_AGENTS", agents);
@@ -200,6 +200,7 @@ const actions = {
    * @returns HttpRespone
    */
   async affecterPrime(context, payload) {
+    payload.user_id = "1";
     let { data, status } = await post(
       "dashboard/agents/affecterPrime",
       payload
@@ -218,6 +219,7 @@ const actions = {
    * @returns HttpRespone
    */
   async affecterAgent(context, payload) {
+    payload.user_id = "1";
     let { data, status } = await post("dashboard/agents/affecter", payload);
     if (status === 200) {
       return data;

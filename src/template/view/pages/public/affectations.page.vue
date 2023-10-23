@@ -24,7 +24,7 @@
                                 </li>
                             </ol>
                         </nav>
-                        
+
                     </div>
                 </div>
 
@@ -36,6 +36,15 @@
                             data-bs-toggle="tab" href="#agents" role="tab" aria-controls="home"
                             aria-selected="true">Affectation agents</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            @click.prevent="$router.replace({ name: 'affectations', params: { affect: 'primes' } })"
+                            id="primes-tab" data-bs-toggle="tab" href="#primes"
+                            :class="$route.params.affect.includes('primes') ? 'active' : ''" role="tab"
+                            aria-controls="profile" aria-selected="false"> Affectation primes</a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link"
                             @click.prevent="$router.replace({ name: 'affectations', params: { affect: 'conges' } })"
