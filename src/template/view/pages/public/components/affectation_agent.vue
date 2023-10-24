@@ -36,6 +36,17 @@
                 </div>
                 <!-- End Agent select -->
 
+
+                <!--  position select -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Fonction<span class="tx-danger">*</span></label> <br>
+                        <select class="select2 form-select w-100" id="fonctionSelect2" required>
+                            <option label="--Sélectionnez une fonction--"></option>
+                        </select>
+                    </div>
+                </div>
+
                 <!-- service select -->
                 <div class="col-md-4">
                     <div class="form-group">
@@ -51,7 +62,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label class="form-label">Date affectation<span class="tx-danger">*</span></label>
-                        <input type="date" class="form-control" required>
+                        <input type="date" v-model="form.date_affectation" class="form-control" required>
                     </div>
                 </div>
             </div>
@@ -103,7 +114,9 @@ export default {
             $('#agenceSelect2').select2({
                 placeholder: '--Sélectionnez une agence--',
             });
-
+            /**
+             * Agents list select2 init
+            */
             const agents = await this.$store.dispatch('biotime/allEmployees');
             $('#agentSelect2').select2({
                 placeholder: '--Sélectionnez une agent--',
@@ -114,10 +127,29 @@ export default {
                     }
                 })
             }).on('change', function (e) {
-                self.form.agence_id = $(this).val();
+                self.form.agent_id = $(this).val();
+            });
+
+            /**
+             * Positions select2 init
+            */
+            const positions = await this.$store.dispatch('biotime/allPositions');
+            $('#fonctionSelect2').select2({
+                placeholder: '--Sélectionnez une fonction--',
+                data: $.map(positions, function (item) {
+                    return {
+                        text: item.position_name,
+                        id: item.id
+                    }
+                })
+            }).on('change', function (e) {
+                self.form.fonction_id = $(this).val();
             });
 
 
+            /**
+             * Departments List Select2 init
+            */
             const departments = await this.$store.dispatch('biotime/allDepartments');
             $('#serviceSelect2').select2({
                 placeholder: '--Sélectionnez un service--',
@@ -131,7 +163,9 @@ export default {
                 self.form.service_id = $(this).val();
             });
 
-
+            /**
+             * Provinces select2 init
+            */
             const areas = await this.$store.dispatch('biotime/allAreas');
             $('#provinceSelect2').select2({
                 placeholder: '--Sélectionnez une province--',
@@ -156,6 +190,8 @@ export default {
                             id: item.agence_id
                         }
                     })
+                }).on('change', function (pe) {
+                    self.form.agence_id = $(this).val();
                 });
                 $("#agenceSelect2").val('').trigger('change');
             });
@@ -172,11 +208,12 @@ export default {
             $("#agenceSelect2").val('').trigger('change');
             $("#provinceSelect2").val('').trigger('change');
             $("#serviceSelect2").val('').trigger('change');
+            $("#fonctionSelect2").val('').trigger('change');
         },
 
         submitData(e) {
             this.submitLoading = true;
-            this.$store.dispatch('erp/affecterAgent').then((res) => {
+            this.$store.dispatch('erp/affecterAgent', this.form).then((res) => {
                 this.submitLoading = false;
                 if (res.reponse !== undefined) {
                     if (res.reponse.status === 'success') {
@@ -192,7 +229,6 @@ export default {
                 this.$showFailMessage();
                 this.submitLoading = false;
             })
-            console.log(e.target.value);
         }
     },
 }

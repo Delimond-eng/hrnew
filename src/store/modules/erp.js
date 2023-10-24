@@ -200,18 +200,19 @@ const actions = {
    * @returns HttpRespone
    */
   async affecterPrime(context, payload) {
+    console.log(JSON.stringify(payload));
     payload.user_id = "1";
     let { data, status } = await post(
       "dashboard/agents/affecterPrime",
       payload
     );
+    console.log(JSON.stringify(data));
     if (status === 200) {
       return data;
     } else {
       return false;
     }
   },
-
   /**
    * Affecter primes
    * @param {Vuex} context
@@ -219,8 +220,10 @@ const actions = {
    * @returns HttpRespone
    */
   async affecterAgent(context, payload) {
+    console.log(JSON.stringify(payload));
     payload.user_id = "1";
     let { data, status } = await post("dashboard/agents/affecter", payload);
+    console.log(JSON.stringify(data));
     if (status === 200) {
       return data;
     } else {

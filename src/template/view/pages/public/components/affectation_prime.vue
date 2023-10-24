@@ -1,54 +1,59 @@
 <template>
     <div data-label="" class="df-example mt-3">
         <p class="tx-danger tx-12">Veuillez remplir tous les champs pour affecter une prime !</p>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label class="form-label">Prime<span class="tx-danger">*</span></label> <br>
-                    <select class="select2 form-select w-100" id="primeSelect">
-                        <option label="--Sélectionnez une prime--"></option>
-                    </select>
+        <form @submit.prevent="submitData">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Prime<span class="tx-danger">*</span></label> <br>
+                        <select class="select2 form-select w-100" id="primeSelect">
+                            <option label="--Sélectionnez une prime--"></option>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label class="form-label">Agent<span class="tx-danger">*</span></label> <br>
-                    <select class="select2 form-select w-100" id="agentSelect2">
-                        <option label="--Sélectionnez un agent--"></option>
-                    </select>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Agent<span class="tx-danger">*</span></label> <br>
+                        <select class="select2 form-select w-100" id="agentSelect2">
+                            <option label="--Sélectionnez un agent--"></option>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label class="form-label">Montant<span class="tx-danger">*</span></label>
-                    <div class="input-group">
-                        <input type="number" class="form-control" v-model="form.montant" placeholder="entrez le montant">
-                        <div class="input-group-text m-0 p-0 bg-transparent">
-                            <select class="form-select border-0" v-model="form.devise">
-                                <option value="CDF" selected>CDF</option>
-                                <option value="USD">USD</option>
-                            </select>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Montant<span class="tx-danger">*</span></label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" v-model="form.montant"
+                                placeholder="entrez le montant">
+                            <div class="input-group-text m-0 p-0 bg-transparent">
+                                <select class="form-select border-0" v-model="form.devise">
+                                    <option value="CDF" selected>CDF</option>
+                                    <option value="USD">USD</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-        </div>
-
-        <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1"><span class="mg-r-4"></span>Envoyez une notification à
-                l'agent</label>
-        </div>
-        <hr>
-        <div class="d-flex justify-content-end">
-            <button class="btn btn-white btn-lg mg-r-10">Annuler</button>
-            <bs-button btn-type="submit" class-name="btn-primary btn-lg"> <i data-feather="link"></i>
-                Soumettre affectation
-            </bs-button>
-        </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1"><span class="mg-r-4"></span>Envoyez une notification
+                    à
+                    l'agent</label>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-white btn-lg mg-r-10">Annuler</button>
+                <bs-button :loading="submitLoading" btn-type="submit" class-name="btn-primary btn-lg"> <i
+                        data-feather="link"></i>
+                    Soumettre affectation
+                </bs-button>
+            </div>
+        </form>
     </div>
 </template>
 
@@ -118,7 +123,7 @@ export default {
             this.submitLoading = true;
             this.$store.dispatch('erp/affecterPrime', this.form).then((e) => {
                 this.submitLoading = false;
-                if (res.reponse !== undefined) {
+                if (e.reponse !== undefined) {
                     if (res.reponse.status === 'success') {
                         this.showSuccessMessage('Prime affecté avec succès !');
                         this.cleanField();
@@ -128,7 +133,7 @@ export default {
                 else {
                     this.$showFailMessage();
                 }
-            }).catch((e) => {
+            }).catch((err) => {
                 this.$showFailMessage();
                 this.submitLoading = false;
             })
