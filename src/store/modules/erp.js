@@ -220,7 +220,6 @@ const actions = {
    * @returns HttpRespone
    */
   async affecterAgent(context, payload) {
-    console.log(JSON.stringify(payload));
     payload.user_id = "1";
     let { data, status } = await post("dashboard/agents/affecter", payload);
     console.log(JSON.stringify(data));

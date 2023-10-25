@@ -55,13 +55,6 @@
 
                     <li class="nav-item">
                         <a class="nav-link"
-                            @click.prevent="$router.replace({ name: 'affectations', params: { affect: 'primes' } })"
-                            id="primes-tab" data-bs-toggle="tab" href="#primes"
-                            :class="$route.params.affect.includes('primes') ? 'active' : ''" role="tab"
-                            aria-controls="profile" aria-selected="false"> Affectation primes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
                             @click.prevent="$router.replace({ name: 'affectations', params: { affect: 'avances' } })"
                             id="avances-tab" data-bs-toggle="tab" href="#avances"
                             :class="$route.params.affect.includes('avances') ? 'active' : ''" role="tab"
