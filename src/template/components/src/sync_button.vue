@@ -35,7 +35,16 @@
                         </div><!-- media -->
                     </div><!-- modal-header -->
                     <div class="modal-body">
+
                         <div class="row row-xs">
+                            <div class="col-md-12">
+                                <div class="custom-control custom-switch m-2">
+                                    <input type="checkbox" class="custom-control-input mg-r-10" id="customSwitch1"
+                                        @change="onSelectAll">
+                                    <label class="custom-control-label" for="customSwitch1">Sélectionnez tous les
+                                        dispositifs !</label>
+                                </div>
+                            </div>
                             <label class="col-sm-6 col-lg-4 col-xl-4 mb-2 mx-0" style="cursor: pointer"
                                 :for="`customCheck${i}`" v-for="(device, i) in devices" :key="i">
                                 <div class="media media-folder m-0">
@@ -114,6 +123,26 @@ export default {
                 let id = this.selectedIds.indexOf(data.id);
                 this.selectedIds.splice(id, 1);
             }
+            console.log(JSON.stringify(this.selectedIds));
+        },
+
+        onSelectAll(event) {
+            let checked = event.target.checked
+            if (checked) {
+                $('input:checkbox').each(function () {
+                    $(`#${$(this).attr('id')}`).prop("checked", true);
+                });
+                for (let data of this.devices) {
+                    this.selectedIds.push(data.id);
+                }
+            }
+            else {
+                $('input:checkbox').each(function () {
+                    $(`#${$(this).attr('id')}`).prop("checked", false);
+                });
+                this.selectedIds = [];
+            }
+            console.log(JSON.stringify(this.selectedIds));
         },
 
         triggerSubmitData() {
