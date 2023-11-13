@@ -151,7 +151,7 @@
 										<option value="CDI">CDI</option>
 									</select>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-4" v-if="form.contrat_type.includes('CDD')">
 									<label class="form-label"> Durée<span class="tx-danger">*</span></label>
 									<div class="input-group">
 										<input type="text" v-model="form.duree" class="form-control"
@@ -223,6 +223,7 @@ export default {
 				agence_id: 0,
 				fonction_id: 0,
 				service_id: 0,
+				bareme_id: 0,
 				date_affectation: ''
 			}
 		}
@@ -235,11 +236,11 @@ export default {
 
 	methods: {
 		submitData(e) {
-			this.form.code_zone = $("#provinceSelect2").val();
-			this.form.agence_id = $("#agenceSelect2").val();
-			this.form.fonction_id = $("#fonctionSelect2").val();
-			this.form.service_id = $("#serviceSelect2").val();
-			this.form.service_id = $("#baremeSelect2").val();
+			this.form.code_zone = parseInt($("#provinceSelect2").val());
+			this.form.agence_id = parseInt($("#agenceSelect2").val());
+			this.form.fonction_id = parseInt($("#fonctionSelect2").val());
+			this.form.service_id = parseInt($("#serviceSelect2").val());
+			this.form.bareme_id = parseInt($("#baremeSelect2").val());
 			this.isSubmitLoading = true;
 			this.$store.dispatch('biotime/createEmployee', this.form).then((result) => {
 				this.isSubmitLoading = false;
@@ -327,6 +328,8 @@ export default {
 							id: item.agence_id
 						}
 					})
+				}).on('change', function (e) {
+					console.log($(this).val());
 				});
 				$("#agenceSelect2").val('').trigger('change');
 			});
@@ -359,6 +362,8 @@ export default {
 						id: item.id
 					}
 				})
+			}).on('change', function (e) {
+				console.log($(this).val());
 			});
 			/**
 			 * End Position Select
@@ -379,6 +384,8 @@ export default {
 						id: item.id
 					}
 				})
+			}).on('change', function (e) {
+				console.log($(this).val());
 			});
 			/**
 			 * End Position Select
@@ -398,6 +405,8 @@ export default {
 						id: item.bareme_id
 					}
 				})
+			}).on('change', function (e) {
+				console.log($(this).val());
 			});
 		}
 	}
