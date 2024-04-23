@@ -264,7 +264,6 @@ export default {
 					timer: 4000,
 				});
 				this.cleanField();
-
 			});
 		},
 
@@ -316,7 +315,6 @@ export default {
 				*/
 				let payload = $(this).select2('data')[0].text;
 				const agences = await self.$store.dispatch('erp/allAgences', payload);
-
 				$('#agenceSelect2').empty();
 				$('#agenceSelect2').select2({
 					dropdownParent: $('#modalEmployes'),

@@ -67,11 +67,11 @@ export default {
 
     methods: {
         submitLogin(e) {
-          let form = {
-            username: this.form.username,
-            password: this.form.pwd
-          };
-          this.loginLoading = true;
+            let form = {
+                username: this.form.username,
+                password: this.form.pwd
+            };
+          /* this.loginLoading = true;
           this.$store.dispatch('auth/loggedIn', form).then((res)=>{
             console.log(JSON.stringify(res));
             this.loginLoading = false;
@@ -84,9 +84,9 @@ export default {
               }
             }
 
-          })
+          }) */this.$router.replace({ name: 'secure' });
         }
     },
 }
 </script>
-<style scoped src="@/assets/css/dashforge.auth.css" ></style>
+<style scoped src="@/assets/css/dashforge.auth.css"></style>
