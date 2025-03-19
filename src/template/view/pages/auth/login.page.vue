@@ -5,7 +5,7 @@
                 <div class="media-body align-items-center d-none d-lg-flex">
                     <div class="mx-wd-600">
                         <h1 class="aside-logo tx-80" style="color: #000000;">Millenium<span>
-                                payroll <small>2023</small></span></h1>
+                                Time Attendance <small>2025</small></span></h1>
                     </div>
                     <div class="pos-absolute b-0 l-0 tx-12 tx-center">
                         Bienvenue sur la plateforme <a href="#" class="aside-logo tx-12"

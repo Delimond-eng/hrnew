@@ -29,7 +29,8 @@
                                     class="wd-60 ht-60"></i></span>
                             <div class="media-body mg-sm-l-20">
                                 <h4 class="tx-18 tx-sm-20 mg-b-2">Synchronisation des données</h4>
-                                <p class="tx-13 tx-color-03 mg-b-0">Veuillez sélectionner les dipositifs pour synchroniser !
+                                <p class="tx-13 tx-color-03 mg-b-0">Veuillez sélectionner les dipositifs pour
+                                    synchroniser !
                                 </p>
                             </div>
                         </div><!-- media -->
@@ -56,7 +57,7 @@
                                             <i data-feather="map-pin"
                                                 style="width:10px; margin-top: -4px; margin-right: 2px;"></i>
                                             <span>{{ device.area_name
-                                            }}</span>
+                                                }}</span>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span>{{ device.ip_address }}</span>
@@ -68,7 +69,8 @@
                                     <!-- media-body -->
                                     <div class="dropdown-file">
                                         <input @change.prevent="onSelectDevice($event, device)" type="checkbox"
-                                            class="custom-control-input" :id="`customCheck${i}`" :checked="device.checked">
+                                            class="custom-control-input" :id="`customCheck${i}`"
+                                            :checked="device.checked">
                                     </div>
 
 
@@ -101,7 +103,7 @@ export default {
     },
 
     async mounted() {
-        await this.$store.dispatch('biotime/allDevices');
+        //await this.$store.dispatch('biotime/allDevices');
 
         /**
          * Uncheck all checkbox device when modal hidden trigger

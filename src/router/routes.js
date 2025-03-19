@@ -7,7 +7,7 @@ import Main from "@/template/view/main";
 
 /*public pages*/
 import AgencesPage from "@/template/view/pages/public/agences.page";
-import DashboardPage from "@/template/view/pages/public/dashboard.page";
+import DashboardPage from "@/template/view/pages/public/dashboard2.page";
 import ServicesPage from "@/template/view/pages/public/services.page";
 import EmployeesPage from "@/template/view/pages/public/employes.page";
 import BaremesPage from "@/template/view/pages/public/baremes.page";

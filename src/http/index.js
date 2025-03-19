@@ -6,18 +6,19 @@ const baseURL = "http://backend-payroll.milleniumhorizon.com/";
  * Create a new axios instance
  * */
 const instance = axios.create({
-    baseURL: location.href.includes('.com')  ? baseURL : 'http://127.0.0.1/backend_payroll/',
+  baseURL: location.href.includes(".com")
+    ? baseURL
+    : "http://127.0.0.1/backend_payroll/",
 });
 
-
 instance.interceptors.request.use((config) => {
-    //NProgress.start();
-    return config;
+  //NProgress.start();
+  return config;
 });
 
 instance.interceptors.response.use((response) => {
-    //NProgress.done();
-    return response;
+  //NProgress.done();
+  return response;
 });
 
 /***
@@ -30,22 +31,22 @@ instance.interceptors.response.use((response) => {
  */
 
 export async function post(url, form) {
-    let token = localStorage.getItem('biotime-user-token');
-    let { data,status } = await instance.post(url, form, {
-        headers: {
-            'Authorization': token !== undefined ? `JWT ${token}` : null
-        }
-    });
-    return {data, status};
+  let token = localStorage.getItem("biotime-user-token");
+  let { data, status } = await instance.post(url, form, {
+    headers: {
+      Authorization: token !== undefined ? `JWT ${token}` : null,
+    },
+  });
+  return { data, status };
 }
 
 export async function get(url) {
-    let token = localStorage.getItem('biotime-user-token');
-    let { data, status } = await instance.get(url, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token !== undefined ? `JWT ${token}` : null
-        }
-    });
-    return {data, status};
+  let token = localStorage.getItem("biotime-user-token");
+  let { data, status } = await instance.get(url, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token !== undefined ? `JWT ${token}` : null,
+    },
+  });
+  return { data, status };
 }
